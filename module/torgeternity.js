@@ -781,9 +781,10 @@ function rollItemMacro(itemName) {
  * @param {string} skillName
  * @param {string} attributeName
  * @param {boolean} isInteractionAttack
+ * @param {string} pDifficulty optionally for given difficulty, atm only filled by hand into roll macro
  * @returns {Promise}
  */
-function rollSkillMacro(skillName, attributeName, isInteractionAttack) {
+function rollSkillMacro(skillName, attributeName, isInteractionAttack, pDifficulty) {
   const speaker = ChatMessage.getSpeaker();
   let actor = null;
   if (speaker.token) actor = game.actors.tokens[speaker.token];
@@ -795,6 +796,10 @@ function rollSkillMacro(skillName, attributeName, isInteractionAttack) {
     // would be nice to use display value as an input instead but we can't translate from i18n to internal values
     skill = actor && Object.keys(actor.system.skills).includes(skillNameKey) ? actor.system.skills[skillNameKey] : null;
     if (!skill) return ui.notifications.warn(game.i18n.localize("torgeternity.notifications.noSkillNamed") + skillName);
+  }
+
+  if (pDifficulty && typeof pDifficulty !== "string") {
+    return ui.notifications.error("no string");
   }
 
   const attributeNameKey = attributeName.toLowerCase();
@@ -844,7 +849,7 @@ function rollSkillMacro(skillName, attributeName, isInteractionAttack) {
     isFav: skill.isFav,
     targets: Array.from(game.user.targets),
     applySize: false,
-    DNDescriptor: "standard",
+    DNDescriptor: pDifficulty ? pDifficulty : "standard",
     attackOptions: false,
     rollTotal: 0,
     unskilledUse: skill.unskilledUse,

@@ -26,7 +26,8 @@
       "cosm": "Cosmos"
     },
     "RegionBehavior": {
-      "replaceAxioms": "Reemplazar axiomas de zona"
+      "replaceAxioms": "Reemplazar axiomas de zona",
+      "torgApplyEffect": "Apply Active Effects"
     }
   },
   "torgeternity": {
@@ -822,7 +823,7 @@
       "requiresConcentration": "Requiere Concentración",
       "skill": "Habilidad",
       "skilllevel": "Valor Min. Habilidad",
-      "standard": "Standard"
+      "standard": "Estándar"
     },
     "powerSkills": {
       "alteration": "Alteración",
@@ -1223,7 +1224,7 @@
       "spell": "Conjuro",
       "spells": "Conjuros",
       "spirit": "Espiritual",
-      "standardResult": "Standard Result",
+      "standardResult": "Resultado Normal",
       "stats": "Atributos",
       "statusEffects": "Efecto Estado",
       "stormknight": "Caballero de la Tormenta",
@@ -1437,7 +1438,7 @@
       "reload": "Recarga",
       "shotgun": "Escopeta",
       "small": "Pequeña",
-      "softArmor": "Soft Armor",
+      "softArmor": "Armadura blanda",
       "stagger": "Desequilibrante",
       "supernaturalEvil": "Mal sobrenatural",
       "thrown": "Arrojadiza",
@@ -1580,5 +1581,13 @@
     "LightDim": "Transición a luz tenue",
     "LightDark": "Transición a oscuridad",
     "LightNight": "Transición a negrura total"
+  },
+  "BEHAVIOR.TYPES.torgActiveEffect.FIELDS": {
+    "disposition": {
+      "label": "Disposición de la ficha"
+    },
+    "effects": {
+      "label": "Efectos"
+    }
   }
 }

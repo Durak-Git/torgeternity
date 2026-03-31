@@ -29,7 +29,8 @@
       "cosm": "Cosm"
     },
     "RegionBehavior": {
-      "replaceAxioms": "Remplacer les Axioms de la zone"
+      "replaceAxioms": "Remplacer les Axioms de la zone",
+      "torgApplyEffect": "Apply Active Effects"
     }
   },
   "torgeternity": {
@@ -825,7 +826,7 @@
       "requiresConcentration": "Nécessite de se concentrer",
       "skill": "Compétence",
       "skilllevel": "Compétence min.",
-      "standard": "Standard"
+      "standard": "Normale"
     },
     "powerSkills": {
       "alteration": "Altération",
@@ -1226,7 +1227,7 @@
       "spell": "Sortilège",
       "spells": "Sortilèges",
       "spirit": "Spirit.",
-      "standardResult": "Standard Result",
+      "standardResult": "Résultat normal",
       "stats": "Caracs",
       "statusEffects": "Statut",
       "stormknight": "Chevalier des Tempêtes",
@@ -1440,7 +1441,7 @@
       "reload": "Rechargement",
       "shotgun": "Canon court",
       "small": "Petit",
-      "softArmor": "Soft Armor",
+      "softArmor": "Armure souple",
       "stagger": "Déséquilibre",
       "supernaturalEvil": "Surnaturel maléfique",
       "thrown": "Lancée",
@@ -1583,5 +1584,13 @@
     "LightDim": "Transition vers Pénombre",
     "LightDark": "Transition vers Pénombre",
     "LightNight": "Transition vers Noir complet"
+  },
+  "BEHAVIOR.TYPES.torgActiveEffect.FIELDS": {
+    "disposition": {
+      "label": "Disposition du Token"
+    },
+    "effects": {
+      "label": "Effets"
+    }
   }
 }

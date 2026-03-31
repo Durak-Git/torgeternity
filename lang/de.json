@@ -26,7 +26,8 @@
       "cosm": "Cosm"
     },
     "RegionBehavior": {
-      "replaceAxioms": "Ersetze Zonen-Axiome"
+      "replaceAxioms": "Ersetze Zonen-Axiome",
+      "torgApplyEffect": "Apply Active Effects"
     }
   },
   "torgeternity": {
@@ -1581,5 +1582,13 @@
     "LightDim": "Übergang zu dämmrigen Lichtverhältnissen",
     "LightDark": "Übergang zu dunklen Lichtverhältnissen",
     "LightNight": "Übergang zu pechschwarzer Dunkelheit"
+  },
+  "BEHAVIOR.TYPES.torgActiveEffect.FIELDS": {
+    "disposition": {
+      "label": "Token Disposition"
+    },
+    "effects": {
+      "label": "Effekte"
+    }
   }
 }

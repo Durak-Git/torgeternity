@@ -20,7 +20,8 @@
       "cosm": "Cosm"
     },
     "RegionBehavior": {
-      "replaceAxioms": "Replace Zone Axioms"
+      "replaceAxioms": "Replace Zone Axioms",
+      "torgApplyEffect": "Apply Active Effects"
     }
   },
   "torgeternity": {
@@ -1574,5 +1575,13 @@
     "LightDim": "Transition to Dim Light",
     "LightDark": "Transition to Dark",
     "LightNight": "Transition to Pitch Black"
+  },
+  "BEHAVIOR.TYPES.torgActiveEffect.FIELDS": {
+    "disposition": {
+      "label": "Token Disposition"
+    },
+    "effects": {
+      "label": "Effects"
+    }
   }
 }

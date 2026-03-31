@@ -426,6 +426,7 @@
       }
     },
     "RegionBehavior": {
+      "torgApplyEffect": {},
       "replaceAxioms": {}
     }
   },

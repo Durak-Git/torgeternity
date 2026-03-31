@@ -723,8 +723,13 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       .filter(fx => fx?.transfersToActor)
       .map(fx => fx.copyForTransfer(test.concentratingId));
 
-    if (effects.length)
-      actor.createEmbeddedDocuments('ActiveEffect', effects);
+    if (effects.length) {
+      if (event.target.dataset.aura)
+        // FVTT-V14: Need UUIDs in the effects, not the actual effects!
+        canvas.scene.createTokenAura(effects[0].name, actor.getActiveTokens(), /*range*/event.target.dataset.aura, effects);
+      else
+        actor.createEmbeddedDocuments('ActiveEffect', effects);
+    }
   }
 
   /**
@@ -744,8 +749,13 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       .filter(fx => fx?.transfersToTarget)
       .map(fx => fx.copyForTransfer(test.concentratingId));
 
-    if (effects.length)
-      targetActor.createEmbeddedDocuments('ActiveEffect', effects);
+    if (effects.length) {
+      if (event.target.dataset.aura)
+        // FVTT-V14: Need UUIDs in the effects, not the actual effects!
+        canvas.scene.createTokenAura(effects[0].name, actor.getActiveTokens(), /*range*/event.target.dataset.aura, effects);
+      else
+        targetActor.createEmbeddedDocuments('ActiveEffect', effects);
+    }
   }
 
   /**

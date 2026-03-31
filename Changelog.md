@@ -7,6 +7,7 @@
 - Improve the Source field of Active Effect lists to show the originating actor of transferred effects.
 - Show suppressed effects in Effects Panel (since they are shown as token icons).
 - Add "Standard" success result box to Spell, Miracles, Psionics - so that standard benefits can be displayed in test chat cards.
+- Combat Tracker remembers current scroll position when doing "End Turn" on combatants.
 
 ### Translations
 ```

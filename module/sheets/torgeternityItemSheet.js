@@ -376,7 +376,7 @@ export default class TorgeternityItemSheet extends foundry.applications.api.Hand
     context.item = context.document;
     context.typeLabel = game.i18n.localize(CONFIG.Item.typeLabels[context.document.type]);
     const best = context.item.system.bestowedBy
-    context.bestowingItem = best ? context.item.parent.items.get(best) : null;
+    context.bestowingItem = best ? context.item.parent?.items.get(best) : null;
 
     // Once copied to an Actor, `item.system.itemsToBestow` is empty.
     context.itemsToBestow = (context.item.parent instanceof foundry.documents.Actor)

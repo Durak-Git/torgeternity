@@ -9,6 +9,7 @@
 - Add "Standard" success result box to Spell, Miracles, Psionics - so that standard benefits can be displayed in test chat cards.
 - Combat Tracker remembers current scroll position when doing "End Turn" on combatants.
 - Add "Apply Active Effect" region behaviour (ready for Foundry V14, and removing the need for the Region Effects module).
+- Prevent error opening an Item sheet if the Item has an invalid `bestowedBy` entry.
 
 ### Translations
 ```

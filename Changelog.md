@@ -2,7 +2,7 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## NEXT
+## 13.33.0
 - Add "Soft Armor" defense trait.
 - Improve the Source field of Active Effect lists to show the originating actor of transferred effects.
 - Show suppressed effects in Effects Panel (since they are shown as token icons).
@@ -22,6 +22,7 @@
   - `system.skills.scholar.defenseMod`
   - If the targeted skill cannot be unused and the target has no adds in it, then the attribute's `defenseMod` will be used instead of the skill's defenseMod.
 - V14: Fix active effect duration values (and expiration of active defense).
+- First version marked as (mostly) compatible with Foundry V14 - **please report any issues**
 
 ### Translations
 ```

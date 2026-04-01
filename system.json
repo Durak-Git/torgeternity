@@ -24,10 +24,10 @@
       "twitter": "@shambles42"
     }
   ],
-  "version": "13.27.0",
+  "version": "13.33.0",
   "compatibility": {
     "minimum": "13.351",
-    "verified": 13
+    "verified": 14
   },
   "esmodules": [
     "module/torgeternity.js"

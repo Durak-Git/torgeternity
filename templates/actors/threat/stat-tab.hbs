@@ -40,7 +40,7 @@
               <input name="{{concat 'system.attributes.' attrName '.value' }}"
                 type='number'
                 class="attributeValueField"
-                data-baseAttributeInput="{{attrName}}"
+                data-attribute-id="{{attrName}}"
                 value="{{ifThen @root.editAttributes attrValue.base attrValue.value}}"
                 data-dtype='Number'
                 class='small-input'

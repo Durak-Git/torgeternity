@@ -411,7 +411,7 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
       html.querySelectorAll('.attributeValueField').forEach(elem =>
         elem.addEventListener('change', event => {
           const target = event.target;
-          const concernedAttribute = target.dataset.baseattributeinput;
+          const concernedAttribute = target.dataset.attributeId;
           this.actor.update({ [`system.attributes.${concernedAttribute}.base`]: parseInt(target.value) });
         }));
     }

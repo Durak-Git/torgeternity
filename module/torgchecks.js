@@ -1067,7 +1067,7 @@ function individualDN(test, target) {
     // Special Case
     case 'targetWillpowerMind':
       return base + target.skills.willpower?.value
-        ? target.skills.willpower.value - target.attributes.spirit + target.attributes.mind
+        ? target.skills.willpower.value + target.skills.willpower.defenseMod - target.attributes.spirit + target.attributes.mind
         : target.attributes.mind;
 
     case 'highestSpeed':

@@ -15,13 +15,13 @@
   - Add a separate `system.defenses.activeDefense` field to store the current bonus.
   - Display "Active Defense" bonus separately on the actor sheet (both SK and Threats).
   - Apply the bonus to ALL tests made against the target, not just weapon/interaction attacks (e.g. powers such as Wither)
-- **Flurry** drama card: Clicking the `conflict button` will start the second turn for the benefiting faction without increasing
-the turn number. (So use this button instead of the KEEP button at the bottom of the combat tracker).
+- **Flurry** drama card: Clicking the `conflict button` will start the second turn for the benefiting faction without increasing the turn number or doing any end-of-turn processing. (So use this button instead of the KEEP button at the bottom of the combat tracker).
 - "Standard/Good/Outstanding **Success**" (not `result) in power Item sheets.
 - **Defense bonus for Attribute/Skill**: Allows an AE to provide a bonus to defense when a certain skill or attribute is targeted.
   - `system.attribute.mind.defenseMod`
   - `system.skills.scholar.defenseMod`
   - If the targeted skill cannot be unused and the target has no adds in it, then the attribute's `defenseMod` will be used instead of the skill's defenseMod.
+- V14: Fix active effect duration values (and expiration of active defense).
 
 ### Translations
 ```

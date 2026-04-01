@@ -10,6 +10,7 @@
 - Combat Tracker remembers current scroll position when doing "End Turn" on combatants.
 - Add "Apply Active Effect" region behaviour (ready for Foundry V14, and removing the need for the Region Effects module).
 - Prevent error opening an Item sheet if the Item has an invalid `bestowedBy` entry.
+- Rolling an Interaction Attack skill from the Skills List now invokes the Attack dialog, as if they had clicked on the corresponding button in the "Attacks & Powers" section of the sheet.
 
 ### Translations
 ```

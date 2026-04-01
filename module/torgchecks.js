@@ -1037,7 +1037,9 @@ function individualDN(test, target) {
       return target.defenses[onTarget] + base;
     if (target.skills && Object.hasOwn(target.skills, onTarget)) {
       const skill = target.skills[onTarget];
-      return ((skill.value && skill.value !== '-') ? skill.value : target.attributes[skill.baseAttribute]) + base;
+      return base + ((skill.value && skill.value !== '-')
+        ? (skill.value + skill.defenseMod)
+        : target.attributes[skill.baseAttribute]);
     }
   }
 

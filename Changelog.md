@@ -18,6 +18,10 @@
 - **Flurry** drama card: Clicking the `conflict button` will start the second turn for the benefiting faction without increasing
 the turn number. (So use this button instead of the KEEP button at the bottom of the combat tracker).
 - "Standard/Good/Outstanding **Success**" (not `result) in power Item sheets.
+- **Defense bonus for Attribute/Skill**: Allows an AE to provide a bonus to defense when a certain skill or attribute is targeted.
+  - `system.attribute.mind.defenseMod`
+  - `system.skills.scholar.defenseMod`
+  - If the targeted skill cannot be unused and the target has no adds in it, then the attribute's `defenseMod` will be used instead of the skill's defenseMod.
 
 ### Translations
 ```

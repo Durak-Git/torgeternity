@@ -732,8 +732,16 @@ export async function renderSkillChat(test, origChatMessage) {
   const newroll = test.diceroll;
   delete test.diceroll;
 
-  const rollMode = game.settings.get("core", "rollMode");
-  const flavor = (rollMode === 'publicroll') ? '' : game.i18n.localize(CONFIG.Dice.rollModes[rollMode].label);
+  let flavor, options;
+  if (game.release.generation < 14) {
+    const rollMode = game.settings.get("core", "rollMode");
+    options = { rollMode };
+    flavor = (rollMode === 'publicroll') ? '' : game.i18n.localize(CONFIG.Dice.rollModes[rollMode].label);
+  } else {
+    const messageMode = game.settings.get("core", "messageMode");
+    options = { messageMode };
+    flavor = (messageMode === 'public') ? '' : game.i18n.localize(CONFIG.ChatMessage.modes[messageMode].label);
+  }
   let message;
   if (origChatMessage) {
     const rolls = dicerolled ? origChatMessage.rolls.concat(dicerolled) : origChatMessage.rolls;
@@ -762,7 +770,7 @@ export async function renderSkillChat(test, origChatMessage) {
         },
       },
     },
-      { rollMode });
+      options);
   }
 
   if (game.settings.get('torgeternity', 'unTarget')) {

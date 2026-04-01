@@ -481,7 +481,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       changes: [
         {
           // Modify all existing "basic" defense in block
-          key: 'system.defenses.all.mod', // Should need other work for defense vs powers
+          key: 'system.defenses.activeDefense', // Should need other work for defense vs powers
           value: bonus, // that don't target xxDefense
           priority: 20, // Create a data.ADB that store the bonus ?
           mode: CONST.ACTIVE_EFFECT_MODES.ADD,

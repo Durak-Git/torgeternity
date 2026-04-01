@@ -417,6 +417,7 @@ export function oneTestTarget(token, applySize, attackTraits, defenseTraits, tes
           maneuver: actor.system.defense,
           taunt: actor.system.defense,
           trick: actor.system.defense,
+          activeDefense: actor.system.defenses.activeDefense
         },
       };
 
@@ -458,7 +459,7 @@ export function oneTestTarget(token, applySize, attackTraits, defenseTraits, tes
             maneuver: actor.system.defenses.maneuver.value,
             taunt: actor.system.defenses.taunt.value,
             trick: actor.system.defenses.trick.value,
-            activeDefense: !!actor.activeDefense
+            activeDefense: actor.system.defenses.activeDefense
           },
         };
 

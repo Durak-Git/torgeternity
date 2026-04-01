@@ -11,6 +11,10 @@
 - Add "Apply Active Effect" region behaviour (ready for Foundry V14, and removing the need for the Region Effects module).
 - Prevent error opening an Item sheet if the Item has an invalid `bestowedBy` entry.
 - Rolling an Interaction Attack skill from the Skills List now invokes the Attack dialog, as if they had clicked on the corresponding button in the "Attacks & Powers" section of the sheet.
+- Rework Active Defense:
+  - Add a separate `system.defenses.activeDefense` field to store the current bonus.
+  - Display "Active Defense" bonus separately on the actor sheet (both SK and Threats).
+  - Apply the bonus to ALL tests made against the target, not just weapon/interaction attacks (e.g. powers such as Wither)
 
 ### Translations
 ```

@@ -1023,19 +1023,21 @@ export function getTorgValue(myNumber) {
 
 function individualDN(test, target) {
 
+  let base = target.defenses?.activeDefense ?? 0;
+
   if (typeof test.DNDescriptor === 'string' && test.DNDescriptor.startsWith('target')) {
     let onTarget = test.DNDescriptor.slice(6);
     onTarget = onTarget.at(0).toLowerCase() + onTarget.slice(1);
-    let traitdefense = getExtraProtection(test.attackTraits, target.defenses, 'Defense');
+    base += getExtraProtection(test.attackTraits, target.defenses, 'Defense');
     if (onTarget === 'vehicleDefense')
       return target.defenses?.vehicle ?? 0;
     if (target.attributes && Object.hasOwn(target.attributes, onTarget))
-      return target.attributes[onTarget] + traitdefense;
+      return target.attributes[onTarget] + base;
     if (target.defenses && Object.hasOwn(target.defenses, onTarget))
-      return target.defenses[onTarget] + traitdefense;
+      return target.defenses[onTarget] + base;
     if (target.skills && Object.hasOwn(target.skills, onTarget)) {
       const skill = target.skills[onTarget];
-      return ((skill.value && skill.value !== '-') ? skill.value : target.attributes[skill.baseAttribute]) + traitdefense;
+      return ((skill.value && skill.value !== '-') ? skill.value : target.attributes[skill.baseAttribute]) + base;
     }
   }
 
@@ -1062,7 +1064,7 @@ function individualDN(test, target) {
 
     // Special Case
     case 'targetWillpowerMind':
-      return target.skills.willpower?.value
+      return base + target.skills.willpower?.value
         ? target.skills.willpower.value - target.attributes.spirit + target.attributes.mind
         : target.attributes.mind;
 
@@ -1078,9 +1080,9 @@ function individualDN(test, target) {
           highestSpeed = combatantSpeed;
         }
       }
-      return highestSpeed;
+      return base + highestSpeed;
     case 'targetVehicleDefense':
-      return target.defenses?.vehicle ?? 0;
+      return base + (target.defenses?.vehicle ?? 0);
     default:
       return 10;
   }

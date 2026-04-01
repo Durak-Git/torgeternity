@@ -337,6 +337,18 @@ export default class TorgCombat extends Combat {
   async dramaFlurry(faction) {
     // extra turn
     console.log('Drama Flurry', faction)
+    // Reset the "turnTaken" for all members of this faction (keep the same TURN number in the combat tracker).
+    await this.updateEmbeddedDocuments('Combatant',
+      this.combatants.filter(combatant => this.getCombatantFaction(combatant) === faction)
+        .map((combatant) => ({
+          _id: combatant.id,
+          'system.turnTaken': false,
+          'system.multiAction': null
+        })),
+      { updateAll: true });
+    this.setCardsPlayable(true);
+    this.unsetFlag('torgeternity', FATIGUED_FACTION_FLAG);
+
     return this.#sendDramaChat('flurry', faction);
   }
 

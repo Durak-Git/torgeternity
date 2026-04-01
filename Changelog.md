@@ -15,11 +15,14 @@
   - Add a separate `system.defenses.activeDefense` field to store the current bonus.
   - Display "Active Defense" bonus separately on the actor sheet (both SK and Threats).
   - Apply the bonus to ALL tests made against the target, not just weapon/interaction attacks (e.g. powers such as Wither)
+- **Flurry** drama card: Clicking the `conflict button` will start the second turn for the benefiting faction without increasing
+the turn number. (So use this button instead of the KEEP button at the bottom of the combat tracker).
 
 ### Translations
 ```
 "standardResult": "Standard Result"   // for Miracle, Psionic, Spell item sheet
 "standard": "Standard"                // for chat card
+"flurryDesc": "FLURRY: Give {faction} their extra turn this round",
 ```
 
 ## 13.32.1 - Concentration + Aura Effects module support

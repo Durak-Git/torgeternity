@@ -527,7 +527,7 @@
       "setback": "Setback",
       "stymied": "Stymied",
       "surge": "Surge",
-      "flurryDesc": "FLURRY: {faction} get an extra turn this round",
+      "flurryDesc": "FLURRY: Give {faction} their extra turn this round",
       "inspirationDesc": "INSPIRATION: All {faction} immediately recover 2 shock",
       "upDesc": "UP: Add an additional roll to the first roll for {faction}",
       "confusedDesc": "CONFUSED: Players are unable to play cards from their pool",

@@ -3,13 +3,13 @@
     {{#if editable}}data-tooltip="torgeternity.sheetLabels.toggleSkillDisplay" {{/if}}>
     <a {{disabled (not @root.editable)}}>{{localize "torgeternity.sheetLabels.skills"}}</a>
   </h2>
-  {{#*inline "skillRow" skill action}}
+  {{#*inline "skillRow" skill action type}}
     <li>
       <span class="skillName">
         <a
           class="skill-roll draggable" data-action="{{action}}"
           data-tooltip="torgeternity.sheetLabels.skillRollHint"
-          data-testtype="skill"
+          data-testtype="{{type}}"
           data-base-attribute="{{skill.baseAttribute}}"
           data-adds="{{skill.adds}}"
           data-value="{{skill.value}}"
@@ -46,13 +46,13 @@
       </span>
     </li>
   {{/inline}}
-  {{#*inline "customSkillRow" skill action}}
+  {{#*inline "customSkillRow" skill action type}}
     <li>
       <span class="skillName">
         <a
           class="skill-roll draggable" data-action="{{action}}"
           data-tooltip="torgeternity.sheetLabels.skillRollHint"
-          data-testtype="skill"
+          data-testtype="{{type}}"
           data-customskill="true"
           data-base-attribute="{{skill.baseAttribute}}"
           data-adds="{{skill.adds}}"
@@ -106,9 +106,9 @@
       {{#if (eq skill.groupName "combat")}}
         {{#if (or ../document.system.editstate skill.adds)}}
           {{#if (eq skill.id 'unarmedCombat')}}
-            {{> skillRow skill=skill action="unarmedAttack"}}
+            {{> skillRow skill=skill action="unarmedAttack" type="interaction"}}
           {{else}}
-            {{> skillRow skill=skill action="skillRoll"}}
+            {{> skillRow skill=skill action="skillRoll" type="skill"}}
           {{/if}}
         {{/if}}
       {{/if}}
@@ -127,7 +127,7 @@
     {{#each skills as |skill|}}
       {{#if (eq skill.groupName "interaction")}}
         {{#if (or ../document.system.editstate skill.adds)}}
-          {{> skillRow skill=skill action="interactionAttack"}}
+          {{> skillRow skill=skill action="interactionAttack" type="interaction"}}
         {{/if}}
       {{/if}}
     {{/each}}
@@ -144,10 +144,10 @@
     </li>
     {{#each otherSkills as |skill|}}
       {{#if skill.isCustom}}
-        {{> customSkillRow skill=skill action="skillRoll"}}
+        {{> customSkillRow skill=skill action="skillRoll" type="skill"}}
       {{else}}
         {{#if (or @root.document.system.editstate skill.adds)}}
-          {{> skillRow skill=skill action="skillRoll"}}
+          {{> skillRow skill=skill action="skillRoll" type="skill"}}
         {{/if}}
       {{/if}}
     {{/each}}

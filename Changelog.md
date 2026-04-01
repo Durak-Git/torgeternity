@@ -17,6 +17,7 @@
   - Apply the bonus to ALL tests made against the target, not just weapon/interaction attacks (e.g. powers such as Wither)
 - **Flurry** drama card: Clicking the `conflict button` will start the second turn for the benefiting faction without increasing
 the turn number. (So use this button instead of the KEEP button at the bottom of the combat tracker).
+- "Standard/Good/Outstanding **Success**" (not `result) in power Item sheets.
 
 ### Translations
 ```

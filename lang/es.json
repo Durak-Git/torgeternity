@@ -533,7 +533,7 @@
       "setback": "Contratiempo",
       "stymied": "Impedidos",
       "surge": "Sobrecarga",
-      "flurryDesc": "RÁFAGA: {faction} obtienen un turno extra este asalto",
+      "flurryDesc": "RÁFAGA: Dar a los {faction} su turno adicional en este asalto",
       "inspirationDesc": "INSPIRACIÓN: todos los {faction} recuperan de inmediato 2 Shocks",
       "upDesc": "AUMENTO: añade una tirada más a la primera tirada de los {faction}",
       "confusedDesc": "CONFUSOS: los jugadores no pueden jugar cartas de su reserva",

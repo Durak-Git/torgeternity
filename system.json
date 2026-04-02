@@ -433,7 +433,8 @@
   "socket": true,
   "grid": {
     "distance": 1,
-    "units": "m"
+    "units": "m",
+    "diagonals": 1
   },
   "primaryTokenAttribute": "wounds",
   "secondaryTokenAttribute": "shock",

@@ -172,20 +172,26 @@ export default class TorgeternityScene extends foundry.documents.Scene {
    * Foundry V14
    * 
    * @param {String} name                 The name for the region and the Apply Active Effect Behavior
-   * @param {TokenDocument|Token} token   The Token to attach the emanation Region to
+   * @param {TokenDocument} tokenDocument   The Token to attach the emanation Region to
    * @param {Number} range                The range of the emanation in system units (gets rounded down to nearest grid units of scene)
    * @param {Array[ActiveEffectUUID]} effectUuids the UUIDs of the effects to be placed on tokens within the aura
    * 
    */
-  async createTokenAura(name, token, range, effectUuids) {
-    if (token instanceof foundry.canvas.placeables.Token) token = token.document;
+  async createTokenEmanation(tokenDocument, effectUuids, concentratingId) {
+    const firstEffect = fromUuidSync(effectUuids[0], { strict: false });
+    if (!firstEffect) return console.warn('createTokenEmanation: Failed to find effect');
+    const name = firstEffect.name;
+    const emanation = firstEffect.system.emanation;
 
     const region = await CONFIG.Region.documentClass.createTokenEmanation(
-      token,
-      range / canvas.scene.grid.distance,
-      {
-        name: name,
+      tokenDocument,
+      emanation.radius / canvas.scene.grid.distance,
+      { // RegionData
+        name,
         restriction: { enabled: true },
+        color: emanation.colour,
+        // opacity: emanation.opacity,   // no support for opacity yet?
+        flags: { torgeternity: { concentratingId } },
         displayMeasurements: true,
         visibility: CONST.REGION_VISIBILITY.OBSERVER,
         ownership: { [game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER }
@@ -194,12 +200,15 @@ export default class TorgeternityScene extends foundry.documents.Scene {
 
     if (!region) return console.error('failed to create region document');
 
-    const behavior = foundry.documents.RegionBehavior.create(
+    const behavior = CONFIG.RegionBehavior.documentClass.create(
       {
-        name: name,
-        type: 'applyActiveEffect',
+        name,
+        type: 'torgApplyEffect',
         // Core doesn't support choosing one disposition over another
-        system: { effects: effectUuids }
+        system: {
+          effects: effectUuids,
+          disposition: emanation.disposition
+        }
       },
       { parent: region });
   }

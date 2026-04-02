@@ -169,7 +169,10 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
         system: {
           transferOnOutcome: null,
           transferTo: '',
-          concentratingId: concentratingId
+          concentratingId: concentratingId,
+          emanation: {
+            radius: null
+          }
         },
         origin: this.parent.uuid,  // the originating Item
       },

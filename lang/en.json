@@ -89,6 +89,24 @@
         "defendAgainstTrait": {
           "label": "Defend Against Trait",
           "hint": "Apply this effect to a test when the owner is a TARGET and the attacker has ANY or ALL of these traits"
+        },
+        "emanation": {
+          "radius": {
+            "label": "Emanation Radius",
+            "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
+          },
+          "colour": {
+            "label": "Emanation Colour",
+            "hint": "Base colour for the emanation around the token"
+          },
+          "opacity": {
+            "label": "Emanation Opacity",
+            "hint": "The opacity of the colour for emanation (1 = solid, 0 = no visible emanation"
+          },
+          "disposition": {
+            "label": "Target Disposition",
+            "hint": "The disposition of Tokens to be affected by this emanation"
+          }
         }
       }
     },
@@ -1085,6 +1103,7 @@
       "editableTooltip": "expand the threat sheet to display editable fields",
       "effect": "Effect",
       "effectCreate": "Create Effect",
+      "effectEmanation": "Emanation around Token",
       "effectTestOptions": "For Tests",
       "effects": "Effects",
       "end": "End",

@@ -46,7 +46,7 @@ export class TorgApplyEffectRegionBehaviorType extends foundry.data.regionBehavi
 
     const effects = await Promise.all(this.effects.map(fromUuid));
     const toCreate = effects.map(effect => {
-      const data = { ...effect };
+      const data = effect.copyForTransfer(this.region.flags?.torgeternity?.concentratingId);
       delete data._id;
       data.disabled = false;
       data.transfer = false;

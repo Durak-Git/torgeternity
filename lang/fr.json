@@ -98,6 +98,20 @@
         "defendAgainstTrait": {
           "label": "Défense contre un trait",
           "hint": "Appliquer cet effet à la cible si l'attaquant possède un de ces traits"
+        },
+        "emanation": {
+          "radius": {
+            "label": "Emanation Radius",
+            "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
+          },
+          "colour": {
+            "label": "Emanation Colour",
+            "hint": "Base colour for the emanation around the token"
+          },
+          "disposition": {
+            "label": "Target Disposition",
+            "hint": "The disposition of Tokens to be affected by this emanation"
+          }
         }
       }
     },

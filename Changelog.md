@@ -28,28 +28,24 @@
 
 ### Translations
 ```
-"torgApplyEffect": "Apply Active Effects (Torg)"
 "standardResult": "Standard Result"   // for Miracle, Psionic, Spell item sheet
 "standard": "Standard"                // for chat card
 "flurryDesc": "FLURRY: Give {faction} their extra turn this round",
+"torgApplyEffect": "Apply Active Effects (Torg)"
 "effectEmanation": "Emanation around Token",
-        "emanation": {
-          "radius": {
-            "label": "Emanation Radius",
-            "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
-          },
-          "colour": {
-            "label": "Emanation Colour",
-            "hint": "Base colour for the emanation around the token"
-          },
-          "opacity": {
-            "label": "Emanation Opacity",
-            "hint": "The opacity of the colour for emanation (1 = solid, 0 = no visible emanation"
-          },
-          "disposition": {
-            "label": "Target Disposition",
-            "hint": "The disposition of Tokens to be affected by this emanation"
-          }
+"emanation": {
+  "radius": {
+    "label": "Emanation Radius",
+    "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
+  },
+  "colour": {
+    "label": "Emanation Colour",
+    "hint": "Base colour for the emanation around the token"
+  },
+  "disposition": {
+    "label": "Target Disposition",
+    "hint": "The disposition of Tokens to be affected by this emanation"
+  }
 ```
 
 ## 13.32.1 - Concentration + Aura Effects module support

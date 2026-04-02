@@ -99,10 +99,6 @@
             "label": "Emanation Colour",
             "hint": "Base colour for the emanation around the token"
           },
-          "opacity": {
-            "label": "Emanation Opacity",
-            "hint": "The opacity of the colour for emanation (1 = solid, 0 = no visible emanation"
-          },
           "disposition": {
             "label": "Target Disposition",
             "hint": "The disposition of Tokens to be affected by this emanation"

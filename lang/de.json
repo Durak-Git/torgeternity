@@ -95,6 +95,20 @@
         "defendAgainstTrait": {
           "label": "Verteidigung gegen Eigenschaft",
           "hint": "Wende diesen Effekt an, wenn der Besitzer das ZIEL ist und der Angreifer eine der angegebenen Eigenschaften hat"
+        },
+        "emanation": {
+          "radius": {
+            "label": "Emanation Radius",
+            "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
+          },
+          "colour": {
+            "label": "Emanation Colour",
+            "hint": "Base colour for the emanation around the token"
+          },
+          "disposition": {
+            "label": "Target Disposition",
+            "hint": "The disposition of Tokens to be affected by this emanation"
+          }
         }
       }
     },

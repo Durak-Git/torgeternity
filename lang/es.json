@@ -95,6 +95,20 @@
         "defendAgainstTrait": {
           "label": "Defensa contra rasgo",
           "hint": "Aplicar este efecto a una prueba cuando el propietario es el OBJETIVO y el atacante tiene uno de estos rasgos"
+        },
+        "emanation": {
+          "radius": {
+            "label": "Emanation Radius",
+            "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
+          },
+          "colour": {
+            "label": "Emanation Colour",
+            "hint": "Base colour for the emanation around the token"
+          },
+          "disposition": {
+            "label": "Target Disposition",
+            "hint": "The disposition of Tokens to be affected by this emanation"
+          }
         }
       }
     },

@@ -21,7 +21,7 @@
     },
     "RegionBehavior": {
       "replaceAxioms": "Replace Zone Axioms",
-      "torgApplyEffect": "Apply Active Effects"
+      "torgApplyEffect": "Apply Active Effects (Torg)"
     }
   },
   "torgeternity": {

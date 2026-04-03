@@ -4951,3 +4951,18 @@ table.cosm-axioms,
     }
   }
 }
+
+body.detached {
+
+  .sheet.actor.torgeternity,
+  .sheet.item.torgeternity {
+    .window-content.standard-form {
+      --detached-margin: 20px;
+      margin-right: var(--detached-margin);
+
+      nav.tabs.sheet-tabs {
+        left: calc(100% - var(--detached-margin));
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@
   - Item/Race Delete confirmation dialog
   - on Item drop, currency selection dialog
   - on Race drop, diminished attributes dialog
+- V14: Tabs on right of detached Actor/Item Sheet remain visible on resize.
 
 ## 13.33.0 - Foundry 14 support + Bug Fixes
 - Add "Soft Armor" defense trait.

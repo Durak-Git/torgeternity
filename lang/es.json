@@ -27,7 +27,7 @@
     },
     "RegionBehavior": {
       "replaceAxioms": "Reemplazar axiomas de zona",
-      "torgApplyEffect": "Apply Active Effects"
+      "torgApplyEffect": "Aplicar efectos activos (Torg)"
     }
   },
   "torgeternity": {
@@ -98,16 +98,16 @@
         },
         "emanation": {
           "radius": {
-            "label": "Emanation Radius",
-            "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
+            "label": "Radio de emanación",
+            "hint": "Radio de la emanación (en metros). Dejar en blanco si no se quiere emanación"
           },
           "colour": {
-            "label": "Emanation Colour",
-            "hint": "Base colour for the emanation around the token"
+            "label": "Color de la emanación",
+            "hint": "Color básico para la emanación que rodea la ficha"
           },
           "disposition": {
-            "label": "Target Disposition",
-            "hint": "The disposition of Tokens to be affected by this emanation"
+            "label": "Disposición de objetivo",
+            "hint": "La disposición de las fichas que serán afectadas por la emanación"
           }
         }
       }
@@ -1105,6 +1105,7 @@
       "editableTooltip": "Expande la hoja de amenaza para mostrar los campos editables",
       "effect": "Efecto",
       "effectCreate": "Crear Efecto",
+      "effectEmanation": "Emanación alrededor de ficha",
       "effectTestOptions": "Para pruebas",
       "effects": "Efectos",
       "end": "Fin",

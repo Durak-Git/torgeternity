@@ -27,7 +27,7 @@
     },
     "RegionBehavior": {
       "replaceAxioms": "Ersetze Zonen-Axiome",
-      "torgApplyEffect": "Apply Active Effects"
+      "torgApplyEffect": "Aktive Effekt (Torg) anwenden"
     }
   },
   "torgeternity": {
@@ -98,16 +98,16 @@
         },
         "emanation": {
           "radius": {
-            "label": "Emanation Radius",
-            "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
+            "label": "Ausstrahlungsradius",
+            "hint": "Radius der Ausstrahlung (in Metern). Keine Ausstrahlung wenn leer."
           },
           "colour": {
-            "label": "Emanation Colour",
-            "hint": "Base colour for the emanation around the token"
+            "label": "Ausstrahlungsfarbe",
+            "hint": "Grundfarbe für die Ausstrahlung um Token"
           },
           "disposition": {
-            "label": "Target Disposition",
-            "hint": "The disposition of Tokens to be affected by this emanation"
+            "label": "Verwendungsziel",
+            "hint": "Die Tokenverwendung die von dieser Ausstrahlung betroffen sein sollen"
           }
         }
       }
@@ -547,7 +547,7 @@
       "setback": "Rückschlag",
       "stymied": "Angeschlagen",
       "surge": "Welle",
-      "flurryDesc": "HAST: {faction} bekommen in der laufenden Runde einen zusätzlichen Spielzug",
+      "flurryDesc": "Hast: Gib {faction} ihren zusätzlichen Zug in dieser Runde",
       "inspirationDesc": "INSPIRATION: Alle {faction} regenerieren sofort 2 Schock",
       "upDesc": "OBERHAND: Addiert bei Proben von {faction} einen zusätzlichen Würfelwurf",
       "confusedDesc": "VERWIRRT: Spieler dürfen während der laufenden Runde keine Karten aus ihrem Aktionsvorrat einsetzen",
@@ -1105,6 +1105,7 @@
       "editableTooltip": "Vergrößere den Charakterbogen, um editierbare Werte anzuzeigen",
       "effect": "Modif.",
       "effectCreate": "Effekt erstellen",
+      "effectEmanation": "Ausstrahlung um Token",
       "effectTestOptions": "Für Proben",
       "effects": "Effekte",
       "end": "Ende",
@@ -1452,7 +1453,7 @@
       "reload": "Nachladen",
       "shotgun": "Schrotflinte",
       "small": "Klein",
-      "softArmor": "Soft Armor",
+      "softArmor": "Weiche Rüstung",
       "stagger": "Erschüttern",
       "supernaturalEvil": "Übernatürliches Böses",
       "thrown": "Wurfwaffe",
@@ -1599,7 +1600,7 @@
   },
   "BEHAVIOR.TYPES.torgActiveEffect.FIELDS": {
     "disposition": {
-      "label": "Token Disposition"
+      "label": "Token Verwendung"
     },
     "effects": {
       "label": "Effekte"

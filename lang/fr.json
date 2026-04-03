@@ -30,7 +30,7 @@
     },
     "RegionBehavior": {
       "replaceAxioms": "Remplacer les Axioms de la zone",
-      "torgApplyEffect": "Apply Active Effects"
+      "torgApplyEffect": "Appliquer les Effets (Torg)"
     }
   },
   "torgeternity": {
@@ -101,16 +101,16 @@
         },
         "emanation": {
           "radius": {
-            "label": "Emanation Radius",
-            "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
+            "label": "Rayon de l'aura",
+            "hint": "Le rayon de l'aura autour du token (en mètres). Pas d'aura si vide."
           },
           "colour": {
-            "label": "Emanation Colour",
-            "hint": "Base colour for the emanation around the token"
+            "label": "Couleur de l'aura",
+            "hint": "La couleur de base de l'aura autour du token"
           },
           "disposition": {
-            "label": "Target Disposition",
-            "hint": "The disposition of Tokens to be affected by this emanation"
+            "label": "Faction cible",
+            "hint": "Choix de la faction dont les tokens seront affectés par cette aura"
           }
         }
       }
@@ -1108,6 +1108,7 @@
       "editableTooltip": "Agrandissez la fiche pour faire apparaître les champs éditables",
       "effect": "Effet",
       "effectCreate": "Créer un Effet",
+      "effectEmanation": "Aura autour du token",
       "effectTestOptions": "Pour les tests",
       "effects": "Effets",
       "end": "Fin",

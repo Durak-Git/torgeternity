@@ -26,28 +26,6 @@
   - Fix active effect duration values (and expiration of active defense).
   - First attempt at Emanations (for Ward Enemy, Awareness, etc.)
 
-### Translations
-```
-"standardResult": "Standard Result"   // for Miracle, Psionic, Spell item sheet
-"standard": "Standard"                // for chat card
-"flurryDesc": "FLURRY: Give {faction} their extra turn this round",
-"torgApplyEffect": "Apply Active Effects (Torg)"
-"effectEmanation": "Emanation around Token",
-"emanation": {
-  "radius": {
-    "label": "Emanation Radius",
-    "hint": "Radius of the emanation (in metres). Leave blank for no emanation"
-  },
-  "colour": {
-    "label": "Emanation Colour",
-    "hint": "Base colour for the emanation around the token"
-  },
-  "disposition": {
-    "label": "Target Disposition",
-    "hint": "The disposition of Tokens to be affected by this emanation"
-  }
-```
-
 ## 13.32.1 - Concentration + Aura Effects module support
 - Concentration is now only added once when pressing buttons in the chat message to improve the test result.
 - Active Effects can be dragged and dropped onto the same Item/Actor to create a duplicate (presumably for subsequent modification).

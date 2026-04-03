@@ -2,6 +2,13 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## NEXT
+- Add protective code in SceneNav, so if a scene has no axioms defined then an error won't be generated.
+- V14: Put some dialogs in same window as Actor Sheet:
+  - Item/Race Delete confirmation dialog
+  - on Item drop, currency selection dialog
+  - on Race drop, diminished attributes dialog
+
 ## 13.33.0 - Foundry 14 support + Bug Fixes
 - Add "Soft Armor" defense trait.
 - Improve the Source field of Active Effect lists to show the originating actor of transferred effects.

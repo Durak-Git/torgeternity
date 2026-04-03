@@ -938,7 +938,7 @@ export function torgDamageModifiers(result, options) {
 /**
  *@param {Actor} soaker The Actor which is attempting to soak some damage
  */
-export async function soakDamages(soaker, origMessageId) {
+export async function soakDamages(soaker, origMessageId, options = {}) {
   const skillName = 'reality';
   const skillValue = soaker.system.skills[skillName].value;
 
@@ -956,7 +956,7 @@ export async function soakDamages(soaker, origMessageId) {
     skillName: skillName,
     skillValue: skillValue,
     soakingMessage: origMessageId,
-  }, { useTargets: true });
+  }, { useTargets: true, ...options });
   // do reality roll
 }
 
@@ -1107,7 +1107,7 @@ async function highestDN(test) {
 }
 
 
-export async function rollAttack(actor, item) {
+export async function rollAttack(actor, item, options = {}) {
   const weaponData = item.system;
   const attackWith = weaponData.attackWith;
   let skillValue;
@@ -1208,11 +1208,11 @@ export async function rollAttack(actor, item) {
     chatNote: weaponData.chatNote,
     bdDamageSum: 0,
     itemId: item.id,
-  }, { useTargets: true });
+  }, { useTargets: true, ...options });
 }
 
 
-export async function rollPower(actor, item) {
+export async function rollPower(actor, item, options = {}) {
   const powerData = item.system;
   const skillName = powerData.skill;
   const skillData = actor.system.skills[skillName];
@@ -1242,21 +1242,21 @@ export async function rollPower(actor, item) {
     amountBD: 0,
     bdDamageSum: 0,
     itemId: item.id,
-  }, { useTargets: true });
+  }, { useTargets: true, ...options });
 }
 
-export async function rollAttribute(actor, attributeName) {
+export async function rollAttribute(actor, attributeName, options = {}) {
   return TestDialog.wait({
     testType: 'attribute',
     actor: actor,
     skillName: attributeName,
     skillValue: actor.system.attributes[attributeName].value,
     isFav: actor.system.attributes[attributeName].isFav
-  }, { useTargets: true });
+  }, { useTargets: true, ...options });
 }
 
 
-export async function rollSkill(actor, skillName) {
+export async function rollSkill(actor, skillName, options = {}) {
 
   const skillData = actor.system.skills[skillName] ?? actor.items.get(skillName)?.system;
   if (!skillData) return;
@@ -1302,10 +1302,10 @@ export async function rollSkill(actor, skillName) {
     isFav: skillData.isFav,
     skillName: skillName,
     skillValue: skillData.value,
-  }, { useTargets: (testType === 'skill') });
+  }, { useTargets: (testType === 'skill'), ...options });
 }
 
-export async function rollUnarmedAttack(actor, skillName) {
+export async function rollUnarmedAttack(actor, skillName, options = {}) {
   let dnDescriptor = 'standard';
   if (game.user.targets.size) {
     const firstTarget = game.user.targets.find(token => token.actor.type !== 'vehicle')?.actor ||
@@ -1337,10 +1337,10 @@ export async function rollUnarmedAttack(actor, skillName) {
     //chatNote: '',
     bdDamageSum: 0,
     // itemId - no item
-  }, { useTargets: true });
+  }, { useTargets: true, ...options });
 }
 
-export async function rollInteractionAttack(actor, skillName) {
+export async function rollInteractionAttack(actor, skillName, options = {}) {
   const skillData = actor.system.skills[skillName];
 
   let dnDescriptor = 'standard';
@@ -1375,10 +1375,10 @@ export async function rollInteractionAttack(actor, skillName) {
     unskilledUse: true,
     DNDescriptor: dnDescriptor,
     type: 'interactionAttack',
-  }, { useTargets: true });
+  }, { useTargets: true, ...options });
 }
 
-export async function rollTapping(actor, item) {
+export async function rollTapping(actor, item, options = {}) {
   const dn = item.system?.tappingDifficulty;
   if (!dn) return ui.notifications.info(`Item does not have a Tapping Difficulty`);
 
@@ -1418,7 +1418,7 @@ export async function rollTapping(actor, item) {
     chatTitle: game.i18n.localize('torgeternity.chatText.tapping'),
     DNDescriptor: 'fixedNumber',
     DNfixed: dn
-  });
+  }, options);
 }
 
 function isApprovedAction(test) {

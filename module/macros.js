@@ -369,7 +369,7 @@ export class TorgeternityMacros {
   /**
    *
    */
-  async reconnection() {
+  async reconnection(options = {}) {
     const _token = canvas.tokens.controlled[0];
     const _actor = _token?.actor;
 
@@ -416,7 +416,7 @@ export class TorgeternityMacros {
       });
     }
 
-    return TestDialog.wait(test, { useTargets: false });
+    return TestDialog.wait(test, { useTargets: false, ...options });
   }
 
   async openPacks() {

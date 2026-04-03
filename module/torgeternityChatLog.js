@@ -522,7 +522,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       return;
     }
     test.mode = 'update';
-    return TestDialog.wait(test);
+    return TestDialog.wait(test, { /*window: { windowId: this.window.windowId }*/ });
   }
 
   /**
@@ -604,7 +604,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       possPool += 1;
     }
 
-    await soakDamages(targetActor, chatMessage.id);
+    await soakDamages(targetActor, chatMessage.id, { /*window: { windowId: this.window.windowId }*/ });
     await targetActor.update({ 'system.other.possibilities.value': possPool - 1 });
   }
 
@@ -882,7 +882,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       skillName: attribute,
       skillValue: actor.system.attributes[attribute].value,
       isDefeatTest: true,
-    });
+    }, { /*window: { windowId: this.window.windowId }*/ });
 
     // Wait for manual addition of results, when applyDefeat is invoked.
   }
@@ -941,7 +941,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     test.skillAdds = Number(test.skillAdds);
     test.isConcentrationCheck = true;
 
-    const result = await TestDialog.wait(test);
+    const result = await TestDialog.wait(test, { /*window: { windowId: this.window.windowId }*/ });
 
     if (result.flags.torgeternity.test.result < TestResult.STANDARD) {
       const failed = actor.effects.filter(ef => ef.statuses.has('concentrating'));

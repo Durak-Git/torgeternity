@@ -154,10 +154,11 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
 
   /**
    * If an effect is being concentrated on, then it is also classed as temporary.
+   * Also an effect provided by an Aura (emanation) should be considered temporary.
    */
   get isTemporary() {
     if (super.isTemporary) return true;
-    return !!this.system.concentratingId;
+    return !!this.system.concentratingId || this.origin?.includes('.RegionBehavior.');
   }
 
   /**
@@ -175,8 +176,7 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
         origin: this.parent.uuid,  // the originating Item
       },
       { replace: true, recursive: true });
-    if (cancelAura)
-      foundry.utils.setProperty(data, 'system.emanation.radius', null);
+    if (cancelAura) foundry.utils.setProperty(data, 'system.emanation.radius', null);
     return data;
   }
 

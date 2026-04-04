@@ -37,13 +37,28 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
       if (effect.active && effect.system.emanation.radius)
         emanations[effect.uuid] = effect;
 
-    // Delete any regions which should no longer exist
-    for (const [effect, region] of Object.entries(oldMapping))
+    for (const [effect, region] of Object.entries(oldMapping)) {
+      const regionDoc = await fromUuidSync(region, { strict: false });
       if (!emanations[effect]) {
-        await fromUuidSync(region, { strict: false })?.delete();
+        // The region should no longer exist
+        if (regionDoc) await regionDoc.delete();
         delete oldMapping[effect];
         changed = true;
+      } else if (!regionDoc) {
+        // Somehow the region got deleted without our mapping being updated, so update the mapping.
+        delete oldMapping[effect];
+        changed = true;
+      } else if (regionDoc) {
+        // Check for change of radius
+        const newRadius = emanations[effect].system.emanation.radius / canvas.scene.grid.distance * this.parent.dimensions.distancePixels;
+        const curRadius = regionDoc.shapes[0].radius;
+        if (curRadius !== newRadius) {
+          const shape = { ...regionDoc.shapes[0] };
+          shape.radius = newRadius;
+          await regionDoc.update({ shapes: [shape] });
+        }
       }
+    }
 
     // Create any regions which don't already exist
     for (const [uuid, effect] of Object.entries(emanations))

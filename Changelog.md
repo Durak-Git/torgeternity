@@ -9,7 +9,9 @@
   - on Item drop, currency selection dialog
   - on Race drop, diminished attributes dialog
 - V14: Tabs on right of detached Actor/Item Sheet remain visible on resize.
-- V14: Rework internally how emanations are created on tokens. (The same Active Effect applies the aura and is transferred to actors inside the aura.)
+- V14: Rework internally how emanations are created on tokens.
+  - The same Active Effect applies the aura and is transferred to actors inside the aura.
+  - Changes to the Emanation AE are immediately applied to the token's region (colour, radius, disposition).
 
 ## 13.33.0 - Foundry 14 support + Bug Fixes
 - Add "Soft Armor" defense trait.

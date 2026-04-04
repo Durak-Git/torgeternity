@@ -7,7 +7,7 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
     // change the generic threat token to match the cosm's one if it's set in the scene
 
     if (this.texture.src.includes('systems/torgeternity/images/characters/threat')) {
-      const cosm = canvas.scene.cosm;
+      const cosm = canvas.scene.torg.cosm;
       // not cosmTypes, because that includes 'none'
       if (cosm && Object.hasOwn(CONFIG.torgeternity.cosmDecks, cosm))
         this.updateSource({ 'texture.src': 'systems/torgeternity/images/characters/threat-' + cosm + '.Token.webp' });

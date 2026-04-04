@@ -190,7 +190,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
 
   applyActiveEffects(phase) {
     super.applyActiveEffects(phase);
-    if (phase === 'final' && game.release.generation > 13)
+    if (phase === 'final' && game.release.generation > 13 && game.user.isActiveGM)
       this.getActiveSceneTokens().forEach(token => token?.document?.updateEffectRegions());
   }
 

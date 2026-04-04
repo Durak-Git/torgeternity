@@ -18,7 +18,7 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
     super._onCreate(data, options, userId);
     if (game.user.id !== userId) return;
 
-    if (game.release.generation > 13) this.updateEffectRegions();
+    if (game.release.generation > 13 && game.user.isActiveGM) this.updateEffectRegions();
   }
 
   updateEffectRegions = foundry.utils.debounce(this.#updateEffectRegions.bind(this), 100);
@@ -116,7 +116,7 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
         color: emanation.color,
         // opacity: emanation.opacity,   // no support for opacity yet?
         displayMeasurements: true,
-        visibility: CONST.REGION_VISIBILITY.OBSERVER,
+        visibility: CONST.REGION_VISIBILITY.ALWAYS,
         ownership: { [game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER }
       },
       { gridBased: true })

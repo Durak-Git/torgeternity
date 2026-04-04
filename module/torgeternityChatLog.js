@@ -733,19 +733,12 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     if (!actor) return;
 
     // Transfer Effects from the Weapon (& Ammo) to the target.
-    const toTransfer = test.effects
+    const effects = test.effects
       .map(uuid => fromUuidSync(uuid, { strict: false }))
       .filter(fx => transfersTo(fx));
 
-    if (toTransfer.length) {
-      const emanations = toTransfer.filter(fx => fx.system.emanation.radius);
-      const effects = toTransfer.filter(fx => !fx.system.emanation.radius);
-      if (emanations.length)
-        // FVTT-V14: Need UUIDs in the effects, not the actual effects!
-        canvas.scene.createTokenEmanation(actor.getActiveTokens()[0].document, emanations.map(fx => fx.uuid), test.concentratingId);
-      if (effects.length)
-        actor.createEmbeddedDocuments('ActiveEffect', effects.map(fx => fx.copyForTransfer(test.concentratingId)));
-    }
+    if (effects.length)
+      actor.createEmbeddedDocuments('ActiveEffect', effects.map(fx => fx.copyForTransfer(test.concentratingId, false)));
   }
 
   /**

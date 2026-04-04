@@ -124,6 +124,8 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
         if (origindoc.name === this.name) return originActor.name;  // don't duplicate entry name in AE list
         return `${origindoc.name} (${originActor.name})`;
       }
+      if (origindoc instanceof foundry.documents.RegionBehavior)
+        return origindoc.name;
     }
     return this.parent?.name ?? game.i18n.localize("None");
   }
@@ -161,22 +163,21 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
   /**
    * Return a copy of this object with the various "attack" traits cleared.
    */
-  copyForTransfer(concentratingId) {
-    // Override some values
-    return foundry.utils.mergeObject(this.toObject(),
+  copyForTransfer(concentratingId, cancelAura) {
+    const data = foundry.utils.mergeObject(this.toObject(),
       {
         disabled: false,
         system: {
           transferOnOutcome: null,
           transferTo: '',
           concentratingId: concentratingId,
-          emanation: {
-            radius: null
-          }
         },
         origin: this.parent.uuid,  // the originating Item
       },
       { replace: true, recursive: true });
+    if (cancelAura)
+      foundry.utils.setProperty(data, 'system.emanation.radius', null);
+    return data;
   }
 
   /**

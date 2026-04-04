@@ -37,25 +37,55 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
       if (effect.active && effect.system.emanation.radius)
         emanations[effect.uuid] = effect;
 
-    for (const [effect, region] of Object.entries(oldMapping)) {
-      const regionDoc = await fromUuidSync(region, { strict: false });
-      if (!emanations[effect]) {
+    for (const [effectUuid, regionUuid] of Object.entries(oldMapping)) {
+      const region = await fromUuidSync(regionUuid, { strict: false });
+      if (!emanations[effectUuid]) {
         // The region should no longer exist
-        if (regionDoc) await regionDoc.delete();
-        delete oldMapping[effect];
+        if (region) await region.delete();
+        delete oldMapping[effectUuid];
         changed = true;
-      } else if (!regionDoc) {
+      } else if (!region) {
         // Somehow the region got deleted without our mapping being updated, so update the mapping.
-        delete oldMapping[effect];
+        delete oldMapping[effectUuid];
         changed = true;
-      } else if (regionDoc) {
+      } else if (region) {
         // Check for change of radius
-        const newRadius = emanations[effect].system.emanation.radius / canvas.scene.grid.distance * this.parent.dimensions.distancePixels;
-        const curRadius = regionDoc.shapes[0].radius;
+        const emanation = emanations[effectUuid].system.emanation;
+        const newRadius = emanation.radius / canvas.scene.grid.distance * this.parent.dimensions.distancePixels;
+        const curRadius = region.shapes[0].radius;
+        const updates = {};
         if (curRadius !== newRadius) {
-          const shape = { ...regionDoc.shapes[0] };
+          const shape = { ...region.shapes[0] };
           shape.radius = newRadius;
-          await regionDoc.update({ shapes: [shape] });
+          updates.shapes = [shape];
+        }
+        if (Number(region.color) !== Number(emanation.color)) {
+          updates.color = emanation.color;
+        }
+        // no change of disposition allowed (yet)
+        if (!foundry.utils.isEmpty(updates)) await region.update(updates);
+        // Check for change of disposition
+        for (const behavior of region.behaviors) {
+          if (behavior.system.disposition !== emanation.disposition) {
+            await behavior.update({ 'system.disposition': emanation.disposition });
+            // Revalidate all tokens within the region
+            if (behavior.active) {
+              for (const token of region.tokens) {
+                behavior._handleRegionEvent({
+                  name: CONST.REGION_EVENTS.TOKEN_EXIT,
+                  data: { token, movement: null },
+                  region: region,
+                  user: game.user
+                });
+                behavior._handleRegionEvent({
+                  name: CONST.REGION_EVENTS.TOKEN_ENTER,
+                  data: { token, movement: null },
+                  region: region,
+                  user: game.user
+                });
+              }
+            }
+          }
         }
       }
     }
@@ -83,7 +113,7 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
       { // RegionData
         name: `${effect.name} (${this.name})`,
         restriction: { enabled: true },
-        color: emanation.colour,
+        color: emanation.color,
         // opacity: emanation.opacity,   // no support for opacity yet?
         displayMeasurements: true,
         visibility: CONST.REGION_VISIBILITY.OBSERVER,

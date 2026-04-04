@@ -1,4 +1,5 @@
 export default class TorgEternityTokenDocument extends foundry.documents.TokenDocument {
+
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
@@ -23,33 +24,36 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
   updateEffectRegions = foundry.utils.debounce(this.#updateEffectRegions.bind(this), 100);
 
   async #updateEffectRegions() {
-    console.log('updateEffectRegions');
 
-    const emanations = new Map();
+    // Object:
+    //   key = effect UUID
+    //   property = region UUID
+    const oldMapping = JSON.parse(this.flags?.torgeternity?.emanations ?? "{}");
+    let changed = false;
+
+    // Which effects still exist on the token/actor?
+    const emanations = {};
     for (const effect of this.actor.allApplicableEffects())
       if (effect.active && effect.system.emanation.radius)
-        emanations.set(effect.uuid, effect);
+        emanations[effect.uuid] = effect;
 
-    // Remove any existing regions which should not be there.
-    for (const region of this.attachments.regions) {
-      for (const behavior of region.behaviors) {
-        if (behavior.type !== 'torgApplyEffect') continue;
-        let found = false;
-        for (const uuid of behavior.system.effects)
-          if (emanations.has(uuid)) {
-            emanations.delete(uuid);
-            found = true;
-            break;
-          }
-        if (!found) {
-          await region.delete();
-          break;
-        }
+    // Delete any regions which should no longer exist
+    for (const [effect, region] of Object.entries(oldMapping))
+      if (!emanations[effect]) {
+        await fromUuidSync(region, { strict: false })?.delete();
+        delete oldMapping[effect];
+        changed = true;
       }
-    }
-    // Add any new effects.
-    for (const effect of emanations.values())
-      await this.createTokenEmanation(effect);
+
+    // Create any regions which don't already exist
+    for (const [uuid, effect] of Object.entries(emanations))
+      if (!oldMapping[uuid]) {
+        oldMapping[uuid] = await this.createTokenEmanation(effect);
+        changed = true;
+      }
+
+    // Update mapping
+    if (changed) await this.update({ 'flags.torgeternity.emanations': JSON.stringify(oldMapping) });
   }
 
   /**
@@ -85,5 +89,7 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
         }
       },
       { parent: region });
+
+    return region.uuid;
   }
 }

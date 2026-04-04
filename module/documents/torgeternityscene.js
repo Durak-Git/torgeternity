@@ -37,8 +37,9 @@ export default class TorgeternityScene extends foundry.documents.Scene {
   }
 
   static migrateData(source) {
-    if (source.flags?.torgeternity?.cosm && !source.flags?.torgeternity?.axioms) {
-      source.flags.torgeternity.axioms = TorgeternityScene.getAxioms(source.flags.torgeternity.cosm, source.flags.torgeternity.cosm2, source.flags.torgeternity.zone);
+    if (!source.flags?.torgeternity?.axioms) {
+      foundry.utils.setProperty(source, 'flags.torgeternity.axioms',
+        TorgeternityScene.getAxioms(source.flags?.torgeternity?.cosm, source.flags?.torgeternity?.cosm2, source.flags?.torgeternity?.zone));
     }
     return super.migrateData(source);
   }

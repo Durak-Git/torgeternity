@@ -1377,7 +1377,7 @@ is replaced by the new portrait. (For unlinked Actors, this will directly affect
   - Style-Fix for vehicle addon item [#383](https://github.com/gmmatt/torgeternity/issues/383)
   - Style-fix on general Chat-Cards holding item informations [#208](https://github.com/gmmatt/torgeternity/issues/208)
   - Corrections on DataModels
-  - The equipped item now shows colour again
+  - The equipped item now shows color again
   - Size of characters are fixed
   - Recovered TinyMCE CSS File that got lost on the way
   - Not really a fix, but updated all item editor fields to ProseMirror engine, because TinyMCE won't work anymore correctly and isn't supported anymore

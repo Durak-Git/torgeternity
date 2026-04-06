@@ -16,7 +16,8 @@
 - Tabs on right of detached Actor/Item Sheet remain visible on resize.
 - Rework internally how emanations are created on tokens.
   - The same Active Effect applies the aura and is transferred to actors inside the aura.
-  - Changes to the Emanation AE are immediately applied to the token's region (colour, radius, disposition).
+  - Visibility of the emanation's region can be set via the Active Effect.
+  - Changes to the Emanation AE are immediately applied to the token's region (colour, radius, disposition, visibility).
 - Hide "Show All Effects in Effects Panel" since V14 provides a field on each Active Effect for the same purpose.
 - Prevent error when casting a limited duration spell when Actor is not in a combat.
 

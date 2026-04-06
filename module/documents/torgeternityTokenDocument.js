@@ -62,6 +62,9 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
         if (Number(region.color) !== Number(emanation.color)) {
           updates.color = emanation.color;
         }
+        if (region.visibility !== emanation.visibility) {
+          updates.visibility = emanation.visibility;
+        }
         // no change of disposition allowed (yet)
         if (!foundry.utils.isEmpty(updates)) await region.update(updates);
         // Check for change of disposition
@@ -116,7 +119,7 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
         color: emanation.color,
         // opacity: emanation.opacity,   // no support for opacity yet?
         displayMeasurements: true,
-        visibility: CONST.REGION_VISIBILITY.ALWAYS,
+        visibility: emanation.visibility,
         ownership: { [game.user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER }
       },
       { gridBased: true })

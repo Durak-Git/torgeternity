@@ -36,6 +36,7 @@
       <legend>{{localize 'torgeternity.sheetLabels.effectEmanation'}}</legend>
       {{formGroup systemFields.emanation.fields.radius value=source.system.emanation.radius rootId=rootId}}
       {{formGroup systemFields.emanation.fields.color value=source.system.emanation.color rootId=rootId}}
+      {{formGroup systemFields.emanation.fields.visibility value=source.system.emanation.visibility options=visibilities rootId=rootId localize=true}}
       {{formGroup systemFields.emanation.fields.disposition value=source.system.emanation.disposition rootId=rootId localize=true}}
     </fieldset>
   {{/if}}

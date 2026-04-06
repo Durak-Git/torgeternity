@@ -555,7 +555,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     testTarget.showBD = false;
     return this.updateChatMessage(chatMessage, {
       'flags.torgeternity.test.skillRollMenuStyle': 'hidden',
-      'flags.torgeternity.test.targetAll': test.targetAll,
+      'flags.torgeternity.test.targets': test.targets,
     });
   }
 
@@ -616,7 +616,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
   static #applySoak(event, button) {
     event.preventDefault();
     const { test: soaktest, chatMessage } = getMessage(button);
-    const testTarget = soaktest.targetAll[0];
+    const testTarget = soaktest.targets[0];
 
     const origMessageId = soaktest.soakingMessage;
     const origmsg = game.messages.get(origMessageId);
@@ -626,7 +626,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     // Update the original chat card to show the new damage.
 
     const origtest = origmsg.flags?.torgeternity?.test;
-    const origtarget = origtest?.targetAll.find(target => target.dummyTarget || target.actorUuid === soaktest.actor);
+    const origtarget = origtest?.targets.find(target => target.dummyTarget || target.actorUuid === soaktest.actor);
 
     if (!origtest || !testTarget || !origtarget) {
       ui.notifications.warn(`APPLY SOAK: Failed to find original message`)
@@ -773,7 +773,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       // Don't hide Stymied button, in case of Good or better result
       //testTarget.showApplyStymied = false;
       //this.updateChatMessage(chatMessage, {
-      //  'flags.torgeternity.test.targetAll': test.targetAll  // TODO : potential clash, since entire array updated
+      //  'flags.torgeternity.test.targets': test.targets  // TODO : potential clash, since entire array updated
       //})
 
       if (test.testType === 'interactionAttack' && targetActor.isConcentrating)
@@ -798,7 +798,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       // Better results might allow it to be pressed more than once
       //testTarget.showApplyVulnerable = false;
       //this.updateChatMessage(chatMessage, {
-      //  'flags.torgeternity.test.targetAll': test.targetAll  // TODO : potential clash, since entire array updated
+      //  'flags.torgeternity.test.targets': test.targets  // TODO : potential clash, since entire array updated
       //})
 
       if (test.testType === 'interactionAttack' && targetActor.isConcentrating)
@@ -1087,7 +1087,7 @@ function getChatTarget(button) {
   const test = msg?.test;
   if (!test) return null;
   const targetActor = fromUuidSync(button.closest('.skill-roll-target')?.dataset.tokenUuid, { strict: false })?.actor;
-  const testTarget = test?.targetAll.find(target => target.dummyTarget || target.actorUuid === targetActor.uuid);
+  const testTarget = test?.targets.find(target => target.dummyTarget || target.actorUuid === targetActor.uuid);
   if (testTarget) return { targetActor, testTarget, ...msg };
   ui.notifications.warn(game.i18n.localize('torgeternity.notifications.noTarget'));
   return null;

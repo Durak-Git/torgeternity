@@ -236,7 +236,7 @@
 
     {{#if (or targetPresent isAttack)}}
       <div class="skill-roll-target-list">
-        {{#each targetAll}}
+        {{#each targets}}
           <li class="skill-roll-target" data-token-uuid="{{this.uuid}}">
             {{#if this.targetName}}
               <div class="target-header">

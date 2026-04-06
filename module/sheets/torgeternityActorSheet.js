@@ -872,7 +872,7 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
       darknessModifier: 0,
       DNDescriptor: 'standard',
       type: 'activeDefense',
-      targetAll: [], // for renderSkillChat
+      targets: [], // for renderSkillChat
       applySize: false,
       attackOptions: false,
       combinedAction: {

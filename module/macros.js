@@ -740,8 +740,8 @@ export class TorgeternityMacros {
       },
     });
 
-    const targetAll = Array.from(game.user.targets).map(token => oneTestTarget(token));
-    for (const target of targetAll) {
+    const targets = Array.from(game.user.targets).map(token => oneTestTarget(token));
+    for (const target of targets) {
       target.damage = parseInt(info[1]);
     }
 
@@ -770,7 +770,7 @@ export class TorgeternityMacros {
       chatNote: '',
       bdDamageSum: 0,
       hasModifiers: false,
-      targetAll,
+      targets,
       bonus: 0,
       possibilityStyle: 'hidden',
       coverModifier: 0,

@@ -43,7 +43,7 @@ export async function renderSkillChat(test, origChatMessage) {
   }
 
   // Check for targeting a vehicle which doesn't have an operator.
-  for (const target of test.targetAll) {
+  for (const target of test.targets) {
     if (target.type === 'vehicle' && isNaN(target.defenses.dodge)) {
       ui.notifications.error(game.i18n.format('torgeternity.notifications.noVehicleOperator', { a: target.targetName }));
       return;
@@ -51,8 +51,8 @@ export async function renderSkillChat(test, origChatMessage) {
   }
 
   // For non-targeted tests, ensure we iterate through the loop at least once
-  if (!test.targetAll.length)
-    test.targetAll = dummyTestTargets();
+  if (!test.targets.length)
+    test.targets = dummyTestTargets();
 
   test.torgDiceStyle = game.settings.get('torgeternity', 'useRenderedTorgDice');
 
@@ -68,7 +68,7 @@ export async function renderSkillChat(test, origChatMessage) {
   }
 
   const useHighestDN = game.settings.get('torgeternity', 'uniqueDN') ? await highestDN(test) : undefined;
-  const singleResult = (useHighestDN || (!test.isAttack && test.targetAll[0].dummyTarget));
+  const singleResult = (useHighestDN || (!test.isAttack && test.targets[0].dummyTarget));
 
   // Do we display the unskilled label for a Storm Knight?
   test.unskilledTest = (testActor.type === 'stormknight' &&
@@ -114,7 +114,7 @@ export async function renderSkillChat(test, origChatMessage) {
   }
 
   let first = true;
-  for (const target of test.targetAll) {
+  for (const target of test.targets) {
     test.sizeModifier = target.sizeModifier ?? 0;
     test.vulnerableModifier = target.vulnerableModifier ?? 0;
     test.darknessModifier = Math.min(0, (target.darknessModifier ?? 0) + (test.targetDarknessModifier ?? 0));
@@ -1100,7 +1100,7 @@ function individualDN(test, target) {
 
 async function highestDN(test) {
   let highest = 0;
-  for (const target of test.targetAll) {
+  for (const target of test.targets) {
     highest = Math.max(highest, individualDN(test, target));
   }
   return highest;

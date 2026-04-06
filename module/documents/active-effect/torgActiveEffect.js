@@ -90,15 +90,14 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    if (game.release.generation >= 14 && game.combat) {
-      const combatant = game.combat.getCombatantsByActor(this.actor ?? "")?.[0];
-      if (combatant)
-        this.updateSource({
-          start: {
-            combatant: combatant?.id ?? null,
-            turn: null,
-          }
-        })
+    if (game.release.generation >= 14) {
+      const combatant = game.combat?.getCombatantsByActor(this.actor ?? "")?.[0];
+      this.updateSource({
+        start: {
+          combatant: combatant?.id ?? null,
+          turn: null,
+        }
+      })
     }
   }
 

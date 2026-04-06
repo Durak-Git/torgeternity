@@ -13,6 +13,7 @@
   - The same Active Effect applies the aura and is transferred to actors inside the aura.
   - Changes to the Emanation AE are immediately applied to the token's region (colour, radius, disposition).
 - Internal rework of test record - **DELETE YOUR CHAT LOG**
+- V14: Hide "Show All Effects in Effects Panel" since V14 provides a field on each Active Effect for the same purpose.
 
 ## 13.33.0 - Foundry 14 support + Bug Fixes
 - Add "Soft Armor" defense trait.

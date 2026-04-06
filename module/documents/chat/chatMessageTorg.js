@@ -22,7 +22,7 @@ export class ChatMessageTorg extends ChatMessage {
       templateData.isOpen = game.settings.get('torgeternity', 'showCheckDetails') ? "open" : "";
       templateData.ownsActor = fromUuidSync(templateData.actor)?.isOwner;
       for (const target of templateData.targets)
-        target.ownsTarget = !target.dummyTarget && fromUuidSync(target.uuid, { strict: false })?.isOwner || false;
+        if (!target.dummyTarget && fromUuidSync(target.uuid, { strict: false })?.isOwner) target.ownsTarget = true;
 
       const renderedTemplate = await foundry.applications.handlebars.renderTemplate(this.flags.torgeternity.template, templateData);
       html.querySelector('.message-content').innerHTML = await foundry.applications.ux.TextEditor.enrichHTML(renderedTemplate, { secrets: this.isOwner });

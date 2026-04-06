@@ -506,6 +506,9 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     testTarget.damage = testTarget.damage + test.diceroll.total;
     testTarget.amountBD += 1;
     testTarget.bdDamageSum += test.diceroll.total;
+    const values = test.diceroll.dice[0].results.filter(r => r.active);
+    testTarget.bonusDiceList = testTarget.bonusDiceList ? testTarget.bonusDiceList.concat(values) : values;
+
 
     return renderSkillChat(test, chatMessage);
   }

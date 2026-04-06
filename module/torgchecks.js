@@ -195,9 +195,8 @@ export async function renderSkillChat(test, origChatMessage) {
       const values = test.diceroll.dice[0].results.filter(r => r.active);
       if (test.diceroll.dice[0].method === 'manual' && game.settings.get('torgeternity', 'showManualRolls'))
         for (const value of values) value.manual = true;
-      if (test.diceroll.dice[0]._faces === 6)
-        test.bonusDiceList = test.bonusDiceList ? test.bonusDiceList.concat(values) : values;
-      else
+      // BD were added to testTarget.bonusDiceList in TorgeternityChatLog.onBd
+      if (test.diceroll.dice[0]._faces !== 6)
         test.diceList = test.diceList ? test.diceList.concat(values) : values;
     }
 
@@ -613,7 +612,7 @@ export async function renderSkillChat(test, origChatMessage) {
             const iteratedRoll = await rollBonusDie(test.trademark, target.addBDs);
             dicerolled.push(iteratedRoll);
             const bdDamage = iteratedRoll.total;
-            test.bonusDiceList = test.bonusDiceList ? test.bonusDiceList.concat(iteratedRoll.dice[0].results) : iteratedRoll.dice[0].results;
+            target.bonusDiceList = target.bonusDiceList ? target.bonusDiceList.concat(iteratedRoll.dice[0].results) : iteratedRoll.dice[0].results;
             target.amountBD += target.addBDs;
             target.addBDs = 0;
 

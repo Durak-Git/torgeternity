@@ -4,16 +4,20 @@
 
 ## NEXT
 - Add protective code in SceneNav, so if a scene has no axioms defined then an error won't be generated.
-- V14: Put some dialogs in same window as Actor Sheet:
+- Internal rework of test record - **DELETE YOUR CHAT LOG**
+- Bonus Die are shown against each individual target in the chat message.
+
+### Foundry V14 improvements
+- Put some dialogs in same window as Actor Sheet:
   - Item/Race Delete confirmation dialog
   - on Item drop, currency selection dialog
   - on Race drop, diminished attributes dialog
-- V14: Tabs on right of detached Actor/Item Sheet remain visible on resize.
-- V14: Rework internally how emanations are created on tokens.
+  - _(Other dialogs are too big to be placed within the separate Actor Window)_
+- Tabs on right of detached Actor/Item Sheet remain visible on resize.
+- Rework internally how emanations are created on tokens.
   - The same Active Effect applies the aura and is transferred to actors inside the aura.
   - Changes to the Emanation AE are immediately applied to the token's region (colour, radius, disposition).
-- Internal rework of test record - **DELETE YOUR CHAT LOG**
-- V14: Hide "Show All Effects in Effects Panel" since V14 provides a field on each Active Effect for the same purpose.
+- Hide "Show All Effects in Effects Panel" since V14 provides a field on each Active Effect for the same purpose.
 
 ## 13.33.0 - Foundry 14 support + Bug Fixes
 - Add "Soft Armor" defense trait.

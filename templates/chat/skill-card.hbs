@@ -14,12 +14,10 @@
   </div>
   <div class="chat-text" style="padding:0px">
     {{#if actionTotalContent}}
-      <p class="skill-roll-result" style="{{resultTextStyle}}">
-        {{resultText}}
-      </p>
+      <p class="skill-roll-result {{resultTextClass}}">{{resultText}}</p>
     {{/if}}
     {{#if extraResult}}
-      <p class="skill-roll-disconnect-label"> {{{extraResult}}} </p>
+      <p class="skill-roll-disconnect-label">{{{extraResult}}}</p>
     {{/if}}
     {{#if disconnection}}
       <p class="skill-roll-disconnect-label">
@@ -165,24 +163,24 @@
     {{/if}}
 
     {{#if ownsActor}}
-      {{#unless (and hideFavButton hidePlus3 (eq possibilityStyle 'hidden') (eq upStyle 'hidden') (eq heroStyle 'hidden') (eq dramaStyle 'hidden') )}}
+      {{#unless (and hideFavButton hidePlus3 (eq possibilityClass 'hidden') (eq upClass 'hidden') (eq heroClass 'hidden') (eq dramaClass 'hidden') )}}
         <div class="skill-roll-menu {{skillRollMenuStyle}}">
           {{#unless hideFavButton}}
             <a class="button roll-button" data-action="rollFav">
               <i class="fa-solid fa-dice-d20"></i>
               {{localize 'torgeternity.chatText.favored'}}</a>
           {{/unless}}
-          <a class="button roll-button {{possibilityStyle}}" data-action="rollPossibility"
+          <a class="button roll-button {{possibilityClass}}" data-action="rollPossibility"
             data-tooltip="{{localize 'torgeternity.chatText.possibilityTooltip'}}">
             <i class="fa-solid fa-dice-d20"></i>
             {{localize 'torgeternity.chatText.possibility'}}</a>
-          <a class="button roll-button {{upStyle}}"
+          <a class="button roll-button {{upClass}}"
             data-action="rollUp"><i class="fa-solid fa-dice-d20"></i>
             {{localize 'torgeternity.chatText.up'}}</a>
-          <a class="button roll-button {{heroStyle}}"
+          <a class="button roll-button {{heroClass}}"
             data-action="rollHero"><i class="fa-solid fa-dice-d20"></i>
             {{localize 'torgeternity.chatText.hero'}}</a>
-          <a class="button roll-button {{dramaStyle}}"
+          <a class="button roll-button {{dramaClass}}"
             data-action="rollDrama"><i class="fa-solid fa-dice-d20"></i>
             {{localize 'torgeternity.chatText.drama'}}</a>
           {{#unless hidePlus3}}
@@ -244,7 +242,7 @@
                     class="icon fa-solid {{ifThen (eq type 'stormknight') 'fa-person' 'fa-ghost'}}"></i>&nbsp;{{this.targetName}}
                 </span>
                 {{#if this.resultText}}
-                  <span class="skill-roll-result" style="{{this.resultTextStyle}}">{{this.resultText}}</span>
+                  <span class="skill-roll-result {{this.resultTextClass}}">{{this.resultText}}</span>
                 {{/if}}
                 {{#unless this.dummyTarget}}
                   <span class="controls"><a data-action="pingTarget"

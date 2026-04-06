@@ -772,7 +772,7 @@ export class TorgeternityMacros {
       hasModifiers: false,
       targets,
       bonus: 0,
-      possibilityStyle: 'hidden',
+      possibilityClass: 'hidden',
       coverModifier: 0,
       chatTitle: '',
       DN: 9,
@@ -787,7 +787,7 @@ export class TorgeternityMacros {
       outcome: '',
       actionTotalContent: '',
       resultText: '',
-      resultTextStyle: 'display:none',
+      resultTextClass: 'hidden',
     });
   }
 }

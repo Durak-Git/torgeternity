@@ -21,8 +21,6 @@ export const TestResultKey = { // with .main or .sub
   [TestResult.OUTSTANDING]: 'outstanding'
 }
 
-const SHADOW_STYLE = ';text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0px 0px 15px black;';
-
 /**
  * On entry, `test.diceroll` might contain an additional dice roll made for this test (such as BD) which need to be added
  * to the list of dice rolled for this test (the value of the roll isn't used in this routine).
@@ -406,33 +404,44 @@ export async function renderSkillChat(test, origChatMessage) {
       target.actionTotalContent = actionTotalContent;
 
     // Determine Outcome
+    let outcomeColor;
     const testDifference = rollResult - test.DN;
-    if (testDifference < 0) {
-      test.outcome = game.i18n.localize('torgeternity.chatText.check.result.failure');
+
+    if (
+      test.rollTotal === 1 &&
+      !(test.testType === 'activeDefenseUpdate' || test.testType === 'activeDefense')
+    ) {
+      // Roll 1 and not defense = Mishap
+      test.resultText = game.i18n.localize('torgeternity.chatText.check.result.mishap');
+      test.result = TestResult.MISHAP;
+      if (test.testType === 'soak') target.soakWounds = 0;
+      if (test.testType === 'power') test.showBacklashButtons = true;
+    } else if (testDifference < 0) {
+      test.resultText = game.i18n.localize('torgeternity.chatText.check.result.failure');
       test.result = TestResult.FAILURE;
-      test.outcomeColor = 'color: red';
       if (test.testType === 'soak') target.soakWounds = 0;
       if (test.testType === 'power') test.showBacklashButtons = true;
     } else if (testDifference < 5) {
-      test.outcome = game.i18n.localize('torgeternity.chatText.check.result.standardSuccess');
+      test.resultText = game.i18n.localize('torgeternity.chatText.check.result.standardSuccess');
       test.result = TestResult.STANDARD;
-      test.outcomeColor = useColorBlind ? 'color: rgb(44, 179, 44)' : 'color: green';
       if (test.testType === 'soak') target.soakWounds = 1;
       if (testItem?.system?.standard) test.extraResult = testItem.system.standard;
     } else if (testDifference < 10) {
-      test.outcome = game.i18n.localize('torgeternity.chatText.check.result.goodSuccess');
+      test.resultText = game.i18n.localize('torgeternity.chatText.check.result.goodSuccess');
       test.result = TestResult.GOOD;
-      test.outcomeColor = useColorBlind ? 'color: rgb(44, 179, 44)' : 'color: green';
       if (test.testType === 'soak') target.soakWounds = 2;
       if (testItem?.system?.good) test.extraResult = testItem.system.good;
     } else {
-      test.outcome = game.i18n.localize('torgeternity.chatText.check.result.outstandingSuccess');
+      test.resultText = game.i18n.localize('torgeternity.chatText.check.result.outstandingSuccess');
       test.result = TestResult.OUTSTANDING;
-      test.outcomeColor = useColorBlind ? 'color: rgb(44, 179, 44)' : 'color: green';
       if (test.testType === 'soak') target.soakWounds = 'all';
       if (testItem?.system?.outstanding) test.extraResult = testItem.system.outstanding;
     }
-    if (!useColorBlind && singleResult) test.outcomeColor += SHADOW_STYLE;
+    test.resultTextClass = TestResultKey[test.result];
+    if (useColorBlind)
+      test.resultTextClass += ' colorblind';
+    else if (singleResult)
+      test.resultTextClass += ' shadow';
 
     test.showApplySoak = (test.testType === 'soak' && target.soakWounds);
 
@@ -477,28 +486,14 @@ export async function renderSkillChat(test, origChatMessage) {
     }
     // Choose Text to Display as Result
     if (testActor.isDisconnected) {
-      test.possibilityStyle = 'hidden';
-      test.heroStyle = 'hidden';
-      test.dramaStyle = 'hidden';
+      test.possibilityClass = 'hidden';
+      test.heroClass = 'hidden';
+      test.dramaClass = 'hidden';
     }
 
-    if (
-      test.rollTotal === 1 &&
-      !(test.testType === 'activeDefenseUpdate' || test.testType === 'activeDefense')
-    ) {
-      // Roll 1 and not defense = Mishap
-      test.result = TestResult.MISHAP;
-      test.resultText = game.i18n.localize('torgeternity.chatText.check.result.mishap');
+    if (test.result === TestResult.MISHAP) {
       if (test.attackTraits?.includes('fragile')) {
         test.extraResult = game.i18n.format('torgeternity.chatText.check.result.fragileBroken', { itemName: testItem.name });
-      }
-      if (useColorBlind) {
-        test.outcomeColor = 'color: purple';
-        test.resultTextStyle = 'color: purple';
-      } else if (singleResult) {
-        // Only add shadow when displayed at the TOP of the card
-        test.outcomeColor += SHADOW_STYLE;
-        test.resultTextStyle += SHADOW_STYLE;
       }
       test.skillRollMenuStyle = 'hidden';
       if (test.testType === 'soak')
@@ -507,8 +502,6 @@ export async function renderSkillChat(test, origChatMessage) {
           game.i18n.localize('torgeternity.sheetLabels.possSpent');
 
     } else if (test.testType === 'soak') {
-      test.resultText = test.outcome;
-      test.resultTextStyle = test.outcomeColor;
       if (target.soakWounds > 0) {
         test.chatNote =
           `${target.soakWounds} ` +
@@ -540,6 +533,7 @@ export async function renderSkillChat(test, origChatMessage) {
         await testActor.setActiveDefense(test.bonus);
         test.testType = 'activeDefenseUpdate';
         test.resultText = '+ ' + test.bonus;
+        test.resultTextClass = '';
       }
 
     } else if (test.testType === 'activeDefenseUpdate') {
@@ -548,12 +542,9 @@ export async function renderSkillChat(test, origChatMessage) {
       testActor.activeDefense?.delete();
       if (test.bonus < 1) test.bonus = 1;
       test.resultText = '+ ' + test.bonus;
+      test.resultTextClass = '';
       // Create new set of active effects
       testActor.setActiveDefense(test.bonus);
-
-    } else {
-      test.resultText = test.outcome;
-      test.resultTextStyle = test.outcomeColor;
     }
 
     // If an attack, calculate and display damage
@@ -680,9 +671,8 @@ export async function renderSkillChat(test, origChatMessage) {
       test.typeLabel = game.i18n.localize('torgeternity.chatText.skillTestLabel');
     } else if (test.testType === 'custom') {
       test.typeLabel = game.i18n.localize('torgeternity.chatText.skillTestLabel');
-      test.outcomeColor = 'hidden;';
-      test.resultTextStyle = 'display:hidden;';
-      test.upStyle = 'hidden';
+      test.resultTextClass = 'hidden';
+      test.upClass = 'hidden';
     } else {
       test.typeLabel = game.i18n.localize('torgeternity.chatText.attributeTestLabel');
     }
@@ -691,7 +681,7 @@ export async function renderSkillChat(test, origChatMessage) {
     // Always store the results for this target
     if (!useHighestDN) {
       target.resultText = test.resultText;
-      target.resultTextStyle = test.resultTextStyle;
+      target.resultTextClass = test.resultTextClass;
     }
 
     // Highlight the UP button if the Drama Card shows UP.
@@ -700,17 +690,17 @@ export async function renderSkillChat(test, origChatMessage) {
     if (game.combat?.active && token &&
       ((token.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY && game.combat.heroConflict === 'up') ||
         (token.disposition === CONST.TOKEN_DISPOSITIONS.HOSTILE && game.combat.villainConflict === 'up')))
-      test.upStyle = 'drama-up';
+      test.upClass = 'drama-up';
 
     // Disable unavailable menu options (Note: possibilities are always available)
 
-    if (test.upTotal > 0 && test.upStyle !== 'hidden') test.upStyle = 'disabled';
-    if (test.heroTotal > 0 && test.heroStyle !== 'hidden') test.heroStyle = 'disabled';
-    if (test.dramaTotal > 0 && test.dramaStyle !== 'hidden') test.dramaStyle = 'disabled';
+    if (test.upTotal > 0 && test.upClass !== 'hidden') test.upClass = 'disabled';
+    if (test.heroTotal > 0 && test.heroClass !== 'hidden') test.heroClass = 'disabled';
+    if (test.dramaTotal > 0 && test.dramaClass !== 'hidden') test.dramaClass = 'disabled';
 
     if (test.actorType === 'threat') {
-      test.heroStyle = 'hidden';
-      test.dramaStyle = 'hidden';
+      test.heroClass = 'hidden';
+      test.dramaClass = 'hidden';
       test.hidePlus3 = true;
     }
 

@@ -304,7 +304,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     // Roll for Possibility
     // possibilities is allowed 2 times (case in Nile Empire)
     if (test.possibilityTotal > 0) {
-      test.possibilityStyle = 'disabled';
+      test.possibilityClass = 'disabled';
     } else {
       test.chatTitle += '*';
     }
@@ -320,7 +320,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
         canvas.scene.torg.cosm === undefined
       )
     ) {
-      test.possibilityStyle = 'disabled';
+      test.possibilityClass = 'disabled';
     }
 
     test.diceroll = await foundry.dice.Roll.create('1d20x10x20').evaluate();

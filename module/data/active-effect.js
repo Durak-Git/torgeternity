@@ -63,7 +63,7 @@ export class TorgActiveEffectData extends (foundry.data.ActiveEffectTypeDataMode
           }),
           visibility: new fields.NumberField({
             required: true,
-            initial: CONST.REGION_VISIBILITY.LAYER_UNLOCKED ?? CONST.REGION_VISIBILITY.ALWAYS,
+            initial: CONST.REGION_VISIBILITY.LAYER_UNLOCKED ?? CONST.REGION_VISIBILITY.ALWAYS, // fallback for V13
             choices: Object.values(CONST.REGION_VISIBILITY),
             label: 'REGION.FIELDS.visibility.label',
             hint: 'REGION.FIELDS.visibility.hint',

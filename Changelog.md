@@ -5,7 +5,7 @@
 ## 13.34.0 - Display individual BD + V14 improvements
 - Add protective code in SceneNav, so if a scene has no axioms defined then an error won't be generated.
 - Internal rework of test record - **DELETE YOUR CHAT LOG**
-- Bonus Die are shown against each individual target in the chat message.
+- Bonus Die are shown against each individual target in the chat message rather than being mixed together after all the d20s.
 
 ### Foundry V14 improvements
 - Put some dialogs in same window as Actor Sheet:

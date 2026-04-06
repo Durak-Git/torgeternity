@@ -943,7 +943,7 @@ export async function soakDamages(soaker, origMessageId, options = {}) {
     skillName: skillName,
     skillValue: skillValue,
     soakingMessage: origMessageId,
-  }, { useTargets: true, ...options });
+  }, { useTargets: false, ...options });
   // do reality roll
 }
 

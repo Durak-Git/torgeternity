@@ -394,13 +394,13 @@ export async function renderSkillChat(test, origChatMessage) {
     test.cardsPlayed ??= 0;
     test.bonus += test.cardsPlayed * 3;
 
-    test.rollResult = test.skillValue + test.bonus + test.modifiers;
+    const rollResult = test.skillValue + test.bonus + test.modifiers;
 
     // Determine Outcome
-    const testDifference = test.rollResult - test.DN;
+    const testDifference = rollResult - test.DN;
 
     // Handle numeric value in DNDescriptor
-    let actionTotalContent = `${game.i18n.localize('torgeternity.chatText.check.result.actionTotal')} ${test.rollResult} vs. ${test.DN} `;
+    let actionTotalContent = `${game.i18n.localize('torgeternity.chatText.check.result.actionTotal')} ${rollResult} vs. ${test.DN} `;
     if (isNaN(Number(test.DNDescriptor))) actionTotalContent += game.i18n.localize('torgeternity.dnTypes.' + test.DNDescriptor);
     if (singleResult)
       test.actionTotalContent = actionTotalContent;
@@ -717,7 +717,7 @@ export async function renderSkillChat(test, origChatMessage) {
       test.hidePlus3 = true;
     }
 
-    if (test.testType === 'interactionAttack' && test.rollResult >= test.DN) {
+    if (test.testType === 'interactionAttack' && test.result >= TestResult.STANDARD) {
       target.showApplyDamage = false;
       if (!target.dummyTarget) {
         target.showApplyStymied = true;

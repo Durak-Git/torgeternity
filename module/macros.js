@@ -784,7 +784,6 @@ export class TorgeternityMacros {
       modifiers: 0,
       modifierText: '',
       cardsPlayed: 0,
-      rollResult: 11,
       outcome: '',
       actionTotalContent: '',
       resultText: '',

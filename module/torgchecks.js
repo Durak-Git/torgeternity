@@ -113,6 +113,7 @@ export async function renderSkillChat(test, origChatMessage) {
     }
   }
 
+  const useColorBlind = game.settings.get('torgeternity', 'useColorBlindnessColors');
   let first = true;
   for (const target of test.targets) {
     test.sizeModifier = target.sizeModifier ?? 0;
@@ -396,9 +397,6 @@ export async function renderSkillChat(test, origChatMessage) {
 
     const rollResult = test.skillValue + test.bonus + test.modifiers;
 
-    // Determine Outcome
-    const testDifference = rollResult - test.DN;
-
     // Handle numeric value in DNDescriptor
     let actionTotalContent = `${game.i18n.localize('torgeternity.chatText.check.result.actionTotal')} ${rollResult} vs. ${test.DN} `;
     if (isNaN(Number(test.DNDescriptor))) actionTotalContent += game.i18n.localize('torgeternity.dnTypes.' + test.DNDescriptor);
@@ -407,33 +405,32 @@ export async function renderSkillChat(test, origChatMessage) {
     else
       target.actionTotalContent = actionTotalContent;
 
-    const useColorBlind = game.settings.get('torgeternity', 'useColorBlindnessColors');
+    // Determine Outcome
+    const testDifference = rollResult - test.DN;
     if (testDifference < 0) {
       test.outcome = game.i18n.localize('torgeternity.chatText.check.result.failure');
       test.result = TestResult.FAILURE;
-      if (test.testType === 'power') {
-        test.showBacklashButtons = true;
-      }
       test.outcomeColor = 'color: red';
       if (test.testType === 'soak') target.soakWounds = 0;
-    } else if (testDifference > 9) {
-      test.outcome = game.i18n.localize('torgeternity.chatText.check.result.outstandingSuccess');
-      test.result = TestResult.OUTSTANDING;
+      if (test.testType === 'power') test.showBacklashButtons = true;
+    } else if (testDifference < 5) {
+      test.outcome = game.i18n.localize('torgeternity.chatText.check.result.standardSuccess');
+      test.result = TestResult.STANDARD;
       test.outcomeColor = useColorBlind ? 'color: rgb(44, 179, 44)' : 'color: green';
-      if (test.testType === 'soak') target.soakWounds = 'all';
-      if (testItem?.system?.outstanding) test.extraResult = testItem.system.outstanding;
-    } else if (testDifference > 4) {
+      if (test.testType === 'soak') target.soakWounds = 1;
+      if (testItem?.system?.standard) test.extraResult = testItem.system.standard;
+    } else if (testDifference < 10) {
       test.outcome = game.i18n.localize('torgeternity.chatText.check.result.goodSuccess');
       test.result = TestResult.GOOD;
       test.outcomeColor = useColorBlind ? 'color: rgb(44, 179, 44)' : 'color: green';
       if (test.testType === 'soak') target.soakWounds = 2;
       if (testItem?.system?.good) test.extraResult = testItem.system.good;
     } else {
-      test.outcome = game.i18n.localize('torgeternity.chatText.check.result.standardSuccess');
-      test.result = TestResult.STANDARD;
+      test.outcome = game.i18n.localize('torgeternity.chatText.check.result.outstandingSuccess');
+      test.result = TestResult.OUTSTANDING;
       test.outcomeColor = useColorBlind ? 'color: rgb(44, 179, 44)' : 'color: green';
-      if (test.testType === 'soak') target.soakWounds = 1;
-      if (testItem?.system?.standard) test.extraResult = testItem.system.standard;
+      if (test.testType === 'soak') target.soakWounds = 'all';
+      if (testItem?.system?.outstanding) test.extraResult = testItem.system.outstanding;
     }
     if (!useColorBlind && singleResult) test.outcomeColor += SHADOW_STYLE;
 

@@ -224,7 +224,6 @@ async function rollSkillMacro(skillName, attributeName, isInteractionAttack, DND
     testType: isAttributeTest ? 'attribute' : 'skill',
     actor: actor,
     skillName: isAttributeTest ? attributeName : skillName,
-    skillAdds: skill.adds,
     skillValue: skillValue,
     isFav: skill.isFav,
     DNDescriptor: DNDescriptor ?? 'standard',

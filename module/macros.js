@@ -394,7 +394,6 @@ export class TorgeternityMacros {
       actor: _actor,
       skillName: 'reality',
       testType: 'reconnect',
-      skillAdds: realitySkill.adds,
       skillValue: realitySkill.value,
       isFav: realitySkill.isFav,
       DNDescriptor: 'standard',

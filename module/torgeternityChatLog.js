@@ -931,7 +931,6 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     test.isFav = !!test.isFav;
     test.unskilledUse = !!test.unSkilledUse;
     test.skillValue = Number(test.skillValue);
-    test.skillAdds = Number(test.skillAdds);
     test.isConcentrationCheck = true;
 
     const result = await TestDialog.wait(test, { /*window: { windowId: this.window.windowId }*/ });

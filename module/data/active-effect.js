@@ -103,7 +103,7 @@ export class TorgActiveEffectData extends (foundry.data.ActiveEffectTypeDataMode
               [5 /*CONST.ACTIVE_EFFECT_MODES.UPGRADE*/]: "upgrade",
             }
             change.type = MODE_MAP[change.mode];
-            if (change.type === 'add' && change.value < 0) {
+            if (change.type === 'add' && Number.isNumeric(change.value) && change.value < 0) {
               change.type = 'subtract';
               change.value = -change.value;
             }

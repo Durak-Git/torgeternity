@@ -4,6 +4,7 @@
 
 ## NEXT
 - V14: Hide console warnings about CONST.ACTIVE_EFFECT_MODES.
+- V14: Work-around bug in Foundry core (14.360) which wasn't generating TOKEN_EXIT events when a spell emanation is deleted.
 
 ## 13.34.0 - Display individual BD + V14 improvements
 - Add protective code in SceneNav, so if a scene has no axioms defined then an error won't be generated.

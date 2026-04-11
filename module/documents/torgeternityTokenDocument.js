@@ -41,7 +41,12 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
       const region = await fromUuidSync(regionUuid, { strict: false });
       if (!emanations[effectUuid]) {
         // The region should no longer exist
-        if (region) await region.delete();
+        if (region) {
+          // Deleting the region without first deleting the behaviors does NOT generate TOKEN_EXIT events! (V14.360 bug)
+          for (const behavior of region.behaviors)
+            await behavior.delete();
+          await region.delete();
+        }
         delete oldMapping[effectUuid];
         changed = true;
       } else if (!region) {

@@ -1,11 +1,13 @@
 import { TestResult } from './torgchecks.js';
 
 
-function getAdd() {
+function getAdd(value) {
   if (game.release.generation < 14)
-    return { mode: CONST.ACTIVE_EFFECT_MODES.ADD }
+    return { mode: CONST.ACTIVE_EFFECT_MODES.ADD, value }
+  else if (value < 0)
+    return { type: 'subtract', value: -value }
   else
-    return { type: 'add' }
+    return { type: 'add', value }
 }
 
 function getDowngrade() {
@@ -542,7 +544,7 @@ export function initConfig() {
       _id: 'concentrating000',
       name: 'torgeternity.statusEffects.concentrating',
       // Each concentrating buff stacks!
-      changes: [{ key: 'system.statusModifiers.concentrating', ...getAdd(), value: '-2', priority: 10 }],
+      changes: [{ key: 'system.statusModifiers.concentrating', ...getAdd(-2), priority: 10 }],
     },
     {
       img: 'systems/torgeternity/images/status-markers/restrained.webp',

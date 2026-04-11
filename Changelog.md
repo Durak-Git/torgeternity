@@ -2,6 +2,9 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## NEXT
+- V14: Hide console warnings about CONST.ACTIVE_EFFECT_MODES.
+
 ## 13.34.0 - Display individual BD + V14 improvements
 - Add protective code in SceneNav, so if a scene has no axioms defined then an error won't be generated.
 - Internal rework of test record - **DELETE YOUR CHAT LOG**

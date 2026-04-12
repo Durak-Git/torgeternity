@@ -633,6 +633,8 @@ items:
           defendAgainstTrait:
             - supernaturalEvil
           transferTo: target
+          emanation:
+            radius: 5
         changes:
           - key: system.defenses.all.mod
             mode: 2
@@ -679,6 +681,8 @@ items:
           defendAgainstTrait:
             - supernaturalEvil
           transferTo: target
+          emanation:
+            radius: 5
         changes:
           - key: system.defenses.all.mod
             mode: 2
@@ -725,6 +729,8 @@ items:
           defendAgainstTrait:
             - supernaturalEvil
           transferTo: target
+          emanation:
+            radius: 5
         changes:
           - key: system.defenses.all.mod
             mode: 2

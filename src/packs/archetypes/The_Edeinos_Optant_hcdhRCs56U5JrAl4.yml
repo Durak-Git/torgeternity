@@ -719,6 +719,8 @@ items:
           itemsToBestow: []
           combatToggle: false
           concentratingId: null
+          emanation:
+            radius: 5
         changes:
           - key: system.defenses.all.mod
             mode: 2
@@ -769,6 +771,8 @@ items:
           itemsToBestow: []
           combatToggle: false
           concentratingId: null
+          emanation:
+            radius: 5
         changes:
           - key: system.defenses.all.mod
             mode: 2
@@ -819,6 +823,8 @@ items:
           itemsToBestow: []
           combatToggle: false
           concentratingId: null
+          emanation:
+            radius: 5
         changes:
           - key: system.defenses.all.mod
             mode: 2

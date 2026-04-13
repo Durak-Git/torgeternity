@@ -2,8 +2,8 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## NEXT
-- Add text to the "Standard Success" box on archetypes.
+## 13.34.1 - Archetype updates + V14 effects
+- Add text to the "Standard Success" box on archetypes (Cyberwitch, Renegade Priest, Resistance Fighter)
 - French Optant has effects on its Ward Enemy miracle.
 
 ### Foundry 14-specific changes

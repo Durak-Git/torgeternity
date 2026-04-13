@@ -5,8 +5,10 @@
 ## 13.34.1 - Archetype updates + V14 effects
 - Add text to the "Standard Success" box on archetypes (Cyberwitch, Renegade Priest, Resistance Fighter)
 - French Optant has effects on its Ward Enemy miracle.
+- Actor.appliedEffects() should also return the effects which are conditional (e.g. isTemporary returns true)
 
 ### Foundry 14-specific changes
+- Avoid error reported when opening Active Effect Config if no origin set on effect.
 - Hide console warnings about CONST.ACTIVE_EFFECT_MODES.
 - Work-around bug in Foundry core (14.360) which wasn't generating TOKEN_EXIT events when a spell emanation is deleted.
 - Emanation radius of Ward Enemy set for archetypes (Optant and Priest).

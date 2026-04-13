@@ -8,6 +8,7 @@
 - V14: Hide console warnings about CONST.ACTIVE_EFFECT_MODES.
 - V14: Work-around bug in Foundry core (14.360) which wasn't generating TOKEN_EXIT events when a spell emanation is deleted.
 - V14: Emanation radius of Ward Enemy set for archetypes (Optant and Priest).
+- V14: Emanation should occur for any effect which is not disabled (rather than 'active') to cater for emanations which might have conditional activation.
 
 ## 13.34.0 - Display individual BD + V14 improvements
 - Add protective code in SceneNav, so if a scene has no axioms defined then an error won't be generated.

@@ -685,18 +685,13 @@ export function initConfig() {
 
   // Entries allowed in an Active Effect's "Active Only If" field
   torgeternity.effectActiveTraits = {
-    ...Object.entries(torgeternity.defenseTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.defense' }; return acc }, {}),
-    ...Object.entries(torgeternity.meleeWeaponTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.melee' }; return acc }, {}),
-    ...Object.entries(torgeternity.rangedWeaponTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.ranged' }; return acc }, {}),
+    ...torgeternity.allItemTraits,
     ...torgeternity.statusEffects.reduce((acc, status) => { acc[status.id] = { label: status.name, group: 'torgeternity.sheetLabels.conditions' }; return acc }, {}),
   }
 
   // Entries allowed in an Active Effect's "Apply If Attack/Defend Trait" and "Defend Against Trait" fields
   torgeternity.effectTestTraits = {
-    ...Object.entries(torgeternity.defenseTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.defense' }; return acc }, {}),
-    ...Object.entries(torgeternity.meleeWeaponTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.melee' }; return acc }, {}),
-    ...Object.entries(torgeternity.rangedWeaponTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.ranged' }; return acc }, {}),
-    ...torgeternity.statusEffects.reduce((acc, status) => { acc[status.id] = { label: status.name, group: 'torgeternity.sheetLabels.conditions' }; return acc }, {}),
+    ...torgeternity.effectActiveTraits,
     ...Object.entries(torgeternity.skills).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.sheetLabels.skills' }; return acc }, {}),
   }
 

@@ -2,6 +2,17 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+
+## NEXT
+- Add new item traits: Holy, Sacred, Artifact, Implement, Attunable, Consumable
+
+### TODO
+- Define a list of traits which an actor can only carry one of (disable all with the trait if more than one carried).
+- Add a "max attunable" attribute to Actors (which can be modifed by AEs).
+  - Add a button to mark which items are "attuned" out of the attunable items (for use with "max attunable").
+  - If more items with attunable are marked as attuned than the max, then disable those items.
+- Optional SLOT field for Items - only one item allowed per slot.
+
 ## 13.34.2 - Prevent scene axiom error with Token Attacher
 - Update Scene to use _initializeSource instead of migrateData to initialize undefined axioms.
 - (Other data models will be updated to this paradigm later.)

@@ -677,10 +677,20 @@ export function initConfig() {
     'thrown': 'torgeternity.traits.thrown',
   }
 
+  torgeternity.genericItemTraits = {
+    'holy': 'torgeternity.traits.holy',
+    'sacred': 'torgeternity.traits.sacred',
+    'artifact': 'torgeternity.traits.artifact',
+    'implement': 'torgeternity.traits.implement',
+    'attunable': 'torgeternity.traits.attunable',
+    'consumable': 'torgeternity.traits.consumable'
+  }
+
   torgeternity.allItemTraits = {
     ...Object.entries(torgeternity.defenseTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.defense' }; return acc }, {}),
     ...Object.entries(torgeternity.meleeWeaponTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.melee' }; return acc }, {}),
     ...Object.entries(torgeternity.rangedWeaponTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.ranged' }; return acc }, {}),
+    ...Object.entries(torgeternity.genericItemTraits).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.other' }; return acc }, {}),
   }
 
   // Entries allowed in an Active Effect's "Active Only If" field

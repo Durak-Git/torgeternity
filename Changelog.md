@@ -2,9 +2,10 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-
 ## NEXT
-- Add new item traits: Holy, Sacred, Artifact, Implement, Attunable, Consumable
+- Add new item traits in a new "other" traits group: Holy, Sacred, Artifact, Implement, Attunable, Consumable.
+- Add game setting to define your own custom traits which are added to the "other" traits group.
+- Add the "other" traits group to all item types.
 
 ### TODO
 - Define a list of traits which an actor can only carry one of (disable all with the trait if more than one carried).

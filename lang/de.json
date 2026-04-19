@@ -871,6 +871,10 @@
         "hint": "Wende für Token automatisch die Dunkelheitsmalusse anhand der Dunkelheitseinstellung der Szene oder Regionen mit angepasster Dunkelheitsstufe und Licht/Dunkelheitsquellen an.",
         "name": "Automatische Dunkelheitsmalusse"
       },
+      "customTraits": {
+        "hint": "Define any additional traits that you want to be available for Items and Active Effects",
+        "name": "Custom Item Traits"
+      },
       "useColorBlindnessColors": {
         "hint": "Wenn angehakt, werden Achromatismus- freundliche (AKA Farbblindheit) rote und grüne Farben genutzt.",
         "name": "Farben für Achromatismus (rot-grün-Schwäche)"

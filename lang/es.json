@@ -871,6 +871,10 @@
         "hint": "Si está activado, la penalización por oscuridad de una ficha se calculará automáticamente en base al nivel de oscuridad de una escena, sus regiones con ajuste de nivel de oscuridad y las fuentes de luz/oscuridad.",
         "name": "Penalizaciones automáticas por oscuridad"
       },
+      "customTraits": {
+        "hint": "Define any additional traits that you want to be available for Items and Active Effects",
+        "name": "Custom Item Traits"
+      },
       "useColorBlindnessColors": {
         "hint": "Si está marcado, el juego usa tonos rojos y verdes aptos para daltónicos.",
         "name": "Usar tonos aptos para daltónicos"

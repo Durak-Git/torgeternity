@@ -874,6 +874,10 @@
         "hint": "Si coché, la pénalité de luminosité des Tokens sera automatiquement ajustée par le paramètre 'Niveau d'obscurité' d'une Scène, par l'ajustement paramétré d'une Région, et par les sources de lumière/obscurité configurées.",
         "name": "Pénalités automatiques de luminosité"
       },
+      "customTraits": {
+        "hint": "Define any additional traits that you want to be available for Items and Active Effects",
+        "name": "Custom Item Traits"
+      },
       "useColorBlindnessColors": {
         "hint": "Si sélectionné, le système utilise des couleurs rouge et verte plus adaptées à des personnes atteintes de daltonisme.",
         "name": "Utilise des couleurs plus adaptées au daltonisme"

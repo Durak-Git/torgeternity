@@ -661,7 +661,7 @@
       "attackRoll": "Angriffswurf",
       "delete": "Löschen",
       "edit": "bearbeiten",
-      "itemAttune": "Toggle Attuned State",
+      "itemAttune": "Einstimmung umschalten",
       "miracleRoll": "Wunder-Wurf",
       "openParty": "Öffnet die Gruppenübersicht",
       "psionicRoll": "Psionischer Wurf",
@@ -873,8 +873,8 @@
         "name": "Automatische Dunkelheitsmalusse"
       },
       "customTraits": {
-        "hint": "Define any additional traits that you want to be available for Items and Active Effects",
-        "name": "Custom Item Traits"
+        "hint": "Erstelle zusätzliche Eigenschaften, die du für Gegenstände und Aktive Effekte nutzen möchtest",
+        "name": "Selbsterstellte Eigenschaften"
       },
       "useColorBlindnessColors": {
         "hint": "Wenn angehakt, werden Achromatismus- freundliche (AKA Farbblindheit) rote und grüne Farben genutzt.",
@@ -1446,13 +1446,14 @@
       "fullBody": "Ganzkörper",
       "grapple": "Festhalten",
       "head": "Kopf",
-      "arcane": "Arcane",
-      "holy": "Holy",
-      "sacred": "Sacred",
-      "artifact": "Artifact",
-      "implement": "Implement",
-      "attunable": "Attunable",
-      "consumable": "Consumable",
+      "arcane": "Arkan",
+      "holy": "Heilig",
+      "magic": "Magisch",
+      "sacred": "Geheiligt",
+      "artifact": "Artefakt",
+      "implement": "Zauberfokus",
+      "attunable": "Einstimmbar",
+      "consumable": "Verbrauchbar",
       "ignoresArmor": "Ignoriert Rüstung",
       "ignoreShock": "Schock ignorieren",
       "ignoreWounds": "Wunden ignorieren",

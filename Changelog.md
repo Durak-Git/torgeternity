@@ -3,7 +3,7 @@
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
 ## 13.35.0 - Unique & Attunable Items
-- Add new item traits in a new "other" traits group: Arcane, Holy, Sacred, Artifact, Implement, Attunable, Consumable.
+- Add new item traits in a new "other" traits group: Arcane, Holy, Magic, Sacred, Artifact, Implement, Attunable, Consumable.
 - Add game setting to define your own custom traits which are added to the "other" traits group.
 - Add the "other" traits group to all item types.
 - Add new `CONFIG.torgeternity.itemUniqueness` option to specify which Item traits have a max-carried or max-equipped limit.

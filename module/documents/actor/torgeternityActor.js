@@ -717,6 +717,46 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }
     return tokens;
   }
+
+  /* ITEM UNIQUNESS HANDLING */
+  checkItemUniqueness(crud) {
+    console.log(`checkItemUniqueness: ${this.name} - ${crud}`);
+    for (const [key, value] of Object.entries(CONFIG.torgeternity.itemUniqueness)) {
+      const items = this.items.filter(item => item.system.traits.has(key));
+      if (items.length === 0) continue;
+      let tooMany = value.maxCarried && items.length > value.maxCarried;
+      if (value.maxEquipped && !tooMany) {
+        const equippedCount = items.filter(item => item.isEquipped);
+        tooMany = equippedCount.length > value.maxEquipped;
+      }
+      items.forEach(item => item.tooMany = tooMany);
+    }
+  }
+
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    this.checkItemUniqueness('prepareDerivedData');
+  }
+
+  _onCreateDescendantDocuments(parent, collection, documents, data, options, userId) {
+    super._onCreateDescendantDocuments(parent, collection, documents, data, options, userId);
+    this.checkItemUniqueness('create');
+  }
+
+  _onUpdateDescendantDocuments(parent, collection, documents, changes, options, userId) {
+    super._onUpdateDescendantDocuments(parent, collection, documents, changes, options, userId);
+    if (collection === 'items' && changes.find(entry => entry.system?.traits !== undefined))
+      this.checkItemUniqueness('update');
+  }
+
+  _onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId) {
+    super._onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId);
+    this.checkItemUniqueness('delete');
+  }
+
+  _onEmbeddedDocumentChange() {
+    super._onEmbeddedDocumentChange();
+  }
 }
 
 /**

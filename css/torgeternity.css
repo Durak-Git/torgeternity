@@ -446,6 +446,16 @@ dialog.torgeternity:not(.actor, .item) .window-content,
           text-decoration: line-through;
         }
 
+        &.item-tooMany {
+          text-decoration-line: line-through;
+          text-decoration-color: blue;
+
+          &:before,
+          &:after {
+            content: " *** ";
+          }
+        }
+
         .contradiction {
           vertical-align: super;
         }
@@ -501,6 +511,16 @@ dialog.torgeternity:not(.actor, .item) .window-content,
 
           &.disconnected {
             text-decoration: line-through;
+          }
+
+          &.item-tooMany {
+            text-decoration-line: line-through;
+            text-decoration-color: blue;
+
+            &:before,
+            &:after {
+              content: " *** ";
+            }
           }
 
           .contradiction {

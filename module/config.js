@@ -855,6 +855,17 @@ export function initConfig() {
     "Zentralerde": "coreEarth",
   }
 
+  // itemUniqueness
+  // Key = trait
+  // Value = maxCarried or maxEquipped - how many can be carried/equipped and the item stil function?
+  torgeternity.itemUniqueness = {
+    "holy": { maxCarried: 1 },
+    "sacred": { maxCarried: 1 },
+    "artifact": { maxCarried: 1 },
+    "implement": { maxEquipped: 1 },
+    "attunable": { maxEquipped: 1 },
+  }
+
   CONFIG.torgeternity = torgeternity;
 }
 

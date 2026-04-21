@@ -6,6 +6,11 @@
 - Add new item traits in a new "other" traits group: Holy, Sacred, Artifact, Implement, Attunable, Consumable.
 - Add game setting to define your own custom traits which are added to the "other" traits group.
 - Add the "other" traits group to all item types.
+- Add new `CONFIG.torgeternity.itemUniqueness` option to specify which Item traits have a max-carried or max-equipped limit.
+  - If the limit is exceeded, then the item is displayed with a blue strikethrough and "***" placed around the item's name.
+  - Default with max-carried == 1 are Holy, Sacred, Artifact
+  - Default with max-equipped == 1 are Implement, Attunable
+  
 
 ### TODO
 - Define a list of traits which an actor can only carry one of (disable all with the trait if more than one carried).

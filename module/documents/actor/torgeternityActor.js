@@ -730,8 +730,14 @@ export default class TorgeternityActor extends foundry.documents.Actor {
         const equippedCount = items.filter(item => item.isEquipped);
         tooMany = equippedCount.length > value.maxEquipped;
       }
-      items.forEach(item => item.tooMany = tooMany);
+      if (tooMany) items.forEach(item => item.tooMany = true);
     }
+    // Max attunable handled separately (and does not care about the "dropped" state)
+    const attunedItems = this.items.filter(item => item.system.traits.has('attunable') && item.system.attuned);
+    if (attunedItems.length > this.system.maxAttunable)
+      attunedItems.forEach(item => item.tooMany = true);
+    const notAttuned = this.items.filter(item => item.system.traits.has('attunable') && !item.system.attuned);
+    notAttuned.forEach(item => item.tooMany = true);
   }
 
   prepareDerivedData() {

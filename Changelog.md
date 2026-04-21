@@ -2,22 +2,19 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## NEXT
-- Add new item traits in a new "other" traits group: Holy, Sacred, Artifact, Implement, Attunable, Consumable.
+## 13.35.0 - Unique & Attunable Items
+- Add new item traits in a new "other" traits group: Arcane, Holy, Sacred, Artifact, Implement, Attunable, Consumable.
 - Add game setting to define your own custom traits which are added to the "other" traits group.
 - Add the "other" traits group to all item types.
 - Add new `CONFIG.torgeternity.itemUniqueness` option to specify which Item traits have a max-carried or max-equipped limit.
   - If the limit is exceeded, then the item is displayed with a blue strikethrough and "***" placed around the item's name.
   - Default with max-carried == 1 are Holy, Sacred, Artifact
-  - Default with max-equipped == 1 are Implement, Attunable
+  - Default with max-equipped == 1 are Implement
+- Add new `system.maxAttunable` field on all Actors (default 1).
+  - Add a button on each attunable item to indicate if it is attuned.
+  - Attunable items which are NOT attuned, are marked as failing itemUniqueness.
+  - If more than this number of "attunable" items are carried, then they are marked as for itemUniqueness.
   
-
-### TODO
-- Add a "max attunable" attribute to Actors (which can be modifed by AEs).
-  - Add a button to mark which items are "attuned" out of the attunable items (for use with "max attunable").
-  - If more items with attunable are marked as attuned than the max, then disable those items.
-- Optional SLOT field for Items - only one item allowed per slot.
-
 ## 13.34.2 - Prevent scene axiom error with Token Attacher
 - Update Scene to use _initializeSource instead of migrateData to initialize undefined axioms.
 - (Other data models will be updated to this paradigm later.)

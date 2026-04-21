@@ -19,6 +19,7 @@ export class BaseItemData extends foundry.abstract.TypeDataModel {
       axioms: makeAxiomsField(),
       itemsToBestow: new fields.SetField(new fields.JSONField),  // id of other items added/removed with this Item
       bestowedBy: new fields.DocumentIdField(),  // the id of the other item that automatically added this Item
+      attuned: new fields.BooleanField({ initial: false })
     };
   }
   /**
@@ -54,6 +55,9 @@ export class BaseItemData extends foundry.abstract.TypeDataModel {
 
   // Can this Item type be equipped?
   get canEquip() { return false; }
+
+  // Can this item be attuned?
+  get isAttunable() { return this.traits.has('attunable') }
 }
 
 export function newTraitsField(itemType) {

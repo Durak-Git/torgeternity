@@ -678,6 +678,7 @@ export function initConfig() {
   }).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.traitGroup.ranged' }; return acc }, {})
 
   torgeternity.otherItemTraits = Object.entries({
+    'arcane': 'torgeternity.traits.arcane',
     'holy': 'torgeternity.traits.holy',
     'sacred': 'torgeternity.traits.sacred',
     'artifact': 'torgeternity.traits.artifact',
@@ -859,11 +860,10 @@ export function initConfig() {
   // Key = trait
   // Value = maxCarried or maxEquipped - how many can be carried/equipped and the item stil function?
   torgeternity.itemUniqueness = {
-    "holy": { maxCarried: 1 },
-    "sacred": { maxCarried: 1 },
-    "artifact": { maxCarried: 1 },
-    "implement": { maxEquipped: 1 },
-    "attunable": { maxEquipped: 1 },
+    'holy': { maxCarried: 1 },
+    'sacred': { maxCarried: 1 },
+    'artifact': { maxCarried: 1 },
+    'implement': { maxEquipped: 1 },
   }
 
   CONFIG.torgeternity = torgeternity;

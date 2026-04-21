@@ -13,7 +13,6 @@
   
 
 ### TODO
-- Define a list of traits which an actor can only carry one of (disable all with the trait if more than one carried).
 - Add a "max attunable" attribute to Actors (which can be modifed by AEs).
   - Add a button to mark which items are "attuned" out of the attunable items (for use with "max attunable").
   - If more items with attunable are marked as attuned than the max, then disable those items.

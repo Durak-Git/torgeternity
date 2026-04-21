@@ -721,8 +721,9 @@ export default class TorgeternityActor extends foundry.documents.Actor {
   /* ITEM UNIQUNESS HANDLING */
   checkItemUniqueness(crud) {
     console.log(`checkItemUniqueness: ${this.name} - ${crud}`);
+    this.items.forEach(item => item.tooMany = false);
     for (const [key, value] of Object.entries(CONFIG.torgeternity.itemUniqueness)) {
-      const items = this.items.filter(item => item.system.traits.has(key));
+      const items = this.items.filter(item => !item.isDropped && item.system.traits.has(key));
       if (items.length === 0) continue;
       let tooMany = value.maxCarried && items.length > value.maxCarried;
       if (value.maxEquipped && !tooMany) {

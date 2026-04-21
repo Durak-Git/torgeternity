@@ -448,7 +448,7 @@ dialog.torgeternity:not(.actor, .item) .window-content,
 
         &.item-tooMany {
           text-decoration-line: line-through;
-          text-decoration-color: blue;
+          text-decoration-color: red;
 
           &:before,
           &:after {
@@ -515,7 +515,7 @@ dialog.torgeternity:not(.actor, .item) .window-content,
 
           &.item-tooMany {
             text-decoration-line: line-through;
-            text-decoration-color: blue;
+            text-decoration-color: red;
 
             &:before,
             &:after {

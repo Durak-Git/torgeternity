@@ -7,7 +7,7 @@
 - Add game setting to define your own custom traits which are added to the "other" traits group.
 - Add the "other" traits group to all item types.
 - Add new `CONFIG.torgeternity.itemUniqueness` option to specify which Item traits have a max-carried or max-equipped limit.
-  - If the limit is exceeded, then the item is displayed with a blue strikethrough and "***" placed around the item's name.
+  - If the limit is exceeded, then the item is displayed with a red strikethrough and "***" placed around the item's name.
   - Default with max-carried == 1 are Holy, Sacred, Artifact
   - Default with max-equipped == 1 are Implement
 - Add new `system.maxAttunable` field on all Actors (default 1, modifiable by Active Effects).

@@ -10,10 +10,11 @@
   - If the limit is exceeded, then the item is displayed with a blue strikethrough and "***" placed around the item's name.
   - Default with max-carried == 1 are Holy, Sacred, Artifact
   - Default with max-equipped == 1 are Implement
-- Add new `system.maxAttunable` field on all Actors (default 1).
+- Add new `system.maxAttunable` field on all Actors (default 1, modifiable by Active Effects).
   - Add a button on each attunable item to indicate if it is attuned.
   - Attunable items which are NOT attuned, are marked as failing itemUniqueness.
   - If more than this number of "attunable" items are carried, then they are marked as for itemUniqueness.
+- Add "equip" icon for Gear, Implants and Eternity Shards.
   
 ## 13.34.2 - Prevent scene axiom error with Token Attacher
 - Update Scene to use _initializeSource instead of migrateData to initialize undefined axioms.

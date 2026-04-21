@@ -744,26 +744,6 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     super.prepareDerivedData();
     this.checkItemUniqueness('prepareDerivedData');
   }
-
-  _onCreateDescendantDocuments(parent, collection, documents, data, options, userId) {
-    super._onCreateDescendantDocuments(parent, collection, documents, data, options, userId);
-    this.checkItemUniqueness('create');
-  }
-
-  _onUpdateDescendantDocuments(parent, collection, documents, changes, options, userId) {
-    super._onUpdateDescendantDocuments(parent, collection, documents, changes, options, userId);
-    if (collection === 'items' && changes.find(entry => entry.system?.traits !== undefined))
-      this.checkItemUniqueness('update');
-  }
-
-  _onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId) {
-    super._onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId);
-    this.checkItemUniqueness('delete');
-  }
-
-  _onEmbeddedDocumentChange() {
-    super._onEmbeddedDocumentChange();
-  }
 }
 
 /**

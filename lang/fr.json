@@ -876,8 +876,8 @@
         "name": "Pénalités automatiques de luminosité"
       },
       "customTraits": {
-        "hint": "Define any additional traits that you want to be available for Items and Active Effects",
-        "name": "Custom Item Traits"
+        "hint": "Définir des Traits additionnels disponibles pour les Objets ou les Effets",
+        "name": "Traits personnalisés"
       },
       "useColorBlindnessColors": {
         "hint": "Si sélectionné, le système utilise des couleurs rouge et verte plus adaptées à des personnes atteintes de daltonisme.",
@@ -1451,6 +1451,7 @@
       "head": "Tête",
       "arcane": "Arcane",
       "holy": "Holy",
+      "enchanted": "Magie",
       "sacred": "Sacred",
       "artifact": "Artifact",
       "implement": "Implement",

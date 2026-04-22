@@ -661,7 +661,7 @@
       "attackRoll": "Tirar Ataque",
       "delete": "Borrar",
       "edit": "Editar",
-      "itemAttune": "Toggle Attuned State",
+      "itemAttune": "Cambiar estado de sintonización",
       "miracleRoll": "Tirar Milagro",
       "openParty": "Abrir hoja de grupo",
       "psionicRoll": "Tirar poder Psiónico",
@@ -873,8 +873,8 @@
         "name": "Penalizaciones automáticas por oscuridad"
       },
       "customTraits": {
-        "hint": "Define any additional traits that you want to be available for Items and Active Effects",
-        "name": "Custom Item Traits"
+        "hint": "Definir cualquier rasgo adicional que quieras que esté disponible para los objetos y los efectos activos",
+        "name": "Personalizar rasgos de objetos"
       },
       "useColorBlindnessColors": {
         "hint": "Si está marcado, el juego usa tonos rojos y verdes aptos para daltónicos.",
@@ -1446,13 +1446,14 @@
       "fullBody": "Cuerpo entero",
       "grapple": "Forcejeo",
       "head": "Cabeza",
-      "arcane": "Arcane",
-      "holy": "Holy",
-      "sacred": "Sacred",
-      "artifact": "Artifact",
-      "implement": "Implement",
-      "attunable": "Attunable",
-      "consumable": "Consumable",
+      "arcane": "Arcana",
+      "holy": "Sagrado",
+      "enchanted": "Mágico",
+      "sacred": "Santo",
+      "artifact": "Artefacto",
+      "implement": "Implementar",
+      "attunable": "Sintonizable",
+      "consumable": "Consumible",
       "ignoresArmor": "Ignora armadura",
       "ignoreShock": "Ignorar Shock",
       "ignoreWounds": "Ignorar Heridas",

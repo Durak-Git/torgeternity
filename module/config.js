@@ -680,7 +680,7 @@ export function initConfig() {
   torgeternity.otherItemTraits = Object.entries({
     'arcane': 'torgeternity.traits.arcane',
     'holy': 'torgeternity.traits.holy',
-    'magic': 'torgeternity.traits.magic',
+    'enchanted': 'torgeternity.traits.enchanted',
     'sacred': 'torgeternity.traits.sacred',
     'artifact': 'torgeternity.traits.artifact',
     'implement': 'torgeternity.traits.implement',

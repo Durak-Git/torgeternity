@@ -11,10 +11,10 @@
   - Default with max-carried == 1 are Holy, Sacred, Artifact
   - Default with max-equipped == 1 are Implement
 - Add new `system.maxAttunable` field on all Actors (default 1, modifiable by Active Effects).
-  - Add a button on each attunable item to indicate if it is attuned.
+  - Add a button on each attunable item to indicate if it is attuned (solid star = attuned; holy star = not attuned).
   - Attunable items which are NOT attuned, are marked as failing itemUniqueness.
-  - If more than this number of "attunable" items are carried, then they are marked as for itemUniqueness.
-- Add "equip" icon for Gear, Implants and Eternity Shards.
+  - If more than this number of "attunable" items are marked as attuned, then they are all marked as failing itemUniqueness.
+- Add "equip" icon for Gear, Implants and Eternity Shards (to match all other Items).
   
 ## 13.34.2 - Prevent scene axiom error with Token Attacher
 - Update Scene to use _initializeSource instead of migrateData to initialize undefined axioms.

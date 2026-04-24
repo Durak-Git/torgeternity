@@ -15,6 +15,10 @@
   - Attunable items which are NOT attuned, are marked as failing itemUniqueness.
   - If more than this number of "attunable" items are marked as attuned, then they are all marked as failing itemUniqueness.
 - Add "equip" icon for Gear, Implants and Eternity Shards (to match all other Items).
+
+### Bug Fixes
+- Ensure that an Active Effect change of 'isFav' is converted properly if not already a boolean.
+- Prevent console error on Foundry 14 when creating an Active Effect on an Item that isn't owned by an Actor.
   
 ## 13.34.2 - Prevent scene axiom error with Token Attacher
 - Update Scene to use _initializeSource instead of migrateData to initialize undefined axioms.

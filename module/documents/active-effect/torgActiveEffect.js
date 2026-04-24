@@ -59,7 +59,7 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
           change.key = change.key.replace(/IsFav$/, '.isFav');
       }
       for (const change of source.changes) {
-        if (change.key.endsWith('.isFav')) {
+        if (change.key.endsWith('.isFav') && typeof change.value !== 'boolean') {
           change.value = (change.value === '1' || change.value === 'True' || change.value === 'true') ? 'true' : 'false'
         }
       }

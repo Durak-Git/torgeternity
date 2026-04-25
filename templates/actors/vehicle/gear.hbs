@@ -220,9 +220,9 @@
 
 </section>
 
-{{*inline "itemAttune"}}
-<a class="item-control item-attunable" data-action="itemAttune" {{disabled (not @root.editable)}}
-  data-tooltip="{{localize 'torgeternity.iconeTitles.itemAttune'}}">
-  {{#ifThen attuned '<i class="fa-solid fa-star"></i>' '<i class="fa-regular fa-star"></i>'}}
-</a>
+{{#*inline "itemAttune"}}
+  <a class="item-control item-attunable" data-action="itemAttune" {{disabled (not @root.editable)}}
+    data-tooltip="{{localize 'torgeternity.iconeTitles.itemAttune'}}">
+    <i class="{{ifThen attuned 'fa-solid' 'fa-regular'}} fa-star"></i>
+  </a>
 {{/inline}}

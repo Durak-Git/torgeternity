@@ -804,9 +804,6 @@
               <span class="contradiction">{{item.contradictionCase}}</span>
               ({{item.system.quantity}})</a>
             <div class="item-controls">
-              {{#if item.system.isAttunable}}
-                {{>itemAttune attuned=item.system.attuned}}
-              {{/if}}
               <a class="item-control item-tochat" data-action="itemToChat" {{disabled (not @root.editable)}}
                 data-tooltip="{{localize 'torgeternity.iconeTitles.sendToChat'}}">
                 <i class="fas fa-comment"></i>

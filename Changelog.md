@@ -18,7 +18,8 @@
 - A `@Condition` enricher will display a circle-minus if the condition is being switched off (and the existing circle-plus for all other situations).
 
 ### Bug Fixes
-- Ensure that an Active Effect change of 'isFav' is converted properly if not already a boolean.
+- Ensure that an Active Effect change of **isFav** is converted properly if not already a boolean
+  - **(Existing isFav changes will need to be modified to use `true` again)**
 - Prevent console error on Foundry 14 when creating an Active Effect on an Item that isn't owned by an Actor.
 - The `@Damage` enricher will show a broken heart (damage) or a whole heart (healing) in the inline enriched content. (The chat message will still report damage, even if you've set negative wounds/shock to actually perform healing.)
   

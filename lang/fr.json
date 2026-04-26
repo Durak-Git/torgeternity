@@ -743,7 +743,7 @@
       "openIssue": "Votre navigateur va ouvrir un onglet pour signaler un problème.",
       "openReference": "Votre navigateur va ouvrir le site Torg Reference (en anglais)",
       "openUlisses": "Votre navigateur va ouvrir le site d’Ulisses Spiele.",
-      "openWiki": "Your browser will open a new page to join the Torg Eternity Wiki",
+      "openWiki": "Ouverture de la page Wiki de Torg Eternity dans votre navigateur par défaut",
       "failureBDResolution": "Echec de résolution avec le DB",
       "ammoValueExceedsMax": "La quantité de munitions dépasse la capacité du chargeur dans l'arme {a}. La valeur va être réduite à son maximum.",
       "noPossibility": "Pas de Possibilités disponibles",

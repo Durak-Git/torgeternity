@@ -740,7 +740,7 @@
       "openIssue": "Tu navegador abrirá una nueva página para que puedas completar la petición",
       "openReference": "Tu navegador abrirá una nueva página para visitar la web de Torg Reference",
       "openUlisses": "Tu navegador abrirá una nueva página para visitar la web de Ulisses",
-      "openWiki": "Your browser will open a new page to join the Torg Eternity Wiki",
+      "openWiki": "Tu navegador abrirá una nueva página para que te unas a la wiki de Torg Eternity",
       "failureBDResolution": "El sistema no ha podido resolver el DB",
       "ammoValueExceedsMax": "El valor actual de munición del arma {a} supera su valor máximo. El valor se reducirá al máximo del arma.",
       "noPossibility": "No queda ninguna Posibilidad",

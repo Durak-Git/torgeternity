@@ -740,6 +740,7 @@
       "openReference": "Dein Browser öffnet die Torg Reference website als neue Seite",
       "openIssue": "Dein Browser wird einen neuen Tab öffnen, um diese Aufgabe durchzuführen.",
       "openUlisses": "Dein Browser wird einen neuen Tab öffnen und dich auf die Ulisses-Webseite weiterleiten.",
+      "openWiki": "Your browser will open a new page to join the Torg Eternity Wiki",
       "failureBDResolution": "Das System konnte die BW nicht berechnen.",
       "ammoValueExceedsMax": "Der aktuelle Munitionswert der Waffe {a} übersteigt seinen Maximalwert. Der Wert wird auf sein Maximum reduziert.",
       "noPossibility": "Es sind keine Möglichkeiten mehr übrig.",

@@ -734,6 +734,7 @@
       "openIssue": "Your browser will open a new page to complete an issue",
       "openReference": "Your browser will open a new page to join the Torg Reference website",
       "openUlisses": "Your browser will open a new tab to join Ulisses website",
+      "openWiki": "Your browser will open a new page to join the Torg Eternity Wiki",
       "failureBDResolution": "The system failed to resolute the BD",
       "ammoValueExceedsMax": "The actual ammo value of the weapon {a} exceeds it's max value. The value will be reduced to it's maximum.",
       "noPossibility": "There is no possibility left",

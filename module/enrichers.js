@@ -222,7 +222,7 @@ function InlineConditionEnricher(match, options) {
     dataset,
     name: label ?? game.i18n.localize(`torgeternity.statusEffects.${status}`),
     classes: ['torg-inline-condition'],
-    icon: "fa-solid fa-circle-plus"
+    icon: dataset.off ? "fa-solid fa-circle-minus" : "fa-solid fa-circle-plus"
   });
   // Append a button to copy the link to chat (only when in Journal)
   if (!options.rollData && game.user.isGM) {

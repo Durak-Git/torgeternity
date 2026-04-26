@@ -19,6 +19,7 @@
 ### Bug Fixes
 - Ensure that an Active Effect change of 'isFav' is converted properly if not already a boolean.
 - Prevent console error on Foundry 14 when creating an Active Effect on an Item that isn't owned by an Actor.
+- The `@Damage` enricher will show a broken heart (damage) or a whole heart (healing) in the inline enriched content. (The chat message will still report damage, even if you've set negative wounds/shock to actually perform healing.)
   
 ## 13.34.2 - Prevent scene axiom error with Token Attacher
 - Update Scene to use _initializeSource instead of migrateData to initialize undefined axioms.

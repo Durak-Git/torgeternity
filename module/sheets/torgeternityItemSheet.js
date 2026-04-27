@@ -198,7 +198,7 @@ export default class TorgeternityItemSheet extends foundry.applications.api.Hand
   static #onConvertRsa(event, button) {
     this.item.update({
       type: 'specialability-rollable',
-      "==system": this.item.system
+      system: _replace(this.item.system)
     });
   }
 

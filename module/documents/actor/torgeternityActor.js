@@ -135,7 +135,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     if (this.type === 'stormknight') {
       const hand = this.getDefaultHand();
       // If the update includes permissions, sync them to the hand
-      if (hand && changed['==ownership'] && game.userId === userId) {
+      if (hand && changed.ownership && game.userId === userId) {
         // DO NOT PUT ANYTHING ELSE IN THIS UPDATE! diff:false, recursive:false can easily nuke stuff
         hand.update({ ownership: this.getHandOwnership() }, { diff: false, recursive: false });
       }

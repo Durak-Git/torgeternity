@@ -718,10 +718,8 @@ export async function renderSkillChat(test, origChatMessage) {
   const newroll = test.diceroll;
   delete test.diceroll;
 
-  let flavor, options;
   const messageMode = game.settings.get("core", "messageMode");
-  options = { messageMode };
-  flavor = (messageMode === 'public') ? '' : game.i18n.localize(CONFIG.ChatMessage.modes[messageMode].label);
+  const flavor = (messageMode === 'public') ? '' : game.i18n.localize(CONFIG.ChatMessage.modes[messageMode].label);
   let message;
   if (origChatMessage) {
     const rolls = dicerolled ? origChatMessage.rolls.concat(dicerolled) : origChatMessage.rolls;
@@ -750,7 +748,7 @@ export async function renderSkillChat(test, origChatMessage) {
         },
       },
     },
-      options);
+      { messageMode });
   }
 
   if (game.settings.get('torgeternity', 'unTarget')) {

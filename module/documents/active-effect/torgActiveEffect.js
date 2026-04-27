@@ -91,7 +91,7 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
     if (allowed === false) return false;
 
     if (this.actor) {
-      const combatant = game.combat?.getCombatantsByActor(this.actor ?? "")?.[0];
+      const combatant = game.combat?.getCombatantsByActor(this.actor)?.[0];
       this.updateSource({
         start: {
           combatant: combatant?.id ?? null,

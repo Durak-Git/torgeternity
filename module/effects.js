@@ -19,8 +19,9 @@ export async function onManageActiveEffect(event, button, owner) {
           img: (owner instanceof foundry.documents.Item && owner.img) || 'icons/svg/aura.svg',
           origin: owner.uuid,
           duration: {
-            rounds: li.dataset.effectType === 'temporary' ? 1 : undefined,
-            expiry: 'turnEnd'
+            value: li.dataset.effectType === 'temporary' ? 1 : undefined,
+            units: 'rounds',
+            expiry: li.dataset.effectType === 'temporary' ? 'turnEnd' : undefined
           },
           disabled: li.dataset.effectType === 'inactive',
         },

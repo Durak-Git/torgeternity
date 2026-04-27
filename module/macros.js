@@ -588,12 +588,12 @@ export class TorgeternityMacros {
       // only Defenses, but ALL defenses
       newEffect = {
         name: `${game.i18n.localize('torgeternity.dialogWindow.buffMacro.defenses')} / ${bonus} / ${duration} rd(s)`,
-        duration: { rounds: duration, turns: duration, expiry: 'turnEnd' },
+        duration: { value: duration, units: 'rounds', expiry: 'turnEnd' },
         changes: [
           {
             key: 'system.defenses.all.mod',
             value: bonus,
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            type: 'add',
           },
         ],
         disabled: false,
@@ -606,12 +606,12 @@ export class TorgeternityMacros {
       // only physical Defenses
       newEffect = {
         name: `${game.i18n.localize('torgeternity.dialogWindow.buffMacro.physicalDefenses')} / ${bonus} / ${duration} rd(s)`,
-        duration: { rounds: duration, turns: duration, expiry: 'turnEnd' },
+        duration: { value: duration, units: 'rounds', expiry: 'turnEnd' },
         changes: [
           {
             key: 'system.defenses.physical.mod',
             value: bonus,
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            type: 'add',
           },
         ],
         disabled: false,
@@ -624,32 +624,32 @@ export class TorgeternityMacros {
       // preparation of attribute effect
       newEffect = {
         name: `${game.i18n.localize('torgeternity.dialogWindow.buffMacro.allAttributes')} / ${bonus} / ${duration} rd(s)`,
-        duration: { rounds: duration, turns: duration, expiry: 'turnEnd' },
+        duration: { value: duration, units: 'rounds', expiry: 'turnEnd' },
         changes: [
           {
             key: 'system.attributes.mind.value',
             value: bonus,
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            type: 'add',
           },
           {
             key: 'system.attributes.spirit.value',
             value: bonus,
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            type: 'add',
           },
           {
             key: 'system.attributes.strength.value',
             value: bonus,
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            type: 'add',
           },
           {
             key: 'system.attributes.dexterity.value',
             value: bonus,
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            type: 'add',
           },
           {
             key: 'system.attributes.charisma.value',
             value: bonus,
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            type: 'add',
           },
         ],
         disabled: false,
@@ -672,12 +672,12 @@ export class TorgeternityMacros {
       // preparation of attribute effect
       newEffect = {
         name: `${game.i18n.localize('torgeternity.attributes.' + attr)} / ${bonus} / ${duration} rd(s)`,
-        duration: { rounds: duration, turns: duration, expiry: 'turnEnd' },
+        duration: { value: duration, units: 'rounds', expiry: 'turnEnd' },
         changes: [
           {
-            key: 'system.attributes.' + attr + '.value',
+            key: `system.attributes.${attr}.value`,
             value: bonus,
-            mode: 2,
+            type: 'add',
           },
         ],
         disabled: false,

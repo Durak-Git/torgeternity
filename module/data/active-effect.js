@@ -91,7 +91,7 @@ export class TorgActiveEffectData extends foundry.data.ActiveEffectTypeDataModel
 
     if (source.changes) {
       for (const change of source.changes) {
-        if (!Object.hasOwn(change, 'type')) {
+        if (!Object.hasOwn(change, 'type') && Object.hasOwn(change, 'mode')) {
           // CONST.ACTIVE_EFFECT_MODES to Object.keys(CONST.ACTIVE_EFFECT_CHANGE_TYPES)
           const MODE_MAP = {
             [0 /*CONST.ACTIVE_EFFECT_MODES.CUSTOM*/]: "custom",

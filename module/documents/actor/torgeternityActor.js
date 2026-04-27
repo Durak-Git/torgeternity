@@ -414,7 +414,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       let eff = await this.toggleStatusEffect('veryStymied', { active: true });
       eff.update({
         origin: originid,
-        duration: { rounds: duration, turns: duration, expiry: 'turnEnd' }
+        duration: { value: duration, units: 'rounds', expiry: 'turnEnd' }
       })
     }
   }
@@ -431,7 +431,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       effect = await this.toggleStatusEffect('veryVulnerable', { active: true });
     }
     // If no origin, then it is being self-applied so needs to last to after this actor's next turn
-    effect.update({ origin, duration: { rounds: duration, turns: duration, expiry: 'turnEnd' } })
+    effect.update({ origin, duration: { value: duration, units: 'rounds', expiry: 'turnEnd' } })
   }
 
   async increaseStymied(origin, duration = 1) {
@@ -450,7 +450,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       const effect = await this.toggleStatusEffect(statusId, { active: true });
       effect.update({
         origin,
-        duration: { rounds: duration, turns: duration, expiry: 'turnEnd' }
+        duration: { value: duration, units: 'rounds', expiry: 'turnEnd' }
       })
     }
   }
@@ -474,7 +474,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       const effect = await this.toggleStatusEffect(statusId, { active: true });
       effect.update({
         origin: originid,
-        duration: { rounds: duration, turns: duration, expiry: 'turnEnd' }
+        duration: { value: duration, units: 'rounds', expiry: 'turnEnd' }
       })
     }
   }
@@ -491,22 +491,22 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     return this.createEmbeddedDocuments('ActiveEffect', [{
       name: 'ActiveDefense', // Add an icon to remind the defense, bigger ? Change color of Defense ?
       img: 'icons/equipment/shield/heater-crystal-blue.webp', // To change I think, taken in Core, should have a dedicated file
-      duration: { rounds: 1, value: 0, units: "rounds", expiry: 'roundEnd' },
+      duration: { value: 0, units: 'rounds', expiry: 'roundEnd' },
       origin: this.uuid,
       changes: [
         {
           // Modify all existing "basic" defense in block
           key: 'system.defenses.activeDefense', // Should need other work for defense vs powers
+          type: 'add',
           value: bonus, // that don't target xxDefense
           priority: 20, // Create a data.ADB that store the bonus ?
-          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         },
         {
           // SHIELD bonus to Toughness
           key: 'system.defenses.toughness',
+          type: 'add',
           value: shieldBonus,
           priority: 20,
-          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
         },
       ],
       disabled: false,

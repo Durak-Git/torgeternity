@@ -16,8 +16,6 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
 
   _onCreate(data, options, userId) {
     super._onCreate(data, options, userId);
-    if (game.user.id !== userId) return;
-
     if (game.user.isActiveGM) this.updateEffectRegions();
   }
 

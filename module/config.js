@@ -469,7 +469,7 @@ export function initConfig() {
       id: 'stymied',
       _id: 'stymied000000000',
       name: 'torgeternity.statusEffects.stymied',
-      duration: { rounds: 1, turns: 1, value: 1, units: "turns", expiry: 'turnEnd' },
+      duration: { value: 1, units: "turns", expiry: 'turnEnd' },
       changes: [{ key: 'system.statusModifiers.stymied', type: 'downgrade', value: -2, priority: 10 }],
     },
     {
@@ -477,7 +477,7 @@ export function initConfig() {
       id: 'veryStymied',
       _id: 'veryStymied00000',
       name: 'torgeternity.statusEffects.veryStymied',
-      duration: { rounds: 1, turns: 1, value: 1, units: "turns", expiry: 'turnEnd' },
+      duration: { value: 1, units: "turns", expiry: 'turnEnd' },
       changes: [{ key: 'system.statusModifiers.stymied', type: 'downgrade', value: -4, priority: 10 }],
     },
     {
@@ -485,7 +485,7 @@ export function initConfig() {
       id: 'vulnerable',
       _id: 'vulnerable000000',
       name: 'torgeternity.statusEffects.vulnerable',
-      duration: { rounds: 1, turns: 1, value: 1, units: "turns", expiry: 'turnEnd' },
+      duration: { value: 1, units: "turns", expiry: 'turnEnd' },
       changes: [{ key: 'system.statusModifiers.vulnerable', type: 'upgrade', value: 2, priority: 10 }],
     },
     {
@@ -493,7 +493,7 @@ export function initConfig() {
       id: 'veryVulnerable',
       _id: 'veryVulnerable00',
       name: 'torgeternity.statusEffects.veryVulnerable',
-      duration: { rounds: 1, turns: 1, value: 1, units: "turns", expiry: 'turnEnd' },
+      duration: { value: 1, units: "turns", expiry: 'turnEnd' },
       changes: [{ key: 'system.statusModifiers.vulnerable', type: 'upgrade', value: 4, priority: 10 }],
     },
     {

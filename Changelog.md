@@ -2,6 +2,13 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## 14.0.0 - Foundry V14 exclusive
+- Remove legacy code that supported Foundry 13
+
+### Bug Fixes
+- Passive Active Effects can be created on Actors and Items once again.
+- All other Active Effects should also be getting created with the correct duration.
+
 ## 13.35.0 - Unique & Attunable Items
 - Add new item traits in a new "other" traits group: Arcane, Holy, Magic, Sacred, Artifact, Implement, Attunable, Consumable.
 - Add game setting to define your own custom traits which are added to the "other" traits group.

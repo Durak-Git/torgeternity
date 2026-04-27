@@ -277,12 +277,8 @@ async function _onClickInlineCondition(event) {
       // toggleStatusEffect only accepts 'active' and 'overlay' properties
       eff.update({
         duration: {
-          // Foundry V13
-          rounds: data.duration,
-          turns: data.duration,
-          // Foundry V14
           value: data.duration,
-          units: "turns",
+          units: 'turns',
           expiry: 'turnEnd'
         }
       })
@@ -386,31 +382,27 @@ async function _onClickInlineBuff(event) {
     changes: []
   };
 
-  function getMode(v) {
+  function getType(v) {
     if (v.startsWith('-') || v.startsWith('+'))
-      return CONST.ACTIVE_EFFECT_MODES.ADD;
+      return 'add';
     else
-      return CONST.ACTIVE_EFFECT_MODES.OVERRIDE;
+      return 'override';
   }
   for (const [key, value] of Object.entries({ ...target.dataset })) {
     if (key.startsWith('skill'))
       effectdata.changes.push({
         key: `system.skills.${key.slice(5)}.adds`,
-        mode: getMode(value),
+        type: getType(value),
         value: value
       });
     else if (key.startsWith('attribute'))
       effectdata.changes.push({
         key: `system.attributes.${key.slice(9)}.value`,
-        mode: getMode(value),
+        type: getType(value),
         value: value
       });
     else if (key === 'duration') {
       if (!effectdata.duration) effectdata.duration = {}
-      // Foundry V13
-      effectdata.duration.rounds = value;
-      effectdata.duration.turns = value;
-      // Foundry V14
       effectdata.duration.value = value;
       effectdata.duration.units = 'turns';
       effectdata.duration.expiry ??= 'turnEnd';

@@ -1044,8 +1044,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
           changes: [
             {
               key: `system.attributes.${selection}.value`,
-              value: -1,
-              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+              value: 1,
+              type: 'subtract',
             }
           ],
         }]);

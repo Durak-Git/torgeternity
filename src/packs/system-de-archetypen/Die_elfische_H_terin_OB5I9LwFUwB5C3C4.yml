@@ -1326,7 +1326,7 @@ effects:
     type: base
     system:
       changes:
-        - key: system.attributes.dexterityIsFav
+        - key: system.attributes.dexterity.isFav
           value: true
           priority: null
           type: override

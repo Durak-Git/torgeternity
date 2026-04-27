@@ -177,7 +177,7 @@ items:
           transferOnOutcome: anySuccess
           changes:
             - key: system.skills.maneuver.isFav
-              value: 1
+              value: true
               priority: null
               type: override
         sort: 0

@@ -278,7 +278,7 @@ async function _onClickInlineCondition(event) {
       eff.update({
         duration: {
           value: data.duration,
-          units: 'turns',
+          units: 'rounds',
           expiry: 'turnEnd'
         }
       })
@@ -404,7 +404,7 @@ async function _onClickInlineBuff(event) {
     else if (key === 'duration') {
       if (!effectdata.duration) effectdata.duration = {}
       effectdata.duration.value = value;
-      effectdata.duration.units = 'turns';
+      effectdata.duration.units = 'rounds';
       effectdata.duration.expiry ??= 'turnEnd';
     } else
       foundry.utils.setProperty(effectdata, key, value);

@@ -850,10 +850,10 @@ Hooks.once('i18nInit', () => {
   // Translate number magnitude strings (fast lookup for GeneralItemData.prepareBaseData)
   CONFIG.torgeternity.magnitudeLabels = {};
   for (const [key, value] of Object.entries(CONFIG.torgeternity.magnitudes))
-    CONFIG.torgeternity.magnitudeLabels[key] = game.i18n.localize(value);
+    CONFIG.torgeternity.magnitudeLabels[key] = _loc(value);
   for (const value of CONFIG.statusEffects) {
     const key = `torgeternity.statusEffects.description.${value.id}`
-    const desc = game.i18n.localize(key);
+    const desc = _loc(key);
     if (desc !== key) value.description = desc;
   }
 })

@@ -49,7 +49,7 @@ export default class DeckSettingMenu extends HandlebarsApplicationMixin(Applicat
     const cosms = {};
     for (const cosm in CONFIG.torgeternity.cosmTypes) {
       if (cosm === 'none' || cosm === 'other') continue;
-      cosms[cosm] = { name: game.i18n.localize(`torgeternity.cosmDecks.${cosm}`) };
+      cosms[cosm] = { name: _loc(`torgeternity.cosmDecks.${cosm}`) };
     }
 
     const data = {

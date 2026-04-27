@@ -100,7 +100,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
           if (changedAttribute.base > clampedAttribute) {
             changedAttribute.base = clampedAttribute;
             ui.notifications.error(
-              game.i18n.localize('torgeternity.notifications.reachedMaximumAttr')
+              _loc('torgeternity.notifications.reachedMaximumAttr')
             );
           }
         }
@@ -384,15 +384,15 @@ export default class TorgeternityActor extends foundry.documents.Actor {
   async notifyDefeat() {
     const attribute = (this.system.attributes.spirit.value < this.system.attributes.strength.value) ? 'spirit' : 'strength';
 
-    const html = `<p>${game.i18n.format('torgeternity.defeat.prompt', { name: this.name })}
+    const html = `<p>${_loc('torgeternity.defeat.prompt', { name: this.name })}
     <div class="skill-roll-menu">
      <a class="button roll-button roll-defeat ${(attribute === 'strength') && 'notPreferred'}"
      data-action="testDefeat" data-control="spirit" }>
-     ${game.i18n.localize('torgeternity.attributes.spirit')}
+     ${_loc('torgeternity.attributes.spirit')}
      </a>
      <a class="button roll-button roll-defeat ${(attribute === 'spirit') && 'notPreferred'}" 
      data-action="testDefeat" data-control="strength" >
-     ${game.i18n.localize('torgeternity.attributes.strength')}
+     ${_loc('torgeternity.attributes.strength')}
      </a>
      </div>`;
 
@@ -489,7 +489,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     let shieldBonus = (equippedShield && !this.hasStatusEffect('vulnerable') && !this.hasStatusEffect('veryVulnerable')) ? equippedShield.system.bonus : 0
 
     return this.createEmbeddedDocuments('ActiveEffect', [{
-      name: 'ActiveDefense', // Add an icon to remind the defense, bigger ? Change color of Defense ?
+      name: 'ActiveDefense',
       img: 'icons/equipment/shield/heater-crystal-blue.webp', // To change I think, taken in Core, should have a dedicated file
       duration: { value: 0, units: 'rounds', expiry: 'roundEnd' },
       origin: this.uuid,
@@ -559,7 +559,6 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     const toUpdate = [];
     const toDelete = [];
     for (const effect of this.effects.filter((e) => e.duration.expiry === 'turnEnd')) {
-      if (effect.name === 'ActiveDefense') continue;
       if (effect.duration.value <= 1)
         toDelete.push(effect.id)
       else
@@ -575,7 +574,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
   }
 
   /**
-   * Returns either the AE for the Active Defense currently on the target, or undefined.
+   * @returns {TorgActiveEffect|undefined} Either the AE for the Active Defense currently on the target, or undefined.
    */
   get activeDefense() {
     return this.effects.find(ef => ef.name === 'ActiveDefense')
@@ -591,12 +590,12 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     const effect = (await ActiveEffect.fromStatusEffect('concentrating')).toObject();
     Object.assign(effect,
       {
-        name: game.i18n.format('torgeternity.chatText.concentration.AEname', { item: item.name }),
+        name: _loc('torgeternity.chatText.concentration.AEname', { item: item.name }),
         origin: item.uuid,
-        description: game.i18n.format('torgeternity.chatText.concentration.AEdescription', {
+        description: _loc('torgeternity.chatText.concentration.AEdescription', {
           actor: this.name,
           itemName: item.name,
-          itemType: game.i18n.localize(CONFIG.Item.typeLabels[item.type])
+          itemType: _loc(CONFIG.Item.typeLabels[item.type])
         })
       })
     return ActiveEffect.implementation.create(effect, { parent: this });
@@ -706,7 +705,6 @@ export default class TorgeternityActor extends foundry.documents.Actor {
 
   /* ITEM UNIQUNESS HANDLING */
   checkItemUniqueness(crud) {
-    console.log(`checkItemUniqueness: ${this.name} - ${crud}`);
     this.items.forEach(item => item.tooMany = false);
     for (const [key, value] of Object.entries(CONFIG.torgeternity.itemUniqueness)) {
       const items = this.items.filter(item => !item.isDropped && item.system.traits.has(key));

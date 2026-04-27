@@ -91,7 +91,7 @@ export class StormKnightData extends CommonActorData {
       }
       this.details.race = race.name;
     } else {
-      this.details.race = game.i18n.localize('torgeternity.sheetLabels.noRace');
+      this.details.race = _loc('torgeternity.sheetLabels.noRace');
     }
   }
 

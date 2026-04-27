@@ -9,7 +9,7 @@
 - Passive Active Effects can be created on Actors and Items once again.
 - All other Active Effects should also be getting created with the correct duration.
 - 30 minute timer set correctly on the Unconscious status generated when max shock exceeded.
-- Hand Ownership will now match the Ownership of the corresponding Actor (OWNED or OBSERVER)
+- Hand Ownership will now match the Ownership of the corresponding Actor (OWNER or OBSERVER)
 - Active Effects will no longer be duplicated (such as Hard as Nails).
 - Get SK hand selection displayed correctly in the "Default Card Deck Configuration" window.
 

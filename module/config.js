@@ -2,26 +2,18 @@ import { TestResult } from './torgchecks.js';
 
 
 function getAdd(value) {
-  if (game.release.generation < 14)
-    return { mode: CONST.ACTIVE_EFFECT_MODES.ADD, value }
-  else if (value < 0)
+  if (value < 0)
     return { type: 'subtract', value: -value }
   else
     return { type: 'add', value }
 }
 
 function getDowngrade() {
-  if (game.release.generation < 14)
-    return { mode: CONST.ACTIVE_EFFECT_MODES.DOWNGRADE }
-  else
-    return { type: 'downgrade' }
+  return { type: 'downgrade' }
 }
 
 function getUpgrade() {
-  if (game.release.generation < 14)
-    return { mode: CONST.ACTIVE_EFFECT_MODES.UPGRADE }
-  else
-    return { type: 'upgrade' }
+  return { type: 'upgrade' }
 }
 
 export function initConfig() {

@@ -719,15 +719,9 @@ export async function renderSkillChat(test, origChatMessage) {
   delete test.diceroll;
 
   let flavor, options;
-  if (game.release.generation < 14) {
-    const rollMode = game.settings.get("core", "rollMode");
-    options = { rollMode };
-    flavor = (rollMode === 'publicroll') ? '' : game.i18n.localize(CONFIG.Dice.rollModes[rollMode].label);
-  } else {
-    const messageMode = game.settings.get("core", "messageMode");
-    options = { messageMode };
-    flavor = (messageMode === 'public') ? '' : game.i18n.localize(CONFIG.ChatMessage.modes[messageMode].label);
-  }
+  const messageMode = game.settings.get("core", "messageMode");
+  options = { messageMode };
+  flavor = (messageMode === 'public') ? '' : game.i18n.localize(CONFIG.ChatMessage.modes[messageMode].label);
   let message;
   if (origChatMessage) {
     const rolls = dicerolled ? origChatMessage.rolls.concat(dicerolled) : origChatMessage.rolls;
@@ -819,27 +813,15 @@ export function applyNumericChange(value, change) {
   const delta = parseInt(change.value);
   if (isNaN(delta)) return value;  // value MUST be a number
 
-  if (game.release.generation < 14) {
-    switch (change.mode) {
-      case CONST.ACTIVE_EFFECT_MODES.ADD: return value + delta;
-      case CONST.ACTIVE_EFFECT_MODES.MULTIPLY: return value * delta;
-      case CONST.ACTIVE_EFFECT_MODES.OVERRIDE: return delta;
-      case CONST.ACTIVE_EFFECT_MODES.UPGRADE: return Math.max(value, delta);
-      case CONST.ACTIVE_EFFECT_MODES.DOWNGRADE: return Math.min(value, delta);
-      default: // custom 
-        return value;
-    }
-  } else {
-    switch (change.type) {
-      case "add": return value + delta;
-      case "subtract": return value - delta;
-      case "multiply": return value * delta;
-      case "override": return delta;
-      case "upgrade": return Math.max(value, delta);
-      case "downgrade": return Math.min(value, delta);
-      default:  // custom
-        return value;
-    }
+  switch (change.type) {
+    case "add": return value + delta;
+    case "subtract": return value - delta;
+    case "multiply": return value * delta;
+    case "override": return delta;
+    case "upgrade": return Math.max(value, delta);
+    case "downgrade": return Math.min(value, delta);
+    default:  // custom
+      return value;
   }
 }
 

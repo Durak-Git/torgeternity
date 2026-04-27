@@ -278,8 +278,7 @@ export default class TorgCombat extends Combat {
     await this.drawDramaCard();
 
     // deactivate active defense when the combat round is progressed. End of combat is in the hook above, 'deleteCombat'
-    if (game.release.generation < 14)
-      await this.#deleteActiveDefense();
+    //await this.#deleteActiveDefense();
 
     // Perform end-of-faction's turn processing
     return this.nextRoundKeep();

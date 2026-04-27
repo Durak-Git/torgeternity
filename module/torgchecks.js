@@ -1005,11 +1005,11 @@ function individualDN(test, target) {
     base += getExtraProtection(test.attackTraits, target.defenses, 'Defense');
     if (onTarget === 'vehicleDefense')
       return target.defenses?.vehicle ?? 0;
-    if (target.attributes && Object.hasOwn(target.attributes, onTarget))
+    if (foundry.utils.hasProperty(target.attributes, onTarget))
       return target.attributes[onTarget] + base;
-    if (target.defenses && Object.hasOwn(target.defenses, onTarget))
+    if (foundry.utils.hasProperty(target.defenses, onTarget))
       return target.defenses[onTarget] + base;
-    if (target.skills && Object.hasOwn(target.skills, onTarget)) {
+    if (foundry.utils.hasProperty(target.skills, onTarget)) {
       const skill = target.skills[onTarget];
       return base + ((skill.value && skill.value !== '-')
         ? (skill.value + skill.defenseMod)

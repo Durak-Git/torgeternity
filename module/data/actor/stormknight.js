@@ -44,12 +44,12 @@ export class StormKnightData extends CommonActorData {
    * @param {object} source the data object to migrate
    */
   static migrateData(source) {
-    if (source.details && Object.hasOwn(source.details, 'race')) {
+    if (foundry.utils.hasProperty(source.details, 'race')) {
       source.details.race = Object.keys(CONFIG.torgeternity.races).includes(source.details.race)
         ? source.details.race
         : 'other';
     }
-    if (source.details && Object.hasOwn(source.details, 'sizeBonus')) {
+    if (foundry.utils.hasProperty(source.details, 'sizeBonus')) {
       source.details.sizeBonus = Object.keys(CONFIG.torgeternity.sizes).includes(source.details.sizeBonus)
         ? source.details.sizeBonus
         : 'normal';

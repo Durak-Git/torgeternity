@@ -9,7 +9,7 @@ export default class TorgEternityTokenDocument extends foundry.documents.TokenDo
     if (this.texture.src.includes('systems/torgeternity/images/characters/threat')) {
       const cosm = canvas.scene.torg.cosm;
       // not cosmTypes, because that includes 'none'
-      if (cosm && Object.hasOwn(CONFIG.torgeternity.cosmDecks, cosm))
+      if (foundry.utils.hasProperty(CONFIG.torgeternity.cosmDecks, cosm))
         this.updateSource({ 'texture.src': 'systems/torgeternity/images/characters/threat-' + cosm + '.Token.webp' });
     }
   }

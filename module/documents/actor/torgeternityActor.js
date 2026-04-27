@@ -158,11 +158,11 @@ export default class TorgeternityActor extends foundry.documents.Actor {
         this.toggleStatusEffect('unconscious', {
           active: true,
           overlay: true,
-          duration: {
-            startTime: game.time.worldTime,
-            seconds: 30 * 60 // 30 minutes
-          }
-        });
+        }).then(effect => effect.update({
+          start: { time: game.time.worldTime },
+          duration: { value: 30, units: 'minutes' }
+
+        }))
       }
 
       if (options.woundsExceeded || options.shockExceeded) {

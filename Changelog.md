@@ -8,6 +8,7 @@
 ### Bug Fixes
 - Passive Active Effects can be created on Actors and Items once again.
 - All other Active Effects should also be getting created with the correct duration.
+- 30 minute timer set correctly on the Unconscious status generated when max shock exceeded.
 
 ## 13.35.0 - Unique & Attunable Items
 - Add new item traits in a new "other" traits group: Arcane, Holy, Magic, Sacred, Artifact, Implement, Attunable, Consumable.

@@ -276,11 +276,7 @@ async function _onClickInlineCondition(event) {
     if (data.duration) {
       // toggleStatusEffect only accepts 'active' and 'overlay' properties
       eff.update({
-        duration: {
-          value: data.duration,
-          units: 'rounds',
-          expiry: 'turnEnd'
-        }
+        duration: { value: data.duration, units: 'rounds', expiry: 'turnEnd' }
       })
     }
   }
@@ -404,7 +400,7 @@ async function _onClickInlineBuff(event) {
     else if (key === 'duration') {
       if (!effectdata.duration) effectdata.duration = {}
       effectdata.duration.value = value;
-      effectdata.duration.units = 'rounds';
+      effectdata.duration.units ??= 'rounds';
       effectdata.duration.expiry ??= 'turnEnd';
     } else
       foundry.utils.setProperty(effectdata, key, value);

@@ -10,6 +10,7 @@
 - All other Active Effects should also be getting created with the correct duration.
 - 30 minute timer set correctly on the Unconscious status generated when max shock exceeded.
 - Hand Ownership will now match the Ownership of the corresponding Actor (OWNED or OBSERVER)
+- Active Effects are not duplicated (such as Hard as Nails).
 
 ## 13.35.0 - Unique & Attunable Items
 - Add new item traits in a new "other" traits group: Arcane, Holy, Magic, Sacred, Artifact, Implement, Attunable, Consumable.

@@ -2,6 +2,10 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## 14.0.1
+### Bug Fixes
+- Ensure that a Willpower card (+3 mental) auto-applies properly.
+
 ## 14.0.0 - Foundry V14 exclusive
 - Remove legacy code that supported Foundry 13
 

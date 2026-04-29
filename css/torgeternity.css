@@ -2841,8 +2841,8 @@ german tent cards images
 
     span.possibilities {
       margin-left: 0.5em;
-      position: absolute;
-      right: 4px;
+      margin-right: 0.25em;
+      flex-basis: max-content;
 
       .possValue {
         display: inline-block;

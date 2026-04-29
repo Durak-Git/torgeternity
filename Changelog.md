@@ -6,7 +6,8 @@
 ### Bug Fixes
 - Ensure that a Willpower card (+3 mental) auto-applies properly.
 - Ensure 'disconnected' status is set early enough to allow (equipped) armor, shields and weapons to affect Actor stats.
-- **Party Sheet** - show localized item types & move attributes up alongside defenses
+- **Party Sheet** - show localized item types & move attributes up alongside defenses.
+- Fix position of icons (Player Sheet & Reset Possibilities) at bottom of player list 
 
 ## 14.0.0 - Foundry V14 exclusive
 - Remove legacy code that supported Foundry 13

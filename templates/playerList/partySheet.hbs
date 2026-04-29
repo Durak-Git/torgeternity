@@ -9,86 +9,21 @@
         </h3>
         <div class="flexrow">
           <div>
-            <p>
-              <span>{{localize "torgeternity.sheetLabels.wounds"}} :</span>
-            </p>
-            <p>
-              <span>{{user.character.system.wounds.value}} /</span>
-              <span>{{user.character.system.wounds.max}}</span>
-            </p>
+            <p>{{localize "torgeternity.sheetLabels.wounds"}} :</p>
+            <p>{{user.character.system.wounds.value}} / {{user.character.system.wounds.max}}</p>
           </div>
           <div>
-            <p>
-              <span>{{localize "torgeternity.sheetLabels.shock"}} :</span>
-            </p>
-            <p>
-              <span>{{user.character.system.shock.value}} /</span>
-              <span>{{user.character.system.shock.max}}</span>
-            </p>
+            <p>{{localize "torgeternity.sheetLabels.shock"}} :</p>
+            <p>{{user.character.system.shock.value}} / {{user.character.system.shock.max}}</p>
           </div>
           <div>
-            <p>
-              <span>{{localize "torgeternity.sheetLabels.possibilities"}}</span>
-            </p>
-            <p>
-              <span>{{user.character.system.other.possibilities.value}}</span>
-            </p>
+            <p>{{localize "torgeternity.sheetLabels.possibilities"}}</p>
+            <p>{{user.character.system.other.possibilities.value}}</p>
           </div>
-        </div>
-        <div>
-          <h4>{{localize "torgeternity.sheetLabels.defenses"}}</h4>
-          <p>
-            <span>{{localize "torgeternity.skills.dodge"}} :</span>
-            <span>{{user.character.system.defenses.dodge.value}}</span>
-          </p>
-          <p>
-            <span>{{localize "torgeternity.skills.meleeWeapons"}} :</span>
-            <span>{{user.character.system.defenses.meleeWeapons.value}}</span>
-          </p>
-          <p>
-            <span>{{localize "torgeternity.skills.unarmedCombat"}} :</span>
-            <span>{{user.character.system.defenses.unarmedCombat.value}}</span>
-          </p>
-          <p>
-            <span>{{localize "torgeternity.skills.intimidation"}} :</span>
-            <span>{{user.character.system.defenses.intimidation.value}}</span>
-          </p>
-          <p>
-            <span>{{localize "torgeternity.skills.maneuver"}} :</span>
-            <span>{{user.character.system.defenses.maneuver.value}}</span>
-          </p>
-          <p>
-            <span>{{localize "torgeternity.skills.taunt"}} :</span>
-            <span>{{user.character.system.defenses.taunt.value}}</span>
-          </p>
-          <p>
-            <span>{{localize "torgeternity.skills.trick"}}:</span>
-            <span>{{user.character.system.defenses.trick.value}}</span>
-          </p>
-        </div>
-        <div class="flexrow">
-          {{#if user.character.system.statusModifiers.vulnerable}}
-            <p>
-              {{localize "torgeternity.vulnerableStates.vulnerable"}} :
-              {{user.character.system.statusModifiers.vulnerable}}
-            </p>
-          {{/if}} {{#if user.character.system.statusModifiers.stymied}}
-            <p>
-              {{localize "torgeternity.stymiedStates.stymied"}} :
-              {{user.character.system.statusModifiers.stymied}}
-            </p>
-          {{/if}}
-          {{#if user.character.system.statusModifiers.concentrating}}
-            <p>
-              {{localize "torgeternity.statusEffects.concentrating"}} :
-              {{user.character.system.statusModifiers.concentrating}}
-            </p>
-          {{/if}}
         </div>
         <div class="flexrow">
           <div>
             <h4>{{localize "torgeternity.sheetLabels.attributes"}}</h4>
-
             <ul>
               {{#each user.character.system.attributes as |attr key|}}
                 <li class="attribut-block">
@@ -97,11 +32,41 @@
                 </li>
               {{/each}}
             </ul>
+          </div>
+          <div>
+            <h4>{{localize "torgeternity.sheetLabels.defenses"}}</h4>
+            <p>{{localize "torgeternity.skills.dodge"}} : {{user.character.system.defenses.dodge.value}}</p>
+            <p>{{localize "torgeternity.skills.meleeWeapons"}} : {{user.character.system.defenses.meleeWeapons.value}}
+            </p>
+            <p>{{localize "torgeternity.skills.unarmedCombat"}} : {{user.character.system.defenses.unarmedCombat.value}}
+            </p>
+            <p>{{localize "torgeternity.skills.intimidation"}} : {{user.character.system.defenses.intimidation.value}}
+            </p>
+            <p>{{localize "torgeternity.skills.maneuver"}} : {{user.character.system.defenses.maneuver.value}}</p>
+            <p>{{localize "torgeternity.skills.taunt"}} : {{user.character.system.defenses.taunt.value}}</p>
+            <p>{{localize "torgeternity.skills.trick"}} : {{user.character.system.defenses.trick.value}}</p>
+          </div>
+        </div>
+        <div class="flexrow">
+          {{#if user.character.system.statusModifiers.vulnerable}}
+            <p>{{localize "torgeternity.vulnerableStates.vulnerable"}} :
+              {{user.character.system.statusModifiers.vulnerable}}
+            </p>
+          {{/if}} {{#if user.character.system.statusModifiers.stymied}}
+            <p>{{localize "torgeternity.stymiedStates.stymied"}} : {{user.character.system.statusModifiers.stymied}}</p>
+          {{/if}}
+          {{#if user.character.system.statusModifiers.concentrating}}
+            <p>{{localize "torgeternity.statusEffects.concentrating"}} :
+              {{user.character.system.statusModifiers.concentrating}}
+            </p>
+          {{/if}}
+        </div>
+        <div class="flexrow">
+          <div>
             <h4>{{localize "torgeternity.sheetLabels.skills"}}</h4>
-
             <ul>
-              {{#each user.character.system.skills as |skill key|}} {{#if skill.adds}}
-
+              {{#each user.character.system.skills as |skill key|}}
+                {{#if skill.adds}}
                   <li class="attribut-block">
                     <span>{{skill.localizedSkill}}</span>
                     <span>: {{skill.value}}</span>
@@ -109,7 +74,8 @@
                       <i class="far fa-star"></i>
                     {{/if}}
                   </li>
-                {{/if}} {{/each}}
+                {{/if}}
+              {{/each}}
             </ul>
           </div>
           <div>

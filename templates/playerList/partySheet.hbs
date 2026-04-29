@@ -113,7 +113,7 @@
             </ul>
           </div>
           <div>
-            <h4>items</h4>
+            <h4>{{localize "torgeternity.sheetLabels.items"}}</h4>
 
             <ul>
               {{#each user.character.items as |item key|}}
@@ -126,7 +126,7 @@
                       {{item.name}}
                     </a>
                     -
-                    <em>{{item.type}}</em>
+                    <em>{{localize (lookup @root.CONFIG.Item.typeLabels item.type)}}</em>
                   </span>
                 </li>
               {{/each}}

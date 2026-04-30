@@ -10,6 +10,7 @@
 - **Player List**
   - Fix position of icons (Player Sheet & Reset Possibilities) at bottom of player list.
   - Don't have name overlap the possibility number.
+  - Enforce a minimum of 0 Possibilities.
 
 ## 14.0.0 - Foundry V14 exclusive
 - Remove legacy code that supported Foundry 13

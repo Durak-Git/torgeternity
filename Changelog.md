@@ -2,6 +2,10 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## 14.1.0
+- Change default behavior of right-click on effect in Effects Panel to delete rather than disable.
+- Add "confirm delete" dialog when deleting an Effect from an Actor sheet or from the Effects Panel.
+
 ## 14.0.2
 - Active Effects on disconnected Items should be suppressed.
 

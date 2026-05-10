@@ -11,6 +11,7 @@
 - Update tooltips in Combat Tracker to match V14.
 - Update context menus in Chat Log and Combat Tracker to use new V14 property names.
 - Add auto-generation of **Unarmored** trait when a defending actor does not have any armor equipped (e.g. for Hollow Point ammo).
+- Get *Add All To Group** in combat tracker to select only the correct actors.
 
 ## 14.0.2
 - Active Effects on disconnected Items should be suppressed.

@@ -403,7 +403,7 @@ export function oneTestTarget(token, applySize, attackTraits, defenseTraits, tes
         sizeModifier: sizeModifier,
         toughness: actor.system.defenses.toughness,
         armor: actor.system.defenses.armor,
-        armorTraits: [],
+        defenseTraits: actor.defenseTraits,
         amountBD: 0,
         bdDamageSum: 0,
         // then vehicle specifics

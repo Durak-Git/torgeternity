@@ -662,6 +662,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
    */
   get defenseTraits() {
     const result = [];
+    if (!this.itemTypes.armor.find(item => item.isEquipped)) result.push('unarmored');
     for (const item of this.items) {
       if ((item.type === 'armor' && item.isEquipped) ||
         item.type === 'perk' ||

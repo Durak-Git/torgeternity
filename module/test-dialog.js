@@ -201,7 +201,7 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     const testItem = this.test.itemId && myActor.items.get(this.test.itemId);
     context.test.requiresConcentration = testItem?.requiresConcentration;
-    context.isRanged = (!testItem || testItem.system instanceof MissileWeaponItemData);
+    context.showRangePenalty = (!testItem || testItem.system instanceof MissileWeaponItemData);
 
     // Set Modifiers for Vehicles
     if (this.test.testType === 'chase') {

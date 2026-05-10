@@ -8,6 +8,7 @@
 - Add the ability to add **Custom Attacks** to Threats.
 - Set **verified** to 14.361, and set **maximum** to 14.
 - Allow **Racial Perks** to be edited and deleted on SK Actor sheets (delete is still disabled if bestowed by a race perk).
+- Update tooltips in Combat Tracker to match V14.
 
 ## 14.0.2
 - Active Effects on disconnected Items should be suppressed.

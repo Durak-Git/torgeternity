@@ -184,6 +184,7 @@
           "shortBurst": "Kurzer Feuerstoß",
           "stymied": "Angeschlagen",
           "targetConcealment": "Deckungsschutz",
+          "targetRange": "Target Range",
           "targetSize": "Größe des Ziels",
           "targetVeryVulnerable": "Ziel sehr verwundbar",
           "targetVulnerable": "Ziel verwundbar",
@@ -1200,6 +1201,12 @@
       "race": "Volk",
       "racialPerks": "Volksfähigkeiten",
       "range": "Reichweite",
+      "ranges": {
+        "short": "Short",
+        "medium": "Medium",
+        "long": "Long",
+        "extreme": "Extreme"
+      },
       "realitySurge": "Realitätswelle",
       "reconnect": "Ankoppeln",
       "reconnectTooltip": "Abkopplungszustand entfernen",

@@ -184,6 +184,7 @@
           "shortBurst": "Ráfaga Corta",
           "stymied": "Impedido",
           "targetConcealment": "Cobertura Objetivo",
+          "targetRange": "Target Range",
           "targetSize": "Tamaño Objetivo",
           "targetVeryVulnerable": "Objetivo muy Vulnerable",
           "targetVulnerable": "Objetivo Vulnerable",
@@ -1200,6 +1201,12 @@
       "race": "Raza",
       "racialPerks": "Ventajas raciales",
       "range": "Alcance",
+      "ranges": {
+        "short": "Short",
+        "medium": "Medium",
+        "long": "Long",
+        "extreme": "Extreme"
+      },
       "realitySurge": "Sobrecarga de Realidad",
       "reconnect": "Reconectar",
       "reconnectTooltip": "Eliminar estado Desconectado",

@@ -360,6 +360,11 @@ export async function renderSkillChat(test, origChatMessage) {
       modifiers.push(modifierString('torgeternity.chatText.check.modifier.targetConcealment', test.concealmentModifier));
     }
 
+    if (test.rangeModifier) {
+      test.modifiers += test.rangeModifier;
+      modifiers.push(modifierString('torgeternity.chatText.check.modifier.targetRange', test.rangeModifier));
+    }
+
     if (test.testType === 'power' && test.powerModifier) {
       test.modifiers += test.powerModifier;
       modifiers.push(modifierString('torgeternity.chatText.check.modifier.powerModifier', test.powerModifier));

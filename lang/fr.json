@@ -187,6 +187,7 @@
           "shortBurst": "Rafale courte",
           "stymied": "Déstabilisé",
           "targetConcealment": "Couvert de la cible",
+          "targetRange": "Target Range",
           "targetSize": "Taille de la cible",
           "targetVeryVulnerable": "Cible Très Vulnérable",
           "targetVulnerable": "Cible Vulnérable",
@@ -1203,6 +1204,12 @@
       "race": "Race",
       "racialPerks": "Avantages raciaux",
       "range": "Portée",
+      "ranges": {
+        "short": "Short",
+        "medium": "Medium",
+        "long": "Long",
+        "extreme": "Extreme"
+      },
       "realitySurge": "Poussée de réalité",
       "reconnect": "Reconnection",
       "reconnectTooltip": "Supprime la condition Déconnecté",

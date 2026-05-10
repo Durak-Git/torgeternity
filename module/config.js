@@ -769,6 +769,12 @@ export function initConfig() {
       [-4]: '3',
       [-6]: '4',
     },
+    ranges: {
+      [0]: 'torgeternity.sheetLabels.ranges.short',
+      [-2]: 'torgeternity.sheetLabels.ranges.medium',
+      [-4]: 'torgeternity.sheetLabels.ranges.long',
+      [-8]: 'torgeternity.sheetLabels.ranges.extreme',
+    },
     targets: {
       [0]: '1',
       [-2]: '2',

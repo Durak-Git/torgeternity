@@ -1,6 +1,7 @@
 import { renderSkillChat } from './torgchecks.js';
 import TorgeternityActor from './documents/actor/torgeternityActor.js';
 import { applyNumericEffects, applyNumericChange } from './torgchecks.js';
+import { MissileWeaponItemData } from './data/item/missileweapon.js';
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
 
 function toCamelCase(from) {
@@ -55,6 +56,7 @@ const DEFAULT_TEST = {
   woundModifier: 0,
   sizeModifier: 0,
   speedModifier: 0,
+  rangeModifier: 0,
   maneuverModifier: 0,
   coverModifier: 0,
   // sheet flags
@@ -198,6 +200,7 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     const testItem = this.test.itemId && myActor.items.get(this.test.itemId);
     context.test.requiresConcentration = testItem?.requiresConcentration;
+    context.isRanged = (!testItem || testItem.system instanceof MissileWeaponItemData);
 
     // Set Modifiers for Vehicles
     if (this.test.testType === 'chase') {
@@ -228,11 +231,29 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     context.test.targetsModifier ||= MULTITARGET[testItem?.hasBlastTrait ? 1 : targets.length] ?? 0;
     context.test.combinedAction.participants ??= game.canvas?.tokens?.controlled?.length || 1;
 
+    context.test.rangeModifier = 0;
     if (context.test.targetPresent && context.test.testType !== 'soak') {
       context.test.targets = targets.map(token => oneTestTarget(token, this.test.applySize, this.test.attackTraits, myActor.defenseTraits, context.test.skillName));
       context.test.sizeModifier = Math.max(...context.test.targets.map(target => target.sizeModifier));
       context.test.vulnerableModifier = Math.max(...context.test.targets.map(target => target.vulnerableModifier));
       context.test.darknessModifier = Math.min(0, Math.min(...context.test.targets.map(target => target.darknessModifier)) + context.test.targetDarknessModifier);
+
+      // Determine rangeModifier
+      const myToken = myActor.getActiveTokens()?.[0];
+      if (testItem?.system.range && myToken && this.options.useTargets && game.user.targets.size) {
+        let maxDistance = Math.max(...game.user.targets.map(token => token.distanceToToken(myToken)));
+        if (maxDistance > 0) {
+          for (const bracket of testItem.system.range?.split('/')) {
+            if (!Number.isNumeric(bracket)) continue;
+            if (maxDistance < bracket) break;
+            context.test.rangeModifier -= 2;
+          }
+          // Extreme range is -8 (not -6)
+          if (context.test.rangeModifier < -4)
+            context.test.rangeModifier = -8;
+        }
+      }
+
     } else {
       context.test.targets = dummyTestTargets();
       context.test.sizeModifier = 0;

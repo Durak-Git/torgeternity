@@ -184,7 +184,7 @@
           "shortBurst": "Kurzer Feuerstoß",
           "stymied": "Angeschlagen",
           "targetConcealment": "Deckungsschutz",
-          "targetRange": "Target Range",
+          "targetRange": "Entfernung zum Ziel",
           "targetSize": "Größe des Ziels",
           "targetVeryVulnerable": "Ziel sehr verwundbar",
           "targetVulnerable": "Ziel verwundbar",
@@ -1202,10 +1202,10 @@
       "racialPerks": "Volksfähigkeiten",
       "range": "Reichweite",
       "ranges": {
-        "short": "Short",
-        "medium": "Medium",
-        "long": "Long",
-        "extreme": "Extreme"
+        "short": "Kurz",
+        "medium": "Mittel",
+        "long": "Weit",
+        "extreme": "Extrem"
       },
       "realitySurge": "Realitätswelle",
       "reconnect": "Ankoppeln",
@@ -1473,7 +1473,7 @@
       "softArmor": "Weiche Rüstung",
       "stagger": "Erschüttern",
       "supernaturalEvil": "Übernatürliches Böses",
-      "unarmored": "Unarmored",
+      "unarmored": "Ungerüstet",
       "thrown": "Wurfwaffe",
       "torso": "Torso",
       "twoHanded": "Zweihändig",

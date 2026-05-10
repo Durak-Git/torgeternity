@@ -187,7 +187,7 @@
           "shortBurst": "Rafale courte",
           "stymied": "Déstabilisé",
           "targetConcealment": "Couvert de la cible",
-          "targetRange": "Target Range",
+          "targetRange": "Distance de la cible",
           "targetSize": "Taille de la cible",
           "targetVeryVulnerable": "Cible Très Vulnérable",
           "targetVulnerable": "Cible Vulnérable",
@@ -1205,10 +1205,10 @@
       "racialPerks": "Avantages raciaux",
       "range": "Portée",
       "ranges": {
-        "short": "Short",
-        "medium": "Medium",
-        "long": "Long",
-        "extreme": "Extreme"
+        "short": "Courte",
+        "medium": "Moyenne",
+        "long": "Longue",
+        "extreme": "Extrême"
       },
       "realitySurge": "Poussée de réalité",
       "reconnect": "Reconnection",
@@ -1476,7 +1476,7 @@
       "softArmor": "Armure souple",
       "stagger": "Déséquilibre",
       "supernaturalEvil": "Surnaturel maléfique",
-      "unarmored": "Unarmored",
+      "unarmored": "Sans armure",
       "thrown": "Lancée",
       "torso": "Torse",
       "twoHanded": "Deux mains",

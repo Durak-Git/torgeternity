@@ -2,16 +2,21 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## 14.1.0
+## 14.1.0 - Unarmored Trait + more V14 compatibility fixes
+- Add auto-generation of **Unarmored** trait when a defending actor does not have any armor equipped (e.g. for Hollow Point ammo).
+- Add the ability to add **Custom Attacks** to Threats.
+- Allow **Racial Perks** to be edited and deleted on SK Actor sheets (delete is still disabled if bestowed by a race perk).
 - Change default behavior of **right-click** on effect in Effects Panel to delete rather than disable.
 - Add **confirm delete** dialog when deleting an Effect from an Actor sheet or from the Effects Panel.
-- Add the ability to add **Custom Attacks** to Threats.
+
+### Bug Fixes
+- Get **Add All To Group** in combat tracker to select only the correct actors.
+- Fix **Show character information** in Actor context menu.
+
+### V14 compatibility
 - Set **verified** to 14.361, and set **maximum** to 14.
-- Allow **Racial Perks** to be edited and deleted on SK Actor sheets (delete is still disabled if bestowed by a race perk).
-- Update tooltips in Combat Tracker to match V14.
+- Update tooltips in Combat Tracker to match core V14 translation keys.
 - Update context menus in Chat Log and Combat Tracker to use new V14 property names.
-- Add auto-generation of **Unarmored** trait when a defending actor does not have any armor equipped (e.g. for Hollow Point ammo).
-- Get *Add All To Group** in combat tracker to select only the correct actors.
 
 ## 14.0.2
 - Active Effects on disconnected Items should be suppressed.

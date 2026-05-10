@@ -119,6 +119,11 @@ export async function renderSkillChat(test, origChatMessage) {
     test.sizeModifier = target.sizeModifier ?? 0;
     test.vulnerableModifier = target.vulnerableModifier ?? 0;
     test.darknessModifier = Math.min(0, (target.darknessModifier ?? 0) + (test.targetDarknessModifier ?? 0));
+    // If individual range modifier is required, uncomment the following line
+    if (!useHighestDN)
+      test.rangeModifier = Math.min(0, (target.rangeModifier ?? 0) + (test.targetRangeModifier ?? 0));
+    else if (first && !origChatMessage)
+      test.rangeModifier = Math.min(0, test.rangeModifier + (test.targetRangeModifier ?? 0));
 
     //
     // Check to see if we already have a chat title from a chat card roll. If not, Set title for Chat Message in test.chatTitle //
@@ -240,6 +245,7 @@ export async function renderSkillChat(test, origChatMessage) {
     if (test.testType === 'soak') {
       test.vulnerableModifier = 0;
       test.darknessModifier = 0;
+      test.rangeModifier = 0;
     }
 
     if (test.woundModifier < 0) {

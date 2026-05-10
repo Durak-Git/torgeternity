@@ -9,6 +9,8 @@
 - Set **verified** to 14.361, and set **maximum** to 14.
 - Allow **Racial Perks** to be edited and deleted on SK Actor sheets (delete is still disabled if bestowed by a race perk).
 - Update tooltips in Combat Tracker to match V14.
+- Update context menus in Chat Log and Combat Tracker to use new V14 property names.
+- Add auto-generation of **Unarmored** trait when a defending actor does not have any armor equipped (e.g. for Hollow Point ammo).
 
 ## 14.0.2
 - Active Effects on disconnected Items should be suppressed.

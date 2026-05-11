@@ -245,7 +245,7 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       context.test.darknessModifier = 0;
     }
     // Do not show range penalty for multi-target.
-    context.showRangePenalty = (!testItem || testItem.system instanceof MissileWeaponItemData) && targets.length === 1;
+    context.showRangePenalty = (!testItem || testItem.system instanceof MissileWeaponItemData) && targets.length < 2;
 
     // Maybe there is an explicit amount of damage
     for (const target of context.test.targets)

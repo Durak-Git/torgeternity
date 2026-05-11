@@ -399,6 +399,7 @@ export async function renderSkillChat(test, origChatMessage) {
 
     if (modifiers.length) {
       test.modifierText = `<p>${modifiers.sort().join('<br>')}</p>`;
+      if (!singleResult && test.targets.length > 1) target.modifierText = test.modifierText;
     }
 
     // Add +3 cards to bonus

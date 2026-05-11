@@ -15,6 +15,7 @@
   - On multi-target:
     - If the individual DN game settings is enabled, then the range penalty for each target is applied separately.
     - If individual DN is not set, the range penalty to the **furthest** target is selected by default.
+- In Chat Card when individual DN is being used against more than one target, add **INFO** button to end of action total showing modifiers applied for each target.
 
 ### Bug Fixes
 - Get **Add All To Group** in combat tracker to select only the correct actors.

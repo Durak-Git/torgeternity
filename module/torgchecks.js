@@ -114,7 +114,8 @@ export async function renderSkillChat(test, origChatMessage) {
   }
 
   // Apply targetRangeModifier only once to the chat message (not on chat message updates)
-  if (useHighestDN && !origChatMessage)
+  const commonRange = useHighestDN || test.targets.length === 1;
+  if (commonRange && !origChatMessage)
     test.rangeModifier = Math.min(0, (test.rangeModifier ?? 0) + (test.targetRangeModifier ?? 0));
 
   const useColorBlind = game.settings.get('torgeternity', 'useColorBlindnessColors');
@@ -123,7 +124,7 @@ export async function renderSkillChat(test, origChatMessage) {
     test.sizeModifier = target.sizeModifier ?? 0;
     test.vulnerableModifier = target.vulnerableModifier ?? 0;
     test.darknessModifier = Math.min(0, (target.darknessModifier ?? 0) + (test.targetDarknessModifier ?? 0));
-    if (!useHighestDN)
+    if (!commonRange)
       test.rangeModifier = Math.min(0, (target.rangeModifier ?? 0) + (test.targetRangeModifier ?? 0));
 
     //

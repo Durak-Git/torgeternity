@@ -201,7 +201,6 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     const testItem = this.test.itemId && myActor.items.get(this.test.itemId);
     context.test.requiresConcentration = testItem?.requiresConcentration;
-    context.showRangePenalty = (!testItem || testItem.system instanceof MissileWeaponItemData);
 
     // Set Modifiers for Vehicles
     if (this.test.testType === 'chase') {
@@ -245,6 +244,8 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       context.test.vulnerableModifier = 0;
       context.test.darknessModifier = 0;
     }
+    // Do not show range penalty for multi-target.
+    context.showRangePenalty = (!testItem || testItem.system instanceof MissileWeaponItemData) && targets.length === 1;
 
     // Maybe there is an explicit amount of damage
     for (const target of context.test.targets)

@@ -6,6 +6,7 @@
 - Avoid rolling a phantom BD when applying soak to a test.
 - Message about "successfully DEFENDed" in chat message moved to the section for each individual target (since maybe only specific targets did a successful Active Defense)
 - Do not show Turn Marker under defeated tokens.
+- Allow Active Effects to be created once again (Foundry 14.363 has made the `start.time` in Active Effects a compulsory value).
 
 ## 14.1.0 - Unarmored Trait + Range Penalty + more V14 compatibility fixes
 - Add auto-generation of **Unarmored** trait when a defending actor has an armor value of 0 (e.g. for Hollow Point ammo).

@@ -93,11 +93,8 @@ export default class TorgActiveEffect extends foundry.documents.ActiveEffect {
     if (this.actor) {
       const combatant = game.combat?.getCombatantsByActor(this.actor)?.[0];
       this.updateSource({
-        start: {
-          combatant: combatant?.id ?? null,
-          turn: null,
-          time: game.time.worldTime,
-        }
+        "start.combatant": combatant?.id ?? null,
+        "start.turn": null,
       })
     }
   }

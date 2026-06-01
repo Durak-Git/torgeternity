@@ -473,6 +473,8 @@ export async function renderSkillChat(test, origChatMessage) {
     target.showApplyEffects = !!test.effects.map(fx => fromUuidSync(fx)).find(fx => fx.transfersToTarget);
 
     // Approved Action Processing
+    target.successfulDefendApprovedAction = false;
+    test.successfulApprovedAction = false;
     if (test.result < TestResult.STANDARD) {
       // "Defend is successful once an attack or interaction misses the hero."
       if (target.type === 'stormknight' &&

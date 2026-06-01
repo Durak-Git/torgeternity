@@ -2,7 +2,7 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## NEXT
+## 14.1.1
 - Avoid rolling a phantom BD when applying soak to a test.
 - Message about "successfully DEFENDed" in chat message moved to the section for each individual target (since maybe only specific targets did a successful Active Defense)
 - Do not show Turn Marker under defeated tokens.

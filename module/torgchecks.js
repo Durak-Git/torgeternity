@@ -924,8 +924,10 @@ export async function soakDamages(soaker, origMessageId, options = {}) {
   const skillName = 'reality';
   const skillValue = soaker.system.skills[skillName].value;
 
-  // Before calculating roll, check to see if it can be attempted unskilled; exit test if actor doesn't have required skill
-  if (checkUnskilled(skillValue, skillName, soaker)) return;
+  // Before calculating roll, check to see if it can be attempted unskilled; exit test if actor doesn't have required skill.
+  // Stormknights must always have at least 1 rank in Reality.
+  // Threats are managed by the GM, so the GM can decide if the Threat is allowed to spend a Possibility even when it doesn't have any adds.
+  //if (checkUnskilled(skillValue, skillName, soaker)) return;
 
   return TestDialog.wait({
     testType: 'soak',

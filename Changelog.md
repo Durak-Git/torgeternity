@@ -4,6 +4,7 @@
 
 ## NEXT
 - Don't prevent a SOAK test if the Actor is unskilled in Reality (SKs must always have at least 1 add, and Threats are managed by the GM).
+- An attack with 'lowestArmor' (e.g. Fireball) ignores armor with the 'torso' trait.
 
 ## 14.1.1
 - Avoid rolling a phantom BD when applying soak to a test.

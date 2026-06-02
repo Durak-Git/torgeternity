@@ -589,7 +589,7 @@ export async function renderSkillChat(test, origChatMessage) {
         // If armor and cover can assist, adjust toughness based on AP effects and cover modifier
         if (test.applyArmor) {
           // "lowestArmor" trait on attack means armor with "torso" trait is ignored.
-          const armor = ((test.attackTraits.includes('lowestArmor') && target.defenseTraits.includes('torso')) ? 0 : target.armor) +
+          const armor = ((test.attackTraits.includes('lowestArmor') && !target.defenseTraits.includes('fullBody')) ? 0 : target.armor) +
             getExtraProtection(test.attackTraits, target.defenses, 'Armor');
           const weaponAP = applyNumericEffects('test.weaponAP', test.weaponAP, effects);
           target.targetAdjustedToughness += Math.max(0, armor - weaponAP) + test.coverModifier;

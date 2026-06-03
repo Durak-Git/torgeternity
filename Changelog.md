@@ -3,10 +3,10 @@
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
 ## NEXT
-- Don't prevent a SOAK test if the Actor is unskilled in Reality (SKs must always have at least 1 add, and Threats are managed by the GM).
-- An attack with 'lowestArmor' (e.g. Fireball) ignores armor without the 'fullBody' trait.
+- Don't prevent a **SOAK test** if the Actor is unskilled in Reality (SKs must always have at least 1 add, and Threats are managed by the GM).
+- An attack with 'lowestArmor' trait (e.g. Fireball) ignores armor without the 'fullBody' trait.
 - Prevent locking up canvas when deleting selected tokens while hovering over another token.
-- When "Skip Defeated" is checked in a combat's settings, any defeated combatant is marked as having taken their turn (making it quicker to put the turn marker under the second faction on each turn).
+- When **Skip Defeated** is checked in a combat's settings, any defeated combatant is marked as having taken their turn (making it quicker to put the turn marker under the second faction on each turn).
 
 ## 14.1.1
 - Avoid rolling a phantom BD when applying soak to a test.

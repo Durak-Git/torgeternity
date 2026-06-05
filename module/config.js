@@ -152,7 +152,7 @@ export function initConfig() {
   torgeternity.cosmPossyLargeIcons = {};
   Object.keys(torgeternity.axiomByCosm).forEach(cosm => {
     torgeternity.cosmPossyIcons[cosm] = `systems/torgeternity/images/possy${(cosm === 'coreEarth') ? 'token' : '_' + cosm.toLowerCase()}.webp`;
-    torgeternity.cosmPossyLargeIcons[cosm] = (cosm !== 'other') && `systems/torgeternity/images/cosm-icons/${cosm.toLowerCase()}.webp`;
+    torgeternity.cosmPossyLargeIcons[cosm] = (cosm !== 'other') && `systems/torgeternity/images/cosm-icons/${cosm}.webp`;
   });
 
   Hooks.callAll('torgSetupCosms', torgeternity);

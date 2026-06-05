@@ -8,7 +8,9 @@
 - Prevent locking up canvas when deleting selected tokens while hovering over another token.
 - When **Skip Defeated** is checked in a combat's settings, any defeated combatant is marked as having taken their turn (making it quicker to put the turn marker under the second faction on each turn).
 - Large Possibility Icons (for the PossibiltyByCosm dialog) have their filenames in mixed case, not all lower case.
-- Do not include BANNED players in the Hands Configuration window (so GMs can "ban" their test accounts during a normal game).
+- Hands Manager Updates:
+  - Do not include BANNED players (so GMs can "ban" their test accounts during a normal game).
+  - Show large card when hovering over cards in the last column.
 
 ## 14.1.1
 - Avoid rolling a phantom BD when applying soak to a test.

@@ -2,7 +2,7 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## NEXT
+## 14.2.0 - Small Improvements
 - Don't prevent a **SOAK test** if the Actor is unskilled in Reality (SKs must always have at least 1 add, and Threats are managed by the GM).
 - An attack with 'lowestArmor' trait (e.g. Fireball) ignores armor without the 'fullBody' trait.
 - Prevent locking up canvas when deleting selected tokens while hovering over another token.
@@ -11,8 +11,9 @@
 - Hands Manager Updates:
   - Do not include BANNED players (so GMs can "ban" their test accounts during a normal game).
   - Show large card when hovering over cards in the last column.
-- Display "Special Ability Rollable" items in the Attacks and Powers section of Stormknights:
-  - Allow "Special Ability Rollable" items to use an **Attribute or** a Skill test (rather than only a skill test)
+- Display **Special Ability Rollable** items in the Attacks and Powers section of Stormknights:
+  - Allow "Special Ability Rollable" items to use an **Attribute or** a Skill test (rather than only a skill test).
+    - This is useful for items such as the special Aysle Ring in the Delphi Missions book.
 
 ## 14.1.1
 - Avoid rolling a phantom BD when applying soak to a test.

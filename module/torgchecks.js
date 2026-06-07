@@ -1236,10 +1236,10 @@ export async function rollAttribute(actor, attributeName, options = {}) {
     actor: actor,
     skillName: attributeName,
     skillValue: actor.system.attributes[attributeName].value,
-    isFav: actor.system.attributes[attributeName].isFav
+    isFav: actor.system.attributes[attributeName].isFav,
+    itemId: options.item?.id,
   }, { useTargets: true, ...options });
 }
-
 
 export async function rollSkill(actor, skillName, options = {}) {
 
@@ -1287,6 +1287,7 @@ export async function rollSkill(actor, skillName, options = {}) {
     isFav: skillData.isFav,
     skillName: skillName,
     skillValue: skillData.value,
+    itemId: options.item?.id,
   }, { useTargets: (testType === 'skill'), ...options });
 }
 

@@ -11,6 +11,8 @@
 - Hands Manager Updates:
   - Do not include BANNED players (so GMs can "ban" their test accounts during a normal game).
   - Show large card when hovering over cards in the last column.
+- Display "Special Ability Rollable" items in the Attacks and Powers section of Stormknights:
+  - Allow "Special Ability Rollable" items to use an **Attribute or** a Skill test (rather than only a skill test)
 
 ## 14.1.1
 - Avoid rolling a phantom BD when applying soak to a test.

@@ -463,6 +463,11 @@ export function initConfig() {
     geneMod: 'torgeternity.perkTypes.biotech',
   }
 
+  torgeternity.attributeSkills = {
+    ...Object.entries(torgeternity.attributeTypes).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.sheetLabels.attributes' }; return acc }, {}),
+    ...Object.entries(torgeternity.skills).reduce((acc, ent) => { acc[ent[0]] = { label: ent[1], group: 'torgeternity.sheetLabels.skills' }; return acc }, {}),
+  }
+
   torgeternity.statusEffects = [
     {
       img: 'systems/torgeternity/images/status-markers/stymied.webp',

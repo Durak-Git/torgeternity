@@ -155,6 +155,12 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
         const bonus = combatant.currentBonus;
         if (Number.isInteger(bonus)) this.test.bonus = bonus;
       }
+
+      // Actor has some overrides for this particular test (e.g. soak.isFav)
+      if (actor.system?.testOverride[this.test.testType]) {
+        foundry.utils.mergeObject(this.test, actor.system?.testOverride[this.test.testType],
+          { overwrite: true, inplace: true });
+      }
     }
 
     // Ensure all relevant fields are Number

@@ -3,8 +3,10 @@
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
 ## NEXT
-- Add new `system.defenses.soakIsFav` flag to default a Soak test to Favored (for those situations where the reality skill is NOT favored).
-
+- Add new `system.testOverride.<testname>.<field>` support for rolling tests, e.g.
+  - Soak tests are Favored create an Active Effect that has the change: `system.testOverride.soak.isFav` OVERRIDE true
+  - Soaks test are Disfavored, with `system.testOverride.soak.disfavored` OVERRIDE true
+  
 ## 14.2.1 - 'noReroll20' override for attribute/skill tests
 - Add new `system.attributes.XXX.noReroll20` and `system.skill.XXX.noReroll20` fields which can be set by an Active Effect to prevent rerolling on a natural 20 (such as for the Diminish Spell).
   - Setting `system.attributes.XXX.noReroll20` will also apply to all skill tests that use that attribute (unless overridden by a specific `system.skill.XXX.noReroll20`)

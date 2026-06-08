@@ -2,7 +2,7 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## NEXT
+## 14.2.1 - 'noReroll20' override for attribute/skill tests
 - Add new `system.attributes.XXX.noReroll20` and `system.skill.XXX.noReroll20` fields which can be set by an Active Effect to prevent rerolling on a natural 20 (such as for the Diminish Spell).
   - Setting `system.attributes.XXX.noReroll20` will also apply to all skill tests that use that attribute (unless overridden by a specific `system.skill.XXX.noReroll20`)
 

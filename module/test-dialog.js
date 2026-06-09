@@ -157,10 +157,9 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       }
 
       // Actor has some overrides for this particular test (e.g. soak.isFav)
-      if (actor.system?.testOverride[this.test.testType]) {
-        foundry.utils.mergeObject(this.test, actor.system?.testOverride[this.test.testType],
-          { overwrite: true, inplace: true });
-      }
+      const overrides = actor.system?.testOverride?.[this.test.testType];
+      if (overrides)
+        foundry.utils.mergeObject(this.test, overrides, { overwrite: true, inplace: true });
     }
 
     // Ensure all relevant fields are Number

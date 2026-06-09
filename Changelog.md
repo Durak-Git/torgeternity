@@ -3,10 +3,11 @@
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
 ## NEXT
-- Add new `system.testOverride.<testname>.<field>` support for rolling tests, e.g.
+- Add new `system.testOverride.<testType>.<field>` support for rolling tests, e.g.
   - Soak tests are Favored create an Active Effect that has the change: `system.testOverride.soak.isFav` OVERRIDE true
   - Soaks test are Disfavored, with `system.testOverride.soak.disfavored` OVERRIDE true
-- Don't include banned players in the Party Sheet window
+- Don't include banned players in the Party Sheet window.
+- In the **Default Card Deck Configuration** window, clicking on the `label` of a field will open up the currently selected card stack (deck/disard pile/hand) configured for that field.
   
 ## 14.2.1 - 'noReroll20' override for attribute/skill tests
 - Add new `system.attributes.XXX.noReroll20` and `system.skill.XXX.noReroll20` fields which can be set by an Active Effect to prevent rerolling on a natural 20 (such as for the Diminish Spell).

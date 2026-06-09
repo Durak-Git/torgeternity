@@ -6,6 +6,7 @@
 - Add new `system.testOverride.<testname>.<field>` support for rolling tests, e.g.
   - Soak tests are Favored create an Active Effect that has the change: `system.testOverride.soak.isFav` OVERRIDE true
   - Soaks test are Disfavored, with `system.testOverride.soak.disfavored` OVERRIDE true
+- Don't include banned players in the Party Sheet window
   
 ## 14.2.1 - 'noReroll20' override for attribute/skill tests
 - Add new `system.attributes.XXX.noReroll20` and `system.skill.XXX.noReroll20` fields which can be set by an Active Effect to prevent rerolling on a natural 20 (such as for the Diminish Spell).

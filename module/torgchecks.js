@@ -943,7 +943,6 @@ export async function soakDamages(soaker, origMessageId, options = {}) {
     isFav:
       soaker.system.skills[skillName]?.isFav ||
       soaker.system.attributes[skillName]?.isFav ||
-      soaker.system.defenses.soakIsFav ||
       false,
     skillName: skillName,
     skillValue: skillValue,

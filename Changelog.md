@@ -2,7 +2,7 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## NEXT
+## 14.2.3 - Fix rolling skills from Vehicle sheets
 - **Party Sheet** updates whenever the displayed Actors is modified, or the user's selected character is changed.
 - Fix bug that prevented skill checks being made from Vehicle sheets.
 

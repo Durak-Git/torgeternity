@@ -4,6 +4,7 @@
 
 ## NEXT
 - **Party Sheet** updates whenever the displayed Actors is modified, or the user's selected character is changed.
+- Fix bug that prevented skill checks being made from Vehicle sheets.
 
 ## 14.2.2 - Override Test Parameters
 - Add new `system.testOverride.<testType>.<field>` support for rolling tests, e.g.

@@ -2,8 +2,9 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## NEXT
+## 14.2.4
 - Add title to Party Sheet window
+- Prevent error from Actor sheet when zoneAxioms is undefined for an Actor.
 
 ## TRANSLATIONS
 "torgeternity.partySheet.title": "Party Sheet"

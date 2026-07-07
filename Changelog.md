@@ -2,6 +2,9 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## 14.3.0
+- Define all non-persistent Actor data in the actor DataModel, so that Foundry can perform proper validation.
+
 ## 14.2.4
 - Add title to Party Sheet window
 - Prevent error from Actor sheet when zoneAxioms is undefined for an Actor.

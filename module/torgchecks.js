@@ -859,7 +859,7 @@ export function applyNumericEffects(fieldname, origvalue, effects) {
 
   // Get changes into a sorted list in priority order
   const changes = effects.filter(fx => fx && !fx.transferOnOutcome)
-    .map(fx => fx.changes.filter(ch => ch.key === fieldname)).flat(1)
+    .map(fx => fx.system.changes.filter(ch => ch.key === fieldname)).flat(1)
     .sort((a, b) => (a.priority ?? (a.mode * 10)) - (b.priority ?? (b.mode * 10)));
 
   // DataModel.applyField
@@ -1532,7 +1532,7 @@ function appliesToTest(effect, test, target) {
   if (!testTraits(effect.system.applyIfAttackTrait, effect.system.applyIfAttackTraitCombine, test.attackTraits, test.skillName)) return false;
   if (!testTraits(effect.system.applyIfDefendTrait, effect.system.applyIfDefendTraitCombine, target?.defenseTraits, test.skillName)) return false;
   // Not transferred, but might affect the result. (e.g. 'test.damage' or 'test.weaponAP')
-  return effect.changes.find(change => change.key.startsWith('test.'));
+  return effect.system.changes.find(change => change.key.startsWith('test.'));
 }
 
 

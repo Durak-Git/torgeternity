@@ -375,7 +375,9 @@ async function _onClickInlineBuff(event) {
     img: 'icons/svg/aura.svg',
     //disabled: false,
     //transfer: false,  // Placed directly on Actor, so not transferred
-    changes: []
+    system: {
+      changes: []
+    }
   };
 
   function getType(v) {
@@ -386,13 +388,13 @@ async function _onClickInlineBuff(event) {
   }
   for (const [key, value] of Object.entries({ ...target.dataset })) {
     if (key.startsWith('skill'))
-      effectdata.changes.push({
+      effectdata.system.changes.push({
         key: `system.skills.${key.slice(5)}.adds`,
         type: getType(value),
         value: value
       });
     else if (key.startsWith('attribute'))
-      effectdata.changes.push({
+      effectdata.system.changes.push({
         key: `system.attributes.${key.slice(9)}.value`,
         type: getType(value),
         value: value

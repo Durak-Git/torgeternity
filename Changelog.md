@@ -2,6 +2,9 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## TRANSLATIONS
+"torgeternity.partySheet.title": "Party Sheet"
+
 ## 14.3.0
 - Define all non-persistent Actor data in the actor DataModel, so that Foundry can perform proper validation.
 - Fix migration of old AE change keys such as "system.dodgeDefenseMod" which were broken in Foundry V14.
@@ -10,10 +13,6 @@
 ## 14.2.4
 - Add title to Party Sheet window
 - Prevent error from Actor sheet when zoneAxioms is undefined for an Actor.
-
-## TRANSLATIONS
-"torgeternity.partySheet.title": "Party Sheet"
-
 
 ## 14.2.3 - Fix rolling skills from Vehicle sheets
 - **Party Sheet** updates whenever the displayed Actors is modified, or the user's selected character is changed.

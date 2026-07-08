@@ -5,6 +5,7 @@
 ## 14.3.0
 - Define all non-persistent Actor data in the actor DataModel, so that Foundry can perform proper validation.
 - Fix migration of old AE change keys such as "system.dodgeDefenseMod" which were broken in Foundry V14.
+- A detached Combat Tracker is now resizable, it gets around Foundry otherwise forcing a 502x502 size on the window.
 
 ## 14.2.4
 - Add title to Party Sheet window

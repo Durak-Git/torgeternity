@@ -437,10 +437,6 @@ function InlineDamageEnricher(match, options) {
     else if (key === 'damage' || key === _loc('torgeternity.chatText.damage'))
       dataset.damage = value;
     else if (key === 'traits') {
-      if (!dataset.damage) {
-        console.warn(`'traits' only valid with 'damage' in ${match[0]}`);
-        continue;
-      }
       dataset.traits = value;
     }
     else
@@ -526,11 +522,11 @@ async function _onClickInlineDamage(event) {
     const damage = dataset.damage ?
       torgDamage(dataset.damage, toughness, { attackTraits, defenseTraits }) :
       torgDamageModifiers({
-        shocks: dataset.shock && Number(dataset.shock),
-        wounds: dataset.wounds && Number(dataset.wounds)
+        shocks: (dataset.shock && Number(dataset.shock)) ?? 0,
+        wounds: (dataset.wounds && Number(dataset.wounds)) ?? 0
       }, { attackTraits, defenseTraits });
     const wasKO = damage.shocks && actor.hasStatusEffect('unconscious');
-    const applyResult = actor.applyDamages(damage.shocks, damage.wounds);
+    const applyResult = actor.applyDamages(damage.shocks, damage.wounds, { nonLethal: attackTraits?.includes('nonLethal') });
 
     // Chat Message
 

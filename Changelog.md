@@ -9,8 +9,9 @@
 - Define all non-persistent Actor data in the actor DataModel, so that Foundry can perform proper validation.
 - Fix migration of old AE change keys such as "system.dodgeDefenseMod" which were broken in Foundry V14.
 - A detached **Combat Tracker** is now resizable, it gets around Foundry otherwise forcing a 502x502 size on the window.
+- An attack with an Item with the **nonLethal** trait will not prompt for a Defeat test for Stormknights.
 
-### Token Action HUD support
+### Token Action HUD
 - Set `requiredCoreModuleVersion` to `2`
 - Fix skill 'Unarmed Combat' and the Interaction entries in the Skills menu to roll against the selected targets (to match behavior of choosing those skills directly from the Actor sheet)
 - Entries in the "Special Abilities" section of the "Attacks and Powers" menu will now roll correctly.

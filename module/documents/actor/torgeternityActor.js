@@ -148,9 +148,10 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       /* Check for exceeding shock and/or wounds */
 
       if (options.woundsExceeded) {
-        if (this.type === 'stormknight')
-          this.notifyDefeat();
-        else if (game.settings.get('torgeternity', 'autoWound'))
+        if (this.type === 'stormknight') {
+          if (!options.nonLethal) // nonLethal damage won't require a Defeat Test for SKs
+            this.notifyDefeat();
+        } else if (game.settings.get('torgeternity', 'autoWound'))
           this.toggleStatusEffect('dead', { active: true, overlay: true });
       }
 
@@ -358,7 +359,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
    * @param {number} wounds The number of wounds to inflict on this actor.
    * @returns {Promise<this>}
    */
-  applyDamages(shock, wounds) {
+  applyDamages(shock, wounds, options = {}) {
     let updates = {};
     let result = {};
     // No clamping of values
@@ -372,7 +373,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       if (newvalue > this.system.wounds.max) result.woundsExceeded = true;
       updates['system.wounds.value'] = this.system.wounds.value + wounds;
     }
-    this.update(updates);
+    this.update(updates, options);
     return result;
   }
 

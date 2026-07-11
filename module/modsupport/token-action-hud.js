@@ -199,7 +199,7 @@ export default async function setupTokenActionHud(coreModule) {
       await this.#createList(parent, actor, tokenId, ACTION_ATTACK, actor.itemTypes.missileweapon, 'missileWeapons');
       await this.#createList(parent, actor, tokenId, ACTION_ATTACK, actor.itemTypes.firearm, 'firearms');
       await this.#createList(parent, actor, tokenId, ACTION_ATTACK, actor.itemTypes.heavyweapon, 'heavyWeapons');
-      await this.#createList(parent, actor, tokenId, ACTION_ATTACK, actor.itemTypes["specialability-rollable"], 'specialabilities');
+      await this.#createList(parent, actor, tokenId, ACTION_GEAR, actor.itemTypes["specialability-rollable"], 'specialabilities');
       await this.#createList(parent, actor, tokenId, ACTION_ATTACK, actor.itemTypes.customAttack, 'customAttacks');
     }
 
@@ -261,6 +261,7 @@ export default async function setupTokenActionHud(coreModule) {
         if (tooltip) result.tooltip = { content: tooltip };
         return result;
       })
+      actions.sort((a, b) => a.name.localeCompare(b.name));
       const subcat = { id: `${parent.id}-${CONDITION_ID}`, name: coreModule.api.Utils.i18n('torgeternity.sheetLabels.conditions') };
       this.addGroup(subcat, parent);
       this.addActions(actions, subcat);
@@ -329,6 +330,15 @@ export default async function setupTokenActionHud(coreModule) {
             switch (item.type) {
               case 'eternityshard':
                 return rollTapping(this.actor, item);
+              default:
+                {
+                  const skillorattribute = item.system.attackWith ?? item.system.skill;
+                  if (!skillorattribute) return;
+                  if (Object.hasOwn(CONFIG.attributeTypes, skillorattribute))
+                    return rollAttribute(actor, skillorattribute, { item: item, /*window: { windowId: this.window.windowId }*/ });
+                  else
+                    return rollSkill(actor, skillorattribute, { item: item, /*window: { windowId: this.window.windowId }*/ });
+                }
             }
           }
           break;

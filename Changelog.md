@@ -11,6 +11,8 @@
 - A detached Combat Tracker is now resizable, it gets around Foundry otherwise forcing a 502x502 size on the window.
 - Token Action HUD: Set `requiredCoreModuleVersion` to `2`
 - Token Action HUD: Fix skill 'Unarmed Combat' and the Interaction entries in the Skills menu to roll against the selected targets (to match behavior of choosing those skills directly from the Actor sheet)
+- Token Action HUD: Entries in the "Special Abilities" section of the "Attacks and Powers" menu will now roll correctly.
+- Token Action HUD: Sort the Conditions alphabetically (after localization).
 
 ## 14.2.4
 - Add title to Party Sheet window

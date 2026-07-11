@@ -512,7 +512,7 @@ export default async function setupTokenActionHud(coreModule) {
 
   const module = game.system;
   module.api = {
-    requiredCoreModuleVersion: "2.0",
+    requiredCoreModuleVersion: "2",
     SystemManager: MySystemManager
   }
 

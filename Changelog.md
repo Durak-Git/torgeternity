@@ -10,6 +10,7 @@
 - Fix migration of old AE change keys such as "system.dodgeDefenseMod" which were broken in Foundry V14.
 - A detached **Combat Tracker** is now resizable, it gets around Foundry otherwise forcing a 502x502 size on the window.
 - An attack with an Item with the **nonLethal** trait will not prompt for a Defeat test for Stormknights, and will ensure the target has the `unconscious` condition.
+- Remove use of `game.scenes.current` since it is also available as `canvas.scene`, this clarifies the code in `getTokenDarknessPenalty` to not return a value if called for other than the current scene.
 
 ### Token Action HUD
 - Set `requiredCoreModuleVersion` to `2`

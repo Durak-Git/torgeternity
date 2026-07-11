@@ -385,7 +385,7 @@ export default class TorgeternityItem extends foundry.documents.Item {
   }
 
   get zoneContradictions() {
-    return this.isGeneralContradiction(game.scenes.current) || (this.parent && this.isContradiction(this.parent.zoneAxioms));
+    return this.isGeneralContradiction(canvas.scene) || (this.parent && this.isContradiction(this.parent.zoneAxioms));
   }
 
   get actorContradictions() {

@@ -157,10 +157,10 @@ export default class TorgeternityActor extends foundry.documents.Actor {
           this.toggleStatusEffect('dead', { active: true, overlay: true });
       }
 
-      if (options.shockExceeded && !this.hasStatusEffect('dead') && game.settings.get('torgeternity', 'autoShock'))
+      if (options.shockExceeded && game.settings.get('torgeternity', 'autoShock'))
         setUnconscious = true;
 
-      if (setUnconscious)
+      if (setUnconscious && !this.hasStatusEffect('dead') && !this.hasStatusEffect('unconscious'))
         this.toggleStatusEffect('unconscious', {
           active: true,
           overlay: true,

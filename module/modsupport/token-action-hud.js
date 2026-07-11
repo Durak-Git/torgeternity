@@ -96,6 +96,12 @@ export default async function setupTokenActionHud(coreModule) {
     }
 
     async #getSkills(actor, tokenId, parent) {
+      function skillAction(skill, key) {
+        if (skill.groupName === 'interaction') return ACTION_ATTACK_INTERACTION;
+        //if (skill.groupName === 'combat') return ACTION_ATTACK;
+        if (key === 'unarmedCombat') return ACTION_ATTACK_INTERACTION;
+        return ACTION_SKILL;
+      }
       const showUskilled = game.settings.get('torgeternity', 'tahShowUnskilled');
       const allSkills = Object.entries(actor.system.skills)
         .filter(([key, skill]) => showUskilled || (skill.adds))
@@ -104,7 +110,7 @@ export default async function setupTokenActionHud(coreModule) {
             id: key,
             name: _loc(`torgeternity.skills.${key}`) + (skill.isFav ? FAVOURED : '') + ` (${skill.value || '-'})`,
             groupName: skill.groupName, // for local filtering
-            encodedValue: [ACTION_SKILL, actor.id, tokenId, key].join(this.delimiter),
+            encodedValue: [skillAction(skill, key), actor.id, tokenId, key].join(this.delimiter),
             //img: 'systems/torgeternity/images/icons/custom-skills.webp',
             //img: coreModule.api.Utils.getImage(skill),
             //tooltip: { content: skill.system.description },

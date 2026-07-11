@@ -10,6 +10,7 @@
 - Fix migration of old AE change keys such as "system.dodgeDefenseMod" which were broken in Foundry V14.
 - A detached Combat Tracker is now resizable, it gets around Foundry otherwise forcing a 502x502 size on the window.
 - Token Action HUD: Set `requiredCoreModuleVersion` to `2`
+- Token Action HUD: Fix skill 'Unarmed Combat' and the Interaction entries in the Skills menu to roll against the selected targets (to match behavior of choosing those skills directly from the Actor sheet)
 
 ## 14.2.4
 - Add title to Party Sheet window

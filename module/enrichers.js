@@ -525,7 +525,7 @@ async function _onClickInlineDamage(event) {
         shocks: (dataset.shock && Number(dataset.shock)) ?? 0,
         wounds: (dataset.wounds && Number(dataset.wounds)) ?? 0
       }, { attackTraits, defenseTraits });
-    const wasKO = damage.shocks && actor.hasStatusEffect('unconscious');
+    const wasKO = actor.hasStatusEffect('unconscious');
     const applyResult = actor.applyDamages(damage.shocks, damage.wounds, { nonLethal: attackTraits?.includes('nonLethal') });
 
     // Chat Message
@@ -533,10 +533,11 @@ async function _onClickInlineDamage(event) {
     chatOutput += `<li>${actor.name}: `;
     const chatParts = [];
     chatParts.push(damage.label);
-    if (damage.shocks && wasKO) {
-      chatParts.push(`${_loc('torgeternity.macros.fatigueMacroCharAlreadyKO')}`);
-    } else if (applyResult.shockExceeded) {
-      chatParts.push(`<br><strong>${actor.name}${_loc('torgeternity.macros.fatigueMacroCharKO')}</strong>`);
+    if (applyResult.shockExceeded || applyResult.woundsExceeded) {
+      if (wasKO)
+        chatParts.push(`${_loc('torgeternity.macros.fatigueMacroCharAlreadyKO')}`);
+      else
+        chatParts.push(`<br><strong>${actor.name}${_loc('torgeternity.macros.fatigueMacroCharKO')}</strong>`);
     }
     chatOutput += chatParts.join(', ') + '</li>';
   }

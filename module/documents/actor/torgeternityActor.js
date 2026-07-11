@@ -144,27 +144,30 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     // Skip most of the rest if we didn't make the update
     // although we need to update the player list after all other changes if possibilities have changed.
     if (game.userId === userId) {
-
       /* Check for exceeding shock and/or wounds */
+      let setUnconscious;
 
       if (options.woundsExceeded) {
         if (this.type === 'stormknight') {
-          if (!options.nonLethal) // nonLethal damage won't require a Defeat Test for SKs
+          if (options.nonLethal) // nonLethal damage won't require a Defeat Test for SKs
+            setUnconscious = true;
+          else
             this.notifyDefeat();
         } else if (game.settings.get('torgeternity', 'autoWound'))
           this.toggleStatusEffect('dead', { active: true, overlay: true });
       }
 
-      if (options.shockExceeded && !this.hasStatusEffect('dead') && game.settings.get('torgeternity', 'autoShock')) {
+      if (options.shockExceeded && !this.hasStatusEffect('dead') && game.settings.get('torgeternity', 'autoShock'))
+        setUnconscious = true;
+
+      if (setUnconscious)
         this.toggleStatusEffect('unconscious', {
           active: true,
           overlay: true,
         }).then(effect => effect.update({
           start: { time: game.time.worldTime },
           duration: { value: 30, units: 'minutes' }
-
         }))
-      }
 
       if (options.woundsExceeded || options.shockExceeded) {
         const updates = {};

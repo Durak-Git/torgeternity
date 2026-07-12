@@ -735,7 +735,7 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
     if (button.dataset.testtype === 'attribute')
       return this.actor.rollAttribute(button.dataset.name, /*, undefined, {window: { windowId: this.window.windowId }}*/)
     else
-      return this.actor.rollSkill(button.dataset.name, /*, undefined, {window: { windowId: this.window.windowId }*}/ )
+      return this.actor.rollSkill(button.dataset.name, /*, undefined, {window: { windowId: this.window.windowId }}*/)
   }
 
   /**
@@ -744,8 +744,8 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
    * @param {HTMLButtonElement} button
    * @this {TorgeternityActorSheet}
    */
-        static async #onChaseRoll(event, button) {
-        if(!game.combat) {
+  static async #onChaseRoll(event, button) {
+    if (!game.combat) {
       ui.notifications.info(_loc('torgeternity.chatText.check.noTracker'));
       return;
     }

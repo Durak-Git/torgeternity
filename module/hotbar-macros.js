@@ -1,5 +1,4 @@
 import { TorgeternityMacros } from './macros.js';
-import { rollAttack, rollPower } from './torgchecks.js';
 import { TestDialog } from './test-dialog.js';
 
 const { DialogV2 } = foundry.applications.api;
@@ -128,13 +127,13 @@ async function rollItemMacro(itemName, itemType) {
     case 'firearm':
     case 'heavyweapon':
     case 'specialability-rollable':
-      rollAttack(actor, item);
+      actor.rollAttack(item);
       break;
 
     case 'psionicpower':
     case 'miracle':
     case 'spell':
-      rollPower(actor, item);
+      actor.rollPower(item);
       break;
 
     default:

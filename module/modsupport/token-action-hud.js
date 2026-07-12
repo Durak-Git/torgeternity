@@ -1,4 +1,3 @@
-import { rollAttack, rollPower, rollAttribute, rollSkill, rollUnarmedAttack, rollInteractionAttack, rollTapping } from '../torgchecks.js';
 import { prepareActiveEffectCategories } from '../effects.js';
 
 // LEFT CLICK to perform ACTION
@@ -295,32 +294,32 @@ export default async function setupTokenActionHud(coreModule) {
         case ACTION_ATTRIBUTE:
           // ActorSheet: skillRoll
           if (this.isRenderItem()) return; // nothing to render
-          rollAttribute(this.actor, actionId);
+          this.actor.rollAttribute(actionId);
           break;
 
         case ACTION_SKILL:
           // ActorSheet: skillRoll
           if (this.isRenderItem()) return; // nothing to render
-          rollSkill(this.actor, actionId);
+          this.actor.rollSkill(actionId);
           break;
 
         case ACTION_POWER:
           if (this.isRenderItem()) return this.renderItem(actor, actionId);
-          rollPower(actor, actor.items.get(actionId));
+          actor.rollPower(actor.items.get(actionId));
           break;
 
         case ACTION_ATTACK:
           // Sheet: onAttackRoll
           if (this.isRenderItem()) return this.renderItem(actor, actionId);
-          rollAttack(actor, actor.items.get(actionId));
+          actor.rollAttack(actor.items.get(actionId));
           break;
 
         case ACTION_ATTACK_INTERACTION:
           if (this.isRenderItem()) return; // nothing to render
           if (actionId === 'unarmedCombat')
-            rollUnarmedAttack(this.actor, actionId);
+            this.actor.rollUnarmedAttack(actionId);
           else
-            rollInteractionAttack(this.actor, actionId);
+            this.actor.rollInteractionAttack(actionId);
           break;
 
         case ACTION_GEAR:
@@ -329,15 +328,15 @@ export default async function setupTokenActionHud(coreModule) {
             const item = actor.items.get(actionId);
             switch (item.type) {
               case 'eternityshard':
-                return rollTapping(this.actor, item);
+                return this.actor.rollTapping(item);
               default:
                 {
                   const skillorattribute = item.system.attackWith ?? item.system.skill;
                   if (!skillorattribute) return;
                   if (Object.hasOwn(CONFIG.attributeTypes, skillorattribute))
-                    return rollAttribute(actor, skillorattribute, { item: item, /*window: { windowId: this.window.windowId }*/ });
+                    return actor.rollAttribute(skillorattribute, item /*, {window: { windowId: this.window.windowId }}*/);
                   else
-                    return rollSkill(actor, skillorattribute, { item: item, /*window: { windowId: this.window.windowId }*/ });
+                    return actor.rollSkill(skillorattribute, item /*, {window: { windowId: this.window.windowId }}*/);
                 }
             }
           }

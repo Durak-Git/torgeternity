@@ -1,5 +1,5 @@
 import { TestDialog } from './test-dialog.js';
-import { torgDamage, torgDamageModifiers, checkUnskilled } from './torgchecks.js';
+import { torgDamage, torgDamageModifiers } from './torgchecks.js';
 
 function sanitizeNumbers(obj) {
   for (const [key, value] of Object.entries(obj))
@@ -153,7 +153,7 @@ function _onClickInlineCheck(event) {
       skillValue += Math.max(skill.value, attribute.value);
     const isInteractionAttack = (test.attack || interactionAttacks.includes(skillName));
 
-    if (!test.unskilledUse && checkUnskilled(skill.value, skillName, actor)) return;
+    if (!test.unskilledUse && actor.checkUnskilled(skill.value, skillName)) return;
 
     foundry.utils.mergeObject(test, {
       testType: isInteractionAttack ? 'interactionAttack' : 'skill',

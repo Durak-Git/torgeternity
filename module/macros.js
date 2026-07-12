@@ -1,4 +1,4 @@
-import { TestResult, renderSkillChat, torgDamage } from './torgchecks.js';
+import { renderSkillChat, torgDamage } from './torgchecks.js';
 import { oneTestTarget, TestDialog } from './test-dialog.js';
 
 const { DialogV2 } = foundry.applications.api;

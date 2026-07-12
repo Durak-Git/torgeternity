@@ -1,7 +1,7 @@
 import { renderSkillChat } from './torgchecks.js';
 import { rollBonusDie } from './torgchecks.js';
 import { torgDamage } from './torgchecks.js';
-import { TestResult, soakDamages } from './torgchecks.js';
+import { TestResult } from './torgchecks.js';
 import { TestDialog } from './test-dialog.js';
 import TorgeternityActor from './documents/actor/torgeternityActor.js';
 
@@ -23,7 +23,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       'addBd': TorgeternityChatLog.#onBd,
       'modifierLabel': TorgeternityChatLog.#onModifier,
       'applyDam': TorgeternityChatLog.#applyDamage,
-      'soakDam': TorgeternityChatLog.#soakDamage,
+      'soakDam': TorgeternityChatLog.#onSoakDamage,
       'applySoak': TorgeternityChatLog.#applySoak,
       'applyEffectsActor': TorgeternityChatLog.#applyEffectsActor,
       'applyEffectsTarget': TorgeternityChatLog.#applyEffectsTarget,
@@ -567,7 +567,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
    * @param {HTMLButtonElement} button 
  * @this {TorgeternityChatLog}
  */
-  static async #soakDamage(event, button) {
+  static async #onSoakDamage(event, button) {
     event.preventDefault();
     const { targetActor, chatMessage } = getChatTarget(button);
     if (!targetActor) return;
@@ -607,7 +607,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       possPool += 1;
     }
 
-    await soakDamages(targetActor, chatMessage.id, { /*window: { windowId: this.window.windowId }*/ });
+    await targetActor.soakDamage(chatMessage.id, { /*window: { windowId: this.window.windowId }*/ });
     await targetActor.update({ 'system.other.possibilities.value': possPool - 1 });
   }
 
@@ -871,15 +871,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     const attribute = button.dataset.control;
     const actor = game.actors.get(chatMessage.speaker.actor);
 
-    return TestDialog.wait({
-      DNDescriptor: 'standard',
-      actor: actor,
-      testType: 'attribute',
-      skillName: attribute,
-      skillValue: actor.system.attributes[attribute].value,
-      isDefeatTest: true,
-    }, { /*window: { windowId: this.window.windowId }*/ });
-
+    return actor.testDefeat(attribute);
     // Wait for manual addition of results, when applyDefeat is invoked.
   }
 
@@ -917,44 +909,21 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
   /**
    * @param {Event} event 
    * @param {HTMLButtonElement} button 
-* @this {TorgeternityChatLog}
-*/
+   * @this {TorgeternityChatLog}
+   */
   static async #testConcentration(event, button) {
     event.preventDefault();
     // No test in the chat message that display Defeat prompt
     const { chatMessage } = getMessage(button);
     const actor = game.actors.get(chatMessage.speaker.actor);
-
-    // Convert strings to the correct type(s)
-    const test = {
-      DNDescriptor: 'standard',
-      actor,
-      ...button.dataset
-    };
-    test.isFav = !!test.isFav;
-    test.unskilledUse = !!test.unSkilledUse;
-    test.skillValue = Number(test.skillValue);
-    test.isConcentrationCheck = true;
-
-    const result = await TestDialog.wait(test, { /*window: { windowId: this.window.windowId }*/ });
-
-    if (result.flags.torgeternity.test.result < TestResult.STANDARD) {
-      const failed = actor.effects.filter(ef => ef.statuses.has('concentrating'));
-      const list = failed.map(ef => `<li>${fromUuidSync(ef.origin).name}</li>`);
-
-      ChatMessage.create({
-        speaker: chatMessage.speaker,
-        content: `<p>${_loc('torgeternity.chatText.concentration.broken', { actor: actor.name })}</p><ul>${list.join('')}</ul>`
-      })
-      actor.deleteEmbeddedDocuments('ActiveEffect', failed.map(ef => ef.id));
-    }
+    return actor.testConcentration(chatMessage.speaker, button.dataset /*, { window: { windowId: this.window.windowId }}*/);
   }
 
   /**
    * @param {Event} event 
    * @param {HTMLButtonElement} button 
-* @this {TorgeternityChatLog}
-*/
+   * @this {TorgeternityChatLog}
+   */
   static async #drawDestiny(event, button) {
     let id = button.dataset.actor;
     if (id.startsWith('Actor.')) id = id.slice(6);

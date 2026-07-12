@@ -92,7 +92,7 @@ const interactionAttacks = ['unarmed', 'intimidation', 'maneuver', 'taunt', 'kic
 function _onClickInlineCheck(event) {
   // Firstly check for clicking on the "post to chat" button
   if (event.target.dataset.original) {
-    return ChatMessage.create({ content: event.target.dataset.original })
+    return ChatMessage.implementation.create({ content: event.target.dataset.original })
   }
 
   const target = event.target.closest('a.torg-inline-check');
@@ -101,7 +101,7 @@ function _onClickInlineCheck(event) {
 
   // Same test as in 'rollSkillMacro'
   let actor = null;
-  const speaker = ChatMessage.getSpeaker();
+  const speaker = ChatMessage.implementation.getSpeaker();
   if (speaker.token) actor = game.actors.tokens[speaker.token];
   if (!actor) actor = game.actors.get(speaker.actor);
   if (!actor) return ui.notifications.warn(_loc('torgeternity.notifications.noTokenNorActor'));
@@ -242,7 +242,7 @@ async function _onClickInlineCondition(event) {
   const target = event.target.closest('a.torg-inline-condition');
   // Firstly check for clicking on the "post to chat" button
   if (event.target.dataset.original) {
-    return ChatMessage.create({ content: event.target.dataset.original })
+    return ChatMessage.implementation.create({ content: event.target.dataset.original })
   }
 
   const data = { ...target.dataset };
@@ -366,7 +366,7 @@ async function _onClickInlineBuff(event) {
   const target = event.target.closest('a.torg-inline-buff');
   // Firstly check for clicking on the "post to chat" button
   if (event.target.dataset.original) {
-    return ChatMessage.create({ content: event.target.dataset.original })
+    return ChatMessage.implementation.create({ content: event.target.dataset.original })
   }
 
   // Convert dataset into a set of active effect rules
@@ -496,7 +496,7 @@ async function _onClickInlineDamage(event) {
 
   // Firstly check for clicking on the "post to chat" button
   if (event.target.dataset.original) {
-    return ChatMessage.create({ content: event.target.dataset.original })
+    return ChatMessage.implementation.create({ content: event.target.dataset.original })
   }
 
   // Firstly check for clicking on the "post to chat" button
@@ -542,7 +542,7 @@ async function _onClickInlineDamage(event) {
     chatOutput += chatParts.join(', ') + '</li>';
   }
   chatOutput += '</ul>';
-  return ChatMessage.create({ content: chatOutput });
+  return ChatMessage.implementation.create({ content: chatOutput });
 }
 
 /**

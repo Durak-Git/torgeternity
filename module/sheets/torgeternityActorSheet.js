@@ -542,8 +542,8 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
         if (currency) {
           // It appears that 'await currency.update' prevents super._onDrop from working
           await super._onDropItem(event, item);
-          ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor }),
+          ChatMessage.implementation.create({
+            speaker: ChatMessage.implementation.getSpeaker({ actor }),
             owner: actor,
             content: _loc('torgeternity.chatText.itemPurchase', {
               item: item.name,

@@ -576,8 +576,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       return;
     }
     if (targetActor.isDisconnected) {
-      return ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+      return ChatMessage.implementation.create({
+        speaker: ChatMessage.implementation.getSpeaker({ actor: targetActor }),
         content: _loc('torgeternity.chatText.check.cantUseRealityWhileDisconnected'),
       });
     }
@@ -900,8 +900,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
      </a>
      </div>`;
 
-    return ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor }),
+    return ChatMessage.implementation.create({
+      speaker: ChatMessage.implementation.getSpeaker({ actor }),
       content: html
     })
   }
@@ -990,8 +990,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
 
       await actor.toggleStatusEffect('unconscious', { active: true, overlay: true });
       if (result === TestResult.STANDARD) {
-        await ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor }),
+        await ChatMessage.implementation.create({
+          speaker: ChatMessage.implementation.getSpeaker({ actor }),
           owner: actor,
           content: _loc('torgeternity.defeat.permInjury', { attribute: localAttr })
         })
@@ -1002,8 +1002,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
 
       } else {
         // Temporary: Add AE to reduce until cleared
-        await ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor }),
+        await ChatMessage.implementation.create({
+          speaker: ChatMessage.implementation.getSpeaker({ actor }),
           owner: actor,
           content: _loc('torgeternity.defeat.tempInjury', { attribute: localAttr })
         })

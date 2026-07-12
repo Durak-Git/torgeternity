@@ -107,7 +107,8 @@ async function createTorgEternityMacro(dropData, slot) {
  * @returns {Promise}
  */
 async function rollItemMacro(itemName, itemType) {
-  const speaker = ChatMessage.getSpeaker();
+  const speaker = ChatMessage.implementation.getSpeaker();
+  /** @type {TorgeternityActor} */
   let actor = game.actors.get(speaker.actor) ?? game.actors.tokens[speaker.token];
   let item = actor ? actor.items.find(item => item.name === itemName && (!itemType || item.type === itemType)) : null;
   if (!item) {
@@ -164,7 +165,7 @@ async function rollSkillMacro(skillName, attributeName, isInteractionAttack, DND
   }
 
   let customSkill;
-  const speaker = ChatMessage.getSpeaker();
+  const speaker = ChatMessage.implementation.getSpeaker();
   const actor = game.actors.get(speaker.actor) ?? game.actors.tokens[speaker.token];
   const isAttributeTest = skillName === attributeName;
   const isUnarmed = skillName === 'unarmedCombat';
@@ -328,7 +329,7 @@ Hooks.on('getActorContextOptions', async (actorDir, menuItems) => {
             action: 'showAllPlayers',
             label: 'torgeternity.dialogPrompts.showToPlayers',
             callback: (event, button, dialog) => {
-              ChatMessage.create({
+              ChatMessage.implementation.create({
                 content: dialog.element.querySelector('.charInfoOutput').outerHTML,
               });
             },

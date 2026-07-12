@@ -492,8 +492,8 @@ export async function renderSkillChat(test, origChatMessage) {
     // Concentration
     if (first && test.result >= TestResult.STANDARD && testItem?.system.requiresConcentration && !test.concentratingId) {
       test.concentratingId = (await testActor.addConcentration(testItem))?.uuid;
-      ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: testActor }),
+      ChatMessage.implementation.create({
+        speaker: ChatMessage.implementation.getSpeaker({ actor: testActor }),
         content: _loc('torgeternity.chatText.concentration.start', { itemName: testItem.name })
       })
     }
@@ -541,9 +541,9 @@ export async function renderSkillChat(test, origChatMessage) {
       if (oldAD) {
         // if present, reset by deleting
         oldAD.delete();
-        return ChatMessage.create({
+        return ChatMessage.implementation.create({
           // Simple chat message for information
-          speaker: ChatMessage.getSpeaker({ actor: testActor }),
+          speaker: ChatMessage.implementation.getSpeaker({ actor: testActor }),
           content: _loc('torgeternity.chatText.check.result.resetDefense'), // Need to be implemented if incorporated
         });
       } else {
@@ -755,8 +755,8 @@ export async function renderSkillChat(test, origChatMessage) {
       },
     })
   } else {
-    message = ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: testActor }),
+    message = ChatMessage.implementation.create({
+      speaker: ChatMessage.implementation.getSpeaker({ actor: testActor }),
       owner: test.actor,  // actually UUID
       rolls: dicerolled,
       flavor,

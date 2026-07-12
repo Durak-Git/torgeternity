@@ -1,6 +1,7 @@
 import TorgActiveEffect from '../active-effect/torgActiveEffect.js';
 import { TestDialog } from '../../test-dialog.js';
 import { TestResult } from '../../torgchecks.js';
+import TorgeternityItem from '../item/torgeternityItem.js';
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -400,8 +401,8 @@ export default class TorgeternityActor extends foundry.documents.Actor {
      </a>
      </div>`;
 
-    return ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: this }),
+    return ChatMessage.implementation.create({
+      speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
       content: html
     })
   }
@@ -759,6 +760,12 @@ export default class TorgeternityActor extends foundry.documents.Actor {
   // Various ROLL actions
   //
 
+  /**
+   * Roll an Attack test
+   * @param {TorgeternityItem} item The item being used for the attack.
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollAttack(item, options = {}) {
     const weaponData = item.system;
     const attackWith = weaponData.attackWith;
@@ -862,6 +869,12 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: true, ...options });
   }
 
+  /**
+   * Make a check for the use of a Power
+   * @param {TorgeternityItem} item The power being tested
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollPower(item, options = {}) {
     const powerData = item.system;
     const skillName = powerData.skill;
@@ -894,6 +907,13 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: true, ...options });
   }
 
+  /**
+   * Roll an attribute test.
+   * @param {String} attributeName The internal name of the attribute being tested.
+   * @param {TorgeternityItem} item An optional item involved in the attribute test.
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollAttribute(attributeName, item, options = {}) {
     return TestDialog.wait({
       testType: 'attribute',
@@ -905,6 +925,13 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: true, ...options });
   }
 
+  /**
+   * Roll a skill test
+   * @param {String} skillName The internal name of the skill being tested.
+   * @param {*} item An optional item for which the test is being made.
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollSkill(skillName, item, options = {}) {
 
     const skillData = this.system.skills[skillName] ?? this.items.get(skillName)?.system;
@@ -933,8 +960,8 @@ export default class TorgeternityActor extends foundry.documents.Actor {
             actorName: this.name,
           }
         ).then(content =>
-          ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: this }),
+          ChatMessage.implementation.create({
+            speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
             owner: this,
             content: content
           })
@@ -955,6 +982,12 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: (testType === 'skill'), ...options });
   }
 
+  /**
+   * Roll an Unarmed Attack
+   * @param {String} skillName The internal name of the skill being used for the unarmed attack
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollUnarmedAttack(skillName, options = {}) {
     let dnDescriptor = 'standard';
     if (game.user.targets.size) {
@@ -989,6 +1022,12 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: true, ...options });
   }
 
+  /**
+   * Roll an interaction attack.
+   * @param {String} skillName The name of the skill being used for the interaction attack
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollInteractionAttack(skillName, options = {}) {
     const skillData = this.system.skills[skillName];
 
@@ -1025,6 +1064,12 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: true, ...options });
   }
 
+  /**
+   * Roll a Tapping attempt for an Eternity Shard
+   * @param {TorgeternityItem} item The item being tested
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollTapping(item, options = {}) {
     const dn = item.system?.tappingDifficulty;
     if (!dn) return ui.notifications.info(`Item does not have a Tapping Difficulty`);
@@ -1046,8 +1091,8 @@ export default class TorgeternityActor extends foundry.documents.Actor {
           actorName: this.name,
         }
       ).then(content =>
-        ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: this }),
+        ChatMessage.implementation.create({
+          speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
           owner: this,
           content: content
         })
@@ -1070,7 +1115,10 @@ export default class TorgeternityActor extends foundry.documents.Actor {
   }
 
   /**
-   *@param {Actor} this The Actor which is attempting to soak some damage
+   * Roll a soak test
+   * @param {*} origMessageId The original chat message for which the soak is being applied.
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
    */
   async soakDamage(origMessageId, options = {}) {
     const skillName = 'reality';
@@ -1097,6 +1145,15 @@ export default class TorgeternityActor extends foundry.documents.Actor {
   }
 
   // VEHICLE SPECIFIC ROLLS
+
+  /**
+   * Roll a Vehicle Chase test
+   * @param {Number} skillValue The value of the skill being used for the test
+   * @param {Number} vehicleSpeed The speed of the vehicle involved in the test
+   * @param {Number} maneuverModifier The modifiers of the vehicle involved in the test
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollVehicleChase(skillValue, vehicleSpeed, maneuverModifier, options = {}) {
     return TestDialog.wait({
       testType: 'chase',
@@ -1109,6 +1166,14 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: true, ...options });
   }
 
+  /**
+   * Roll a Vehicle Operation test
+   * @param {Number} skillValue The value of the skill being used for the test
+   * @param {Number} vehicleSpeed The speed of the vehicle involved in the test
+   * @param {Number} maneuverModifier The modifiers of the vehicle involved in the test
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollVehicleOperation(skillValue, vehicleSpeed, maneuverModifier, options = {}) {
     return TestDialog.wait({
       testType: 'vehicleBase',
@@ -1120,6 +1185,14 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: true, ...options });
   }
 
+  /**
+   * Roll a Vehicle Stunt test
+   * @param {Number} skillValue The value of the skill being used for the test
+   * @param {Number} vehicleSpeed The speed of the vehicle involved in the test
+   * @param {Number} maneuverModifier The modifiers of the vehicle involved in the test
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollVehicleStunt(dnDescriptor, skillValue, vehicleSpeed, maneuverModifier, options = {}) {
     return TestDialog.wait({
       testType: 'stunt',
@@ -1132,6 +1205,11 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: true, ...options });
   }
 
+  /**
+   * Roll for an Active Defense
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async rollActiveDefense(options = {}) {
     return TestDialog.wait({
       testType: 'activeDefense',
@@ -1144,6 +1222,12 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, { useTargets: false, ...options });
   }
 
+  /**
+   * Roll for a Defeat test
+   * @param {String} attribute The internal name of the attribute being used for the test
+   * @param {Object} options Extra options for TestDialog
+   * @returns 
+   */
   async testDefeat(attribute, options = {}) {
     return TestDialog.wait({
       testType: 'attribute',
@@ -1155,6 +1239,12 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }, options);
   }
 
+  /**
+   * Roll a concentration check
+   * @param {Object} speaker The chat message speaker making the roll
+   * @param {Object} testdata The test that is involved in the concentration check
+   * @param {Object} options Extra options for TestDialog
+   */
   async testConcentration(speaker, testdata, options = {}) {
     // Convert strings to the correct type(s)
     const test = {
@@ -1175,7 +1265,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       const failed = this.effects.filter(ef => ef.statuses.has('concentrating'));
       const list = failed.map(ef => `<li>${fromUuidSync(ef.origin).name}</li>`);
 
-      ChatMessage.create({
+      ChatMessage.implementation.create({
         speaker: speaker,
         content: `<p>${_loc('torgeternity.chatText.concentration.broken', { actor: this.name })}</p><ul>${list.join('')}</ul>`
       })
@@ -1183,13 +1273,11 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     }
   }
 
-
   /**
    * Checks to see if the given skill is actually unskilled for the indicated actor.
    * If unskilled, a message is sent to the chat log.
    * @param {String} skillValue The value of the skill being checked
    * @param {Number} skillName The name of the skill being checked
-   * @param {Actor} this The actor whose skilled nature is being checked
    * @returns {Boolean} Returns true if the actor is UNSKILLED at 'skillName'
    */
   checkUnskilled(skillValue, skillName) {
@@ -1203,8 +1291,8 @@ export default class TorgeternityActor extends foundry.documents.Actor {
         actorPic: this.img,
         actorName: this.name,
       }).then(content =>
-        ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: this }),
+        ChatMessage.implementation.create({
+          speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
           owner: this,
           content: content
         })

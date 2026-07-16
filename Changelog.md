@@ -9,6 +9,7 @@
 - Fix migration of old AE change keys such as "system.dodgeDefenseMod" which were broken in Foundry V14.
 - A detached **Combat Tracker** is now resizable, it gets around Foundry otherwise forcing a 502x502 size on the window.
 - An attack with an Item with the **nonLethal** trait will not prompt for a Defeat test for Stormknights, and will ensure the target has the `unconscious` condition.
+- The **Send to Chat** button is available on Actor sheets even when the Actor is not editable by the user.
 
 ### Internal Refactoring
 - Define all non-persistent Actor data in the actor DataModel, so that Foundry can perform proper validation.

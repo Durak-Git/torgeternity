@@ -1266,7 +1266,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       const list = failed.map(ef => `<li>${fromUuidSync(ef.origin).name}</li>`);
 
       ChatMessage.implementation.create({
-        speaker: speaker,
+        speaker,
         content: `<p>${_loc('torgeternity.chatText.concentration.broken', { actor: this.name })}</p><ul>${list.join('')}</ul>`
       })
       this.deleteEmbeddedDocuments('ActiveEffect', failed.map(ef => ef.id));

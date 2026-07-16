@@ -15,6 +15,7 @@
 - Define all non-persistent Actor data in the actor DataModel, so that Foundry can perform proper validation.
 - All actor dice rolls moved from torgchecks.js to TorgEternityActor.
 - Ensure that all action handler names start with "on".
+- Prefer use of `ChatMessage.implementation.getSpeakerActor` and `ChatMessage.speakerActor`
 - Remove use of `game.scenes.current` since it is also available as `canvas.scene`, this clarifies the code in `getTokenDarknessPenalty` to not return a value if called for other than the current scene.
 
 ### Token Action HUD

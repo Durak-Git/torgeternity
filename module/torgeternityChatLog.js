@@ -867,9 +867,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
   static async #onTestDefeat(event, button) {
     event.preventDefault();
     // No test in the chat message that display Defeat prompt
-    const { chatMessage } = getMessage(button);
     const attribute = button.dataset.control;
-    const actor = game.actors.get(chatMessage.speaker.actor);
+    const actor = getMessage(button).chatMessage.speakerActor();
 
     return actor.testDefeat(attribute);
     // Wait for manual addition of results, when applyDefeat is invoked.
@@ -915,7 +914,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     event.preventDefault();
     // No test in the chat message that display Defeat prompt
     const { chatMessage } = getMessage(button);
-    const actor = game.actors.get(chatMessage.speaker.actor);
+    const actor = chatMessage.speakerActor();
     return actor.testConcentration(chatMessage.speaker, button.dataset /*, { window: { windowId: this.window.windowId }}*/);
   }
 

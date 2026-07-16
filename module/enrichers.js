@@ -100,10 +100,8 @@ function _onClickInlineCheck(event) {
   sanitizeNumbers(test);
 
   // Same test as in 'rollSkillMacro'
-  let actor = null;
   const speaker = ChatMessage.implementation.getSpeaker();
-  if (speaker.token) actor = game.actors.tokens[speaker.token];
-  if (!actor) actor = game.actors.get(speaker.actor);
+  const actor = ChatMessage.implementation.getSpeakerActor(speaker);
   if (!actor) return ui.notifications.warn(_loc('torgeternity.notifications.noTokenNorActor'));
 
   if (test.dn) {

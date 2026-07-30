@@ -791,7 +791,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       }
     }
 
-    if (this.checkUnskilled(skillValue, attackWith)) return;
+    if (this.preventUnskilled(skillValue, attackWith)) return;
 
     let dnDescriptor = 'standard';
 
@@ -883,7 +883,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     // Set modifier for this power
     const powerModifier = item.system.modifier || 0;
 
-    if (this.checkUnskilled(skillData.value, skillName)) return;
+    if (this.preventUnskilled(skillData.value, skillName)) return;
 
     return TestDialog.wait({
       testType: 'power',
@@ -938,7 +938,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     if (!skillData) return;
 
     // Before calculating roll, check to see if it can be attempted unskilled; exit test if actor doesn't have required skill
-    if (this.checkUnskilled(skillData.value, skillName)) return;
+    if (this.preventUnskilled(skillData.value, skillName)) return;
     let testType = 'skill';
 
     // Check if character is trying to roll on reality while disconnected- must be allowed if reconnection-roll
@@ -1127,7 +1127,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     // Before calculating roll, check to see if it can be attempted unskilled; exit test if actor doesn't have required skill.
     // Stormknights must always have at least 1 rank in Reality.
     // Threats are managed by the GM, so the GM can decide if the Threat is allowed to spend a Possibility even when it doesn't have any adds.
-    //if (this.checkUnskilled(skillValue, skillName)) return;
+    //if (this.preventUnskilled(skillValue, skillName)) return;
 
     return TestDialog.wait({
       testType: 'soak',
@@ -1281,7 +1281,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
    * @param {Number} skillName The name of the skill being checked
    * @returns {Boolean} Returns true if the actor is UNSKILLED at 'skillName'
    */
-  checkUnskilled(skillValue, skillName) {
+  preventUnskilled(skillValue, skillName) {
     if (skillValue) return false;
 
     foundry.applications.handlebars.renderTemplate(

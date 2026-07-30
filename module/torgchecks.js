@@ -746,9 +746,9 @@ export async function renderSkillChat(test, origChatMessage) {
     message = origChatMessage.update({
       rolls,
       flavor,
+      system: test,
       flags: {
         torgeternity: {
-          test,
           itemId: test.itemId,  // for Automated Animations module
           template: 'systems/torgeternity/templates/chat/skill-card.hbs',
         },
@@ -757,12 +757,13 @@ export async function renderSkillChat(test, origChatMessage) {
   } else {
     message = ChatMessage.implementation.create({
       speaker: ChatMessage.implementation.getSpeaker({ actor: testActor }),
+      type: 'action',
       owner: test.actor,  // actually UUID
       rolls: dicerolled,
       flavor,
+      system: test,
       flags: {
         torgeternity: {
-          test,
           itemId: test.itemId,  // for Automated Animations module
           template: 'systems/torgeternity/templates/chat/skill-card.hbs',
         },

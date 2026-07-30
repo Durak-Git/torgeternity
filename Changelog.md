@@ -2,8 +2,10 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## TRANSLATIONS
-"torgeternity.partySheet.title": "Party Sheet"
+## NEXT
+
+### Internal Refactoring
+- All Action chat cards are now given the type `action` and store the test data in `message.system` rather than `message.flags.torgeternity.test`.
 
 ## 14.3.0
 - Fix migration of old AE change keys such as "system.dodgeDefenseMod" which were broken in Foundry V14.

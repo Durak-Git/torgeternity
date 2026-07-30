@@ -52,11 +52,11 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       visible: li => {
         if (!game.user.isGM) return false;
         const message = game.messages.get(li.dataset.messageId);
-        return message.flags?.torgeternity?.test;
+        return !message || !foundry.utils.isEmpty(message.system);
       },
       onClick: async (event, li) => {
-        const message = game.messages.get(li.dataset.messageId);
-        const test = message.flags?.torgeternity?.test;
+        const test = game.messages.get(li.dataset.messageId)?.system;
+        if (!test) return;
         let entries = [];
         function doField(key, field) {
           if (Array.isArray(field)) {
@@ -223,8 +223,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     const { chatMessage, actor } = getChatActor(button);
     await actor.toggleStatusEffect('disconnected', { active: false });
     this.updateChatMessage(chatMessage, {
-      "flags.torgeternity.test.showReconnect": false,
-      "flags.torgeternity.test.skillRollMenuStyle": 'hidden',
+      "system.showReconnect": false,
+      "system.skillRollMenuStyle": 'hidden',
     });
   }
 
@@ -557,8 +557,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     testTarget.showApplyDamage = false;
     testTarget.showBD = false;
     return this.updateChatMessage(chatMessage, {
-      'flags.torgeternity.test.skillRollMenuStyle': 'hidden',
-      'flags.torgeternity.test.targets': test.targets,
+      'system.skillRollMenuStyle': 'hidden',
+      'system.targets': test.targets,
     });
   }
 
@@ -628,7 +628,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
 
     // Update the original chat card to show the new damage.
 
-    const origtest = origmsg.flags?.torgeternity?.test;
+    const origtest = origmsg.system;
     const origtarget = origtest?.targets.find(target => target.dummyTarget || target.actorUuid === soaktest.actor);
 
     if (!origtest || !testTarget || !origtarget) {
@@ -643,8 +643,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
 
     // Hide "apply soak" button in the soak test (as well the buttons which affect the action total)
     await this.updateChatMessage(chatMessage, {
-      'flags.torgeternity.test.showApplySoak': false,
-      'flags.torgeternity.test.skillRollMenuStyle': 'hidden',
+      'system.showApplySoak': false,
+      'system.skillRollMenuStyle': 'hidden',
     });
 
     if (origmsg.isOwner) {
@@ -776,7 +776,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       // Don't hide Stymied button, in case of Good or better result
       //testTarget.showApplyStymied = false;
       //this.updateChatMessage(chatMessage, {
-      //  'flags.torgeternity.test.targets': test.targets  // TODO : potential clash, since entire array updated
+      //  'system.targets': test.targets  // TODO : potential clash, since entire array updated
       //})
 
       if (test.testType === 'interactionAttack' && targetActor.isConcentrating)
@@ -801,7 +801,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       // Better results might allow it to be pressed more than once
       //testTarget.showApplyVulnerable = false;
       //this.updateChatMessage(chatMessage, {
-      //  'flags.torgeternity.test.targets': test.targets  // TODO : potential clash, since entire array updated
+      //  'system.targets': test.targets  // TODO : potential clash, since entire array updated
       //})
 
       if (test.testType === 'interactionAttack' && targetActor.isConcentrating)
@@ -1029,7 +1029,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
  */
 function getMessage(button) {
   const chatMessage = game.messages.get(button.closest('.chat-message').dataset.messageId);
-  const test = chatMessage?.flags?.torgeternity?.test;
+  const test = chatMessage?.system;
   return { chatMessage, test };
 }
 

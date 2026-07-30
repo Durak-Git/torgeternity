@@ -2,7 +2,16 @@
  * ChatMessage Implementation for Torg Eternity
  * renders the chatMessage from data every time the HTML is rendered
  */
-export class ChatMessageTorg extends ChatMessage {
+export class ChatMessageTorg extends foundry.documents.ChatMessage {
+
+  static migrateData(source, options) {
+    if (foundry.utils.hasProperty(source, "flags.torgeternity.test") && foundry.utils.isEmpty(source.system)) {
+      source.type = 'action';
+      source.system = source.flags.torgeternity.test;
+      delete source.flags.torgeternity.test;
+    }
+    return super.migrateData(source, options);
+  }
 
   // An update of the message might make the message longer,
   // so we need to make sure that if the chat log is scrolled to the bottom
@@ -16,9 +25,9 @@ export class ChatMessageTorg extends ChatMessage {
     const html = await super.renderHTML(options);
     if (this.isContentVisible &&
       this.flags?.torgeternity?.template &&
-      this.flags?.torgeternity?.test) {
+      !foundry.utils.isEmpty(this.system)) {
 
-      const templateData = { ...this.flags.torgeternity.test }; // make copy
+      const templateData = { ...this.system }; // make copy
       templateData.isOpen = game.settings.get('torgeternity', 'showCheckDetails') ? "open" : "";
       templateData.ownsActor = fromUuidSync(templateData.actor)?.isOwner;
       for (const target of templateData.targets)

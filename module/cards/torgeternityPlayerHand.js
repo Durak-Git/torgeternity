@@ -272,7 +272,7 @@ export default class torgeternityPlayerHand extends foundry.applications.sheets.
             let chatMessage;
             while (idx-- > 0) {
               chatMessage = game.messages.contents[idx];
-              if (chatMessage.flags?.torgeternity?.test?.actor === actorUuid) break;
+              if (chatMessage.system?.actor === actorUuid) break;
             }
             if (!chatMessage) break;
             const test = chatMessage.flags.torgeternity?.test;

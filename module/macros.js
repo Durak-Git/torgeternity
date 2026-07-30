@@ -779,7 +779,6 @@ export class TorgeternityMacros {
       possibilityClass: 'hidden',
       coverModifier: 0,
       chatTitle: '',
-      DN: 9,
       hideFavButton: true,
       unskilledTest: false,
       combinedAction: { participants: 1 },

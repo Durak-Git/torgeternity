@@ -989,7 +989,6 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       if (result === TestResult.STANDARD) {
         await ChatMessage.implementation.create({
           speaker: ChatMessage.implementation.getSpeaker({ actor }),
-          owner: actor,
           content: _loc('torgeternity.defeat.permInjury', { attribute: localAttr })
         })
         // Permanent: Reduce attribute directly
@@ -1001,7 +1000,6 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
         // Temporary: Add AE to reduce until cleared
         await ChatMessage.implementation.create({
           speaker: ChatMessage.implementation.getSpeaker({ actor }),
-          owner: actor,
           content: _loc('torgeternity.defeat.tempInjury', { attribute: localAttr })
         })
         return actor?.createEmbeddedDocuments('ActiveEffect', [{

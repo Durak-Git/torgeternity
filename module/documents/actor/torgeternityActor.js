@@ -962,7 +962,6 @@ export default class TorgeternityActor extends foundry.documents.Actor {
         ).then(content =>
           ChatMessage.implementation.create({
             speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
-            owner: this,
             content: content
           })
         )
@@ -1093,7 +1092,6 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       ).then(content =>
         ChatMessage.implementation.create({
           speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
-          owner: this,
           content: content
         })
       )
@@ -1294,7 +1292,6 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       }).then(content =>
         ChatMessage.implementation.create({
           speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
-          owner: this,
           content: content
         })
       )

@@ -752,7 +752,6 @@ export async function renderSkillChat(test, origChatMessage) {
     message = ChatMessage.implementation.create({
       speaker: ChatMessage.implementation.getSpeaker({ actor: testActor }),
       type: 'action',
-      owner: test.actor,  // actually UUID
       rolls: dicerolled,
       flavor,
       flags: test.itemId ? { torgeternity: { itemId: test.itemId } } : {}, // for Automated Animations module 

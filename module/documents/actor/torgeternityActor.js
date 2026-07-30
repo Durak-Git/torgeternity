@@ -768,7 +768,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
    */
   async rollAttack(item, options = {}) {
     const weaponData = item.system;
-    const attackWith = weaponData.attackWith;
+    const skillName = weaponData.attackWith;
     let skillValue;
     let skillData;
     let attributes;
@@ -783,7 +783,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       skillValue = skillData?.value ?? '-';
       attributes = item.system.gunner?.system.attributes ?? 0;
     } else {
-      skillData = this.system.skills[attackWith];
+      skillData = this.system.skills[skillName];
       skillValue = skillData.value;
       attributes = this.system.attributes;
       if (isNaN(skillValue)) {
@@ -791,7 +791,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       }
     }
 
-    if (this.preventUnskilled(skillValue, attackWith)) return;
+    if (this.preventUnskilled(skillValue, skillName)) return;
 
     let dnDescriptor = 'standard';
 
@@ -802,7 +802,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       if (firstTarget.type === 'vehicle') {
         dnDescriptor = 'targetVehicleDefense';
       } else {
-        switch (attackWith) {
+        switch (skillName) {
           case 'meleeWeapons':
           case 'unarmedCombat':
             dnDescriptor = firstTarget.equippedMelee ? 'targetMeleeWeapons' : 'targetUnarmedCombat';
@@ -856,7 +856,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       amountBD: 0,
       isAttack: true,
       isFav: skillData?.isFav || false,
-      skillName: attackWith,
+      skillName: skillName,
       skillValue: Math.max(skillValue, attributes[skillData?.baseAttribute]?.value || 0),
       unskilledUse: true,
       damage: adjustedDamage,

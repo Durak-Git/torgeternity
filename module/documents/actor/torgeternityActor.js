@@ -1258,18 +1258,19 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     test.skillValue = Number(test.skillValue);
     test.isConcentrationCheck = true;
 
-    const result = await TestDialog.wait(test, options);
+    // Failure will prompt the user to trigger `this.cancelConcentration`
+    return TestDialog.wait(test, options);
+  }
 
-    if (result.system.result < TestResult.STANDARD) {
-      const failed = this.effects.filter(ef => ef.statuses.has('concentrating'));
-      const list = failed.map(ef => `<li>${fromUuidSync(ef.origin).name}</li>`);
+  async cancelConcentration() {
+    const failed = this.effects.filter(ef => ef.statuses.has('concentrating'));
+    const list = failed.map(ef => `<li>${fromUuidSync(ef.origin).name}</li>`);
 
-      ChatMessage.implementation.create({
-        speaker,
-        content: `<p>${_loc('torgeternity.chatText.concentration.broken', { actor: this.name })}</p><ul>${list.join('')}</ul>`
-      })
-      this.deleteEmbeddedDocuments('ActiveEffect', failed.map(ef => ef.id));
-    }
+    ChatMessage.implementation.create({
+      speaker: ChatMessage.implementation.getSpeaker({ actor: this }),
+      content: `<p>${_loc('torgeternity.chatText.concentration.broken', { actor: this.name })}</p><ul>${list.join('')}</ul>`
+    })
+    this.deleteEmbeddedDocuments('ActiveEffect', failed.map(ef => ef.id));
   }
 
   /**

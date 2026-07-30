@@ -2,8 +2,15 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+### TRANSLATIONS
+```
+  "cancelConcentration": "Cancel Concentration",
+  "cancelConcentrationTooltip": "Cancel Concentration after a failed Concentration Check",
+```
+
 ## NEXT
 - When using the automation of special destiny cards being played, the last "action" chat card for the actor is used, rather than finding the most recent chat card of any type (which might not be an actual action).
+- Allow modifications to the Action Total on a Concentration Check (and provide a manual 'Cancel Concentration' button to remove concentration on a failure).
 
 ### Internal Refactoring
 - All Action chat cards are now given the type `action` and store the test data in `message.system` rather than `message.flags.torgeternity.test`.

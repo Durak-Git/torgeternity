@@ -36,6 +36,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
       'backlash3': TorgeternityChatLog.#onApplyBacklash3,
       'testDefeat': TorgeternityChatLog.#onTestDefeat,
       'testConcentration': TorgeternityChatLog.#onTestConcentration,
+      "cancelConcentration": TorgeternityChatLog.#onCancelConcentration,
       'applyDefeat': TorgeternityChatLog.#onApplyDefeat,
       'drawDestiny': TorgeternityChatLog.#onDrawDestiny,
       'pingTarget': TorgeternityChatLog.#onPingTarget,
@@ -914,6 +915,12 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     const { chatMessage } = getMessage(button);
     const actor = chatMessage.speakerActor;
     return actor.testConcentration(chatMessage.speaker, button.dataset /*, { window: { windowId: this.window.windowId }}*/);
+  }
+
+  static async #onCancelConcentration(event, button) {
+    event.preventDefault();
+    const { actor } = getChatActor(button);
+    return actor && actor.cancelConcentration();
   }
 
   /**

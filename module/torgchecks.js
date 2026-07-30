@@ -672,6 +672,8 @@ export async function renderSkillChat(test, origChatMessage) {
       // Use non-translated strings to lookup key
       test.defeatMain = _loc(`torgeternity.defeat.${TestResultKey[test.result]}.main`, { name: testActor.name });
       test.defeatSub = _loc(`torgeternity.defeat.${TestResultKey[test.result]}.sub`, { name: testActor.name });
+    } else if (test.isConcentrationCheck) {
+      test.showCancelConcentration = (test.result < TestResult.STANDARD);
     }
 
     // Label as Skill vs. Attribute Test and turn on BD option if needed

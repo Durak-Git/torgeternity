@@ -49,53 +49,51 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     options.push({
       label: 'torgeternity.testInspector.title',
       icon: '<i class="fa-solid fa-magnifying-glass"></i>',
-      visible: li => {
-        if (!game.user.isGM) return false;
-        const message = game.messages.get(li.dataset.messageId);
-        return !message || !foundry.utils.isEmpty(message.system);
-      },
-      onClick: async (event, li) => {
-        const test = game.messages.get(li.dataset.messageId)?.system;
-        if (!test) return;
-        let entries = [];
-        function doField(key, field) {
-          if (Array.isArray(field)) {
-            for (const [subkey, value] of Object.entries(field)) {
-              doField(`${key}[${subkey}]`, value);
-            }
-          } else if (field && typeof field === 'object') {
-            const prefix = key ? `${key}.` : '';
-            for (const [subkey, value] of Object.entries(foundry.utils.flattenObject(field))) {
-              doField(`${prefix}${subkey}`, value);
-            }
-          } else if (typeof value === 'string')
-            entries.push({ key, value: `"${field}"` });
-          else
-            entries.push({ key, value: field })
+      visible: li => game.user.isGM && !foundry.utils.isEmpty(game.messages.get(li.dataset.messageId)?.system),
+      onClick: this.#showInspector,
+    })
+    return options;
+  }
+
+  async #showInspector(event, li) {
+    const test = game.messages.get(li.dataset.messageId)?.system;
+    if (!test) return;
+    let entries = [];
+    function doField(key, field) {
+      if (Array.isArray(field)) {
+        for (const [subkey, value] of Object.entries(field)) {
+          doField(`${key}[${subkey}]`, value);
         }
-        doField('', test);
+      } else if (field && typeof field === 'object') {
+        const prefix = key ? `${key}.` : '';
+        for (const [subkey, value] of Object.entries(foundry.utils.flattenObject(field))) {
+          doField(`${prefix}${subkey}`, value);
+        }
+      } else if (typeof value === 'string')
+        entries.push({ key, value: `"${field}"` });
+      else
+        entries.push({ key, value: field })
+    }
+    doField('', test);
 
-        const content = entries.sort((a, b) => a.key.localeCompare(b.key))
-          .map(obj => `<tr><td>${obj.key}</td><td>${obj.value}</td></tr>`).join('\n');
+    const content = entries.sort((a, b) => a.key.localeCompare(b.key))
+      .map(obj => `<tr><td>${obj.key}</td><td>${obj.value}</td></tr>`).join('\n');
 
-        await DialogV2.prompt({
-          classes: ['torgeternity', 'themed', 'theme-dark'],
-          window: {
-            title: 'torgeternity.testInspector.title',
-            resizable: true
-          },
-          position: { width: 800 },
-          content: `<div class="testInspector scrollable">
+    await DialogV2.prompt({
+      classes: ['torgeternity', 'themed', 'theme-dark'],
+      window: {
+        title: 'torgeternity.testInspector.title',
+        resizable: true
+      },
+      position: { width: 800 },
+      content: `<div class="testInspector scrollable">
           <table>
           <thead><tr>
           <th>${_loc('torgeternity.testInspector.field')}</th>
           <th>${_loc('torgeternity.testInspector.value')}</th>
           </tr></thead>
           <tbody>${content}</tbody></table></div>`,
-        });
-      }
-    })
-    return options;
+    });
   }
 
   /**
@@ -727,8 +725,8 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
    * @this {TorgeternityChatLog}
    */
   static async #onApplyEffectsTarget(event, button) {
-    const { test, targetActor: actor } = getChatTarget(button);
-    return this.addEffectsToActor(event, actor, test, (event) => event.transfersToTarget);
+    const { test, targetActor } = getChatTarget(button);
+    return this.addEffectsToActor(event, targetActor, test, (event) => event.transfersToTarget);
   }
 
   async addEffectsToActor(event, actor, test, transfersTo) {
@@ -816,10 +814,10 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
  */
   static async #onApplyActorVulnerable(event, button) {
     event.preventDefault();
-    const { test, actor } = getChatActor(button);
+    const { actor } = getChatActor(button);
     // Presumably it is this actor's turn, so ensure vulnerable state stays until
     // the END of their NEXT turn.
-    if (actor) actor.increaseVulnerable(test.actor, /*duration*/ 2);
+    if (actor) actor.increaseVulnerable(actor, /*duration*/ 2);
   }
 
   /**
@@ -868,7 +866,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     event.preventDefault();
     // No test in the chat message that display Defeat prompt
     const attribute = button.dataset.control;
-    const actor = getMessage(button).chatMessage.speakerActor();
+    const actor = getMessage(button).chatMessage.speakerActor;
 
     return actor.testDefeat(attribute);
     // Wait for manual addition of results, when applyDefeat is invoked.
@@ -914,7 +912,7 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     event.preventDefault();
     // No test in the chat message that display Defeat prompt
     const { chatMessage } = getMessage(button);
-    const actor = chatMessage.speakerActor();
+    const actor = chatMessage.speakerActor;
     return actor.testConcentration(chatMessage.speaker, button.dataset /*, { window: { windowId: this.window.windowId }}*/);
   }
 
@@ -1039,11 +1037,10 @@ function getMessage(button) {
  * @returns {Actor} The actor that initiated this chat message
  */
 function getChatActor(button) {
-  const msg = getMessage(button);
-  const test = msg?.test;
+  const { chatMessage, test } = getMessage(button);
   if (!test) return null;
   const actor = fromUuidSync(test.actor, { strict: false });
-  if (actor) return { actor, ...msg };
+  if (actor) return { actor, chatMessage, test };
   ui.notifications.warn(_loc('torgeternity.notifications.noTarget'));
   return null;
 }
@@ -1054,12 +1051,11 @@ function getChatActor(button) {
  * @returns {Actor} The Actor of the target token of this chat message.
  */
 function getChatTarget(button) {
-  const msg = getMessage(button);
-  const test = msg?.test;
+  const { chatMessage, test } = getMessage(button);
   if (!test) return null;
   const targetActor = fromUuidSync(button.closest('.skill-roll-target')?.dataset.tokenUuid, { strict: false })?.actor;
   const testTarget = test?.targets.find(target => target.dummyTarget || target.actorUuid === targetActor.uuid);
-  if (testTarget) return { targetActor, testTarget, ...msg };
+  if (testTarget) return { targetActor, testTarget, chatMessage, test };
   ui.notifications.warn(_loc('torgeternity.notifications.noTarget'));
   return null;
 }

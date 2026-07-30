@@ -742,17 +742,11 @@ export async function renderSkillChat(test, origChatMessage) {
   const flavor = (messageMode === 'public') ? '' : _loc(CONFIG.ChatMessage.modes[messageMode].label);
   let message;
   if (origChatMessage) {
-    const rolls = dicerolled ? origChatMessage.rolls.concat(dicerolled) : origChatMessage.rolls;
     message = origChatMessage.update({
-      rolls,
+      rolls: dicerolled ? origChatMessage.rolls.concat(dicerolled) : origChatMessage.rolls,
       flavor,
       system: test,
-      flags: {
-        torgeternity: {
-          itemId: test.itemId,  // for Automated Animations module
-          template: 'systems/torgeternity/templates/chat/skill-card.hbs',
-        },
-      },
+      // Don't overwrite the flags field, since modules might have added their own stuff.
     })
   } else {
     message = ChatMessage.implementation.create({
@@ -761,13 +755,8 @@ export async function renderSkillChat(test, origChatMessage) {
       owner: test.actor,  // actually UUID
       rolls: dicerolled,
       flavor,
+      flags: test.itemId ? { torgeternity: { itemId: test.itemId } } : {}, // for Automated Animations module 
       system: test,
-      flags: {
-        torgeternity: {
-          itemId: test.itemId,  // for Automated Animations module
-          template: 'systems/torgeternity/templates/chat/skill-card.hbs',
-        },
-      },
     },
       { messageMode });
   }

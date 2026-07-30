@@ -23,17 +23,14 @@ export class ChatMessageTorg extends foundry.documents.ChatMessage {
 
   async renderHTML(options) {
     const html = await super.renderHTML(options);
-    if (this.isContentVisible &&
-      this.flags?.torgeternity?.template &&
-      !foundry.utils.isEmpty(this.system)) {
-
-      const templateData = { ...this.system }; // make copy
-      templateData.isOpen = game.settings.get('torgeternity', 'showCheckDetails') ? "open" : "";
-      templateData.ownsActor = fromUuidSync(templateData.actor)?.isOwner;
-      for (const target of templateData.targets)
+    if (this.isContentVisible && this.type === 'action') {
+      const context = { ...this.system }; // make copy
+      context.isOpen = game.settings.get('torgeternity', 'showCheckDetails') ? "open" : "";
+      context.ownsActor = fromUuidSync(context.actor)?.isOwner;
+      for (const target of context.targets)
         if (!target.dummyTarget && fromUuidSync(target.uuid, { strict: false })?.isOwner) target.ownsTarget = true;
 
-      const renderedTemplate = await foundry.applications.handlebars.renderTemplate(this.flags.torgeternity.template, templateData);
+      const renderedTemplate = await foundry.applications.handlebars.renderTemplate('systems/torgeternity/templates/chat/skill-card.hbs', context);
       html.querySelector('.message-content').innerHTML = await foundry.applications.ux.TextEditor.enrichHTML(renderedTemplate, { secrets: this.isOwner });
     }
     if (ui.chat.isAtBottom) this.#debounceScrollDown();

@@ -424,6 +424,8 @@ export async function renderSkillChat(test, origChatMessage) {
     let outcomeColor;
     const testDifference = rollResult - DN;
 
+    if (test.testType === 'power') test.showBacklashButtons = (testDifference < 0);
+
     if (
       test.rollTotal === 1 &&
       !(test.testType === 'activeDefenseUpdate' || test.testType === 'activeDefense')
@@ -432,12 +434,10 @@ export async function renderSkillChat(test, origChatMessage) {
       test.resultText = _loc('torgeternity.chatText.check.result.mishap');
       test.result = TestResult.MISHAP;
       if (test.testType === 'soak') target.soakWounds = 0;
-      if (test.testType === 'power') test.showBacklashButtons = true;
     } else if (testDifference < 0) {
       test.resultText = _loc('torgeternity.chatText.check.result.failure');
       test.result = TestResult.FAILURE;
       if (test.testType === 'soak') target.soakWounds = 0;
-      if (test.testType === 'power') test.showBacklashButtons = true;
     } else if (testDifference < 5) {
       test.resultText = _loc('torgeternity.chatText.check.result.standardSuccess');
       test.result = TestResult.STANDARD;

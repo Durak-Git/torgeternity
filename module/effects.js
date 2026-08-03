@@ -45,6 +45,11 @@ export async function onManageActiveEffect(event, button, owner) {
 export function prepareActiveEffectCategories(effects) {
   // Define effect header categories
   const categories = {
+    transferable: {
+      type: 'transferable',
+      label: `${_loc('torgeternity.sheetLabels.transferableEffects')}`,
+      effects: [],
+    },
     temporary: {
       type: 'temporary',
       label: `${_loc('torgeternity.sheetLabels.tempEffects')}`,
@@ -67,6 +72,7 @@ export function prepareActiveEffectCategories(effects) {
     // e._getSourceName(); // Trigger a lookup for the source name
     //if ( e.isSuppressed ) categories.suppressed.effects.push(e);
     if (e.disabled) categories.inactive.effects.push(e);
+    else if (e.isTransferable) categories.transferable.effects.push(e);
     else if (e.isTemporary) categories.temporary.effects.push(e);
     else categories.passive.effects.push(e);
   }

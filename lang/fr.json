@@ -1272,6 +1272,7 @@
       "toughness": "Résistance",
       "trademark": "Arme de prédilection",
       "trademarkHint": "Atout Arme de prédilection pour l'arme utilisée",
+      "transferableEffects": "Transferable Effects",
       "type": "Type",
       "unarmed": "Mains nues",
       "unspent": "Disponibles",

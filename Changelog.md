@@ -6,13 +6,12 @@
 ```
   "cancelConcentration": "Cancel Concentration",
   "cancelConcentrationTooltip": "Cancel Concentration after a failed Concentration Check",
-  "transferableEffects": "Transferable Effects",   // for the Effects tab of Actors and Items
 ```
 
 ## NEXT
 - When using the automation of special destiny cards being played, the last "action" chat card for the actor is used, rather than finding the most recent chat card of any type (which might not be an actual action).
 - Allow modifications to the Action Total on a Concentration Check (and provide a manual 'Cancel Concentration' button to remove concentration on a failure).
-- Add a new **Transferable Effects** section to the Effects tab of Actors and Items, to contain the effects which can be transferred as part of an Action, rather than directly affecting the owning Actor/Item.
+- Update the **Effects Tab** of Actors and Items to have an icon indicating effects which are either "Apply on Outcome" (bullseye) or "Transfer on Outcome" (share).
 
 ### Internal Refactoring
 - All Action chat cards are now given the type `action` and store the test data in `message.system` rather than `message.flags.torgeternity.test`.

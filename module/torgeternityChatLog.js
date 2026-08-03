@@ -815,10 +815,10 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
  */
   static async #onApplyActorVulnerable(event, button) {
     event.preventDefault();
-    const { actor } = getChatActor(button);
+    const { test, actor } = getChatActor(button);
     // Presumably it is this actor's turn, so ensure vulnerable state stays until
     // the END of their NEXT turn.
-    if (actor) actor.increaseVulnerable(actor, /*duration*/ 2);
+    if (actor) actor.increaseVulnerable(test.actor, /*duration*/ 2);
   }
 
   /**

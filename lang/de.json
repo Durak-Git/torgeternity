@@ -1292,8 +1292,8 @@
       "backlash2Tooltip": "1 Schock anwenden",
       "backlash3Tooltip": "Sehr Angeschlagen anwenden",
       "additionalDamage": "+ Schaden",
-      "cancelConcentration": "Cancel Concentration",
-      "cancelConcentrationTooltip": "Cancel Concentration after a failed Concentration Check",
+      "cancelConcentration": "Konzentration beenden",
+      "cancelConcentrationTooltip": "Beende Konzentration nach einem missglückten Konzentrationswurf",
       "bonusDice": "BW im Voraus würfeln"
     },
     "sizes": {

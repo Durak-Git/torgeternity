@@ -1295,8 +1295,8 @@
       "backlash2Tooltip": "Appliquer 1 Choc",
       "backlash3Tooltip": "Appliquer Très Déstabilisé",
       "additionalDamage": "Dommages additionels",
-      "cancelConcentration": "Cancel Concentration",
-      "cancelConcentrationTooltip": "Cancel Concentration after a failed Concentration Check",
+      "cancelConcentration": "Fin de Concentration",
+      "cancelConcentrationTooltip": "Arrête la Concentration après un test de Concentration raté",
       "bonusDice": "DB lancés par avance"
     },
     "sizes": {

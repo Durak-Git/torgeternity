@@ -2,13 +2,7 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-### TRANSLATIONS
-```
-  "cancelConcentration": "Cancel Concentration",
-  "cancelConcentrationTooltip": "Cancel Concentration after a failed Concentration Check",
-```
-
-## 14.4.0
+## 14.4.0 - Concentration and others
 - When using the automation of **special destiny cards** being played, the last "action" chat card for the actor is used, rather than finding the most recent chat card of any type (which might not be an actual action).
 - Allow modifications to the Action Total on a **Concentration Check** (and provide a manual 'Cancel Concentration' button to remove concentration on a failure).
 - Update the **Effects Tab** of Actors and Items to have an icon indicating effects which are either "Apply on Outcome" (bullseye) or "Transfer on Outcome" (share).

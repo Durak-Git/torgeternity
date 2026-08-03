@@ -13,6 +13,7 @@
 - Allow modifications to the Action Total on a **Concentration Check** (and provide a manual 'Cancel Concentration' button to remove concentration on a failure).
 - Update the **Effects Tab** of Actors and Items to have an icon indicating effects which are either "Apply on Outcome" (bullseye) or "Transfer on Outcome" (share).
 - Hide **Backlash** buttons if a power action failure is converted to a success.
+- **Resistance Fighter** system archetype now has a **Pain Gauntlet** weapon rather than a special type of gear.
 
 ### Internal Refactoring
 - All Action chat cards are now given the type `action` and store the test data in `message.system` rather than `message.flags.torgeternity.test`.

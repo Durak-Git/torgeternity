@@ -2,6 +2,9 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## NEXT
+- Non-Lethal damage will no longer mark Threats (or vehicles) as dead, but will mark them as Unconscious.
+
 ## 14.4.0 - Concentration and others
 - When using the automation of **special destiny cards** being played, the last "action" chat card for the actor is used, rather than finding the most recent chat card of any type (which might not be an actual action).
 - Allow modifications to the Action Total on a **Concentration Check** (and provide a manual 'Cancel Concentration' button to remove concentration on a failure).

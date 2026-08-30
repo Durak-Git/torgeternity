@@ -154,12 +154,11 @@ export default class TorgeternityActor extends foundry.documents.Actor {
       let setUnconscious;
 
       if (options.woundsExceeded) {
-        if (this.type === 'stormknight') {
-          if (options.nonLethal) // nonLethal damage won't require a Defeat Test for SKs
-            setUnconscious = true;
-          else
-            this.notifyDefeat();
-        } else if (game.settings.get('torgeternity', 'autoWound'))
+        if (options.nonLethal) // nonLethal damage will only KO, not kill (no defeat test for SKs)
+          setUnconscious = true;
+        else if (this.type === 'stormknight')
+          this.notifyDefeat();
+        else if (game.settings.get('torgeternity', 'autoWound'))
           this.toggleStatusEffect('dead', { active: true, overlay: true });
       }
 

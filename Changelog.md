@@ -4,6 +4,7 @@
 
 ## NEXT
 - Non-Lethal damage will no longer mark Threats (or vehicles) as dead, but will mark them as Unconscious.
+- Add two new data fields to the Actor data model, which will modify the number of wounds/shock received by the Actor from any source:  `system.defenses.shock.mod` and `system.defenses.wounds.mod`  (the `mod` is ADDED to the number of shock/wounds inflicted, so use an AE with SUBTRACT change if the shock/wounds should be reduced [can't be reduced below 0]).
 
 ## 14.4.0 - Concentration and others
 - When using the automation of **special destiny cards** being played, the last "action" chat card for the actor is used, rather than finding the most recent chat card of any type (which might not be an actual action).

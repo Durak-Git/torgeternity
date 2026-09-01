@@ -753,6 +753,7 @@ export class TorgeternityMacros {
       actorType: 'threat',
       // Ensure a dice result of 10 vs DN of 10 is a success
       DNDescriptor: 'standard',
+      ignoreModifiers: true,
       skillValue: 10,
       rollTotal: 11,
       diceList: [10],

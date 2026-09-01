@@ -2,6 +2,9 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## NEXT
+- **Periculum macro** should not use any modifiers in the pseudo-test chat message result.
+
 ## 14.5.0 - QOL improvements
 - **Non-Lethal vs Threats**: Non-lethal damage will no longer mark Threats (or vehicles) as dead, but will mark them as Unconscious.
 - **Modify Wounds/Shock received from all sources**: Add two new data fields to the Actor data model, which will modify the number of wounds/shock received by the Actor from any source:  `system.defenses.shock.mod` and `system.defenses.wounds.mod`  (the `mod` is ADDED to the number of shock/wounds inflicted, so use an AE with SUBTRACT change if the shock/wounds should be reduced [can't be reduced below 0]).

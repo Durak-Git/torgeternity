@@ -476,8 +476,8 @@ export async function renderSkillChat(test, origChatMessage) {
         if (ammo) test.effects.push(...ammo.effects.filter(ef => appliesToTest(ef, test, target)).map(ef => ef.uuid));
       }
     }
-    test.showApplyEffects = !!test.effects.map(fx => fromUuidSync(fx)).find(fx => fx.transfersToActor);
-    target.showApplyEffects = !!test.effects.map(fx => fromUuidSync(fx)).find(fx => fx.transfersToTarget);
+    test.showApplyEffects = test.effects.map(fx => fromUuidSync(fx)).filter(fx => fx.transfersToActor).map(fx => fx.name);
+    target.showApplyEffects = test.effects.map(fx => fromUuidSync(fx)).filter(fx => fx.transfersToTarget).map(fx => fx.name);
 
     // Approved Action Processing
     target.successfulDefendApprovedAction = false;

@@ -747,9 +747,6 @@ export class TorgeternityMacros {
 
     const targets = Array.from(game.user.targets).map(token => oneTestTarget(token));
     targets.forEach(target => target.damage = damage);
-    //for (const target of targets) {
-    //      target.damage = damage;
-    //}
 
     return renderSkillChat({
       testType: 'custom',

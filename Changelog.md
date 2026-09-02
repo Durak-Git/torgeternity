@@ -3,6 +3,7 @@
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
 ## NEXT
+- **Effects button** in skill check chat card now lists the AE's which will be transferred in the button's tooltip.
 - **Periculum macro** should not use any modifiers in the pseudo-test chat message result.
 
 ## 14.5.0 - QOL improvements

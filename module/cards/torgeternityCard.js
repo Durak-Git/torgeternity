@@ -63,7 +63,7 @@ export class torgeternityCard extends Card {
       const macro = await fromUuid(this.system?.macro);
       if (macro) {
         console.debug(`Card played '${this.name}': Invoking Macro '${macro.name}'`);
-        macro.execute(); // Leave it to execute() to find the correct actor, token, etc.
+        macro.execute({ actor: game.actors.get(actorId) }); // Use the actor whose card is being played
       } else {
         console.error(`Unknown Macro on card ${this.name}`);
       }

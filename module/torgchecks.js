@@ -592,14 +592,14 @@ export async function renderSkillChat(test, origChatMessage) {
           adjustedDamage = applyNumericEffects('test.damage', adjustedDamage, effects);
         }
         // NOTE: target.toughness already includes target.armour
-        target.targetAdjustedToughness = target.toughness - target.armor;
+        target.adjustedToughness = target.toughness - target.armor;
         // If armor and cover can assist, adjust toughness based on AP effects and cover modifier
         if (test.applyArmor) {
           // "lowestArmor" trait on attack means armor with "torso" trait is ignored.
           const armor = ((test.attackTraits.includes('lowestArmor') && !target.defenseTraits.includes('fullBody')) ? 0 : target.armor) +
             getExtraProtection(test.attackTraits, target.defenses, 'Armor');
           const weaponAP = applyNumericEffects('test.weaponAP', test.weaponAP, effects);
-          target.targetAdjustedToughness += Math.max(0, armor - weaponAP) + test.coverModifier;
+          target.adjustedToughness += Math.max(0, armor - weaponAP) + test.coverModifier;
         }
 
         // Generate damage description and damage sublabel
@@ -647,7 +647,7 @@ export async function renderSkillChat(test, origChatMessage) {
           }
           // adjustedDamage is already computed from test.damage
           // then modify test.damage for following future computation, and modify the adjustedDamage
-          const damage = torgDamage(adjustedDamage, target.targetAdjustedToughness, {
+          const damage = torgDamage(adjustedDamage, target.adjustedToughness, {
             attackTraits: test.attackTraits,
             defenseTraits: target?.defenseTraits,
             soakWounds: target.soakWounds,
@@ -657,7 +657,7 @@ export async function renderSkillChat(test, origChatMessage) {
           target.showApplyDamage = (damage.wounds || damage.shocks);
           target.damageDescription = damage.label;
           target.damageSubDescription =
-            `${_loc('torgeternity.chatText.check.result.damage')} ${adjustedDamage} vs. ${target.targetAdjustedToughness} ${_loc('torgeternity.chatText.check.result.toughness')}`;
+            `${_loc('torgeternity.chatText.check.result.damage')} ${adjustedDamage} vs. ${target.adjustedToughness} ${_loc('torgeternity.chatText.check.result.toughness')}`;
 
           // 'stagger' trait on a weapon inflicts STYMIED after any damage is dealt.
           if ((damage.shocks > 0 || damage.wounds > 0) && test.attackTraits?.includes('stagger')) {

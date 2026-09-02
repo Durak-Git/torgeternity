@@ -231,6 +231,16 @@ export default class torgeternityPlayerHand extends foundry.applications.sheets.
             </div>`,
           });
 
+          if (card.system?.macro) {
+            const macro = await fromUuid(card.system?.macro);
+            if (macro) {
+              console.debug(`Card played '${card.name}': Invoking Macro '${macro.name}'`);
+              macro.execute(); // Leave it to execute() to find the correct actor, token, etc.
+            } else {
+              console.error(`Unknown Macro on card ${card.name}`);
+            }
+          }
+
           // Update the owner's most recent chat card if a Drama, Hero or +3 card
           const special = card.system?.special;
           if (special &&

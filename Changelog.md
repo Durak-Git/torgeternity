@@ -2,10 +2,21 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+# Translations
+```
+  "CARD.FIELDS": {
+    "macro": {
+      "label": "On Play Macro",
+      "hint": "This macro will be invoked when the card is played"
+    }
+  }
+```
+
 ## NEXT
 - **Effects button** in skill check chat card now lists the AE's which will be transferred in the button's tooltip.
 - **Periculum macro** should not use any modifiers in the pseudo-test chat message result.
 - **Active Effects: Source** will not display only "xxx" not "xxx (yyy)" if xxx and yyy are the same string (typically if the source was directly from an Actor rather than an Item).
+- **Trigger Macro on Playing Card**: Allow any card in any deck to have a Macro attached to it, which will be triggered when that card is played from a player's hand. (It uses the playing user's permissions for what the Macro is able to achieve.)
 
 ## 14.5.0 - QOL improvements
 - **Non-Lethal vs Threats**: Non-lethal damage will no longer mark Threats (or vehicles) as dead, but will mark them as Unconscious.

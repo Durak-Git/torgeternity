@@ -1615,6 +1615,10 @@
   },
   "CARD.FIELDS": {
     "number.label": "Nombre",
+    "macro": {
+      "label": "On Play Macro",
+      "hint": "This macro will be invoked when the card is played"
+    },
     "system.special": "Action spéciale"
   },
   "CONTROLS": {

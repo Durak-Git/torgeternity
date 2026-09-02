@@ -281,7 +281,7 @@ export default async function setupTokenActionHud(coreModule) {
     async handleActionClick(event, encodedValue) {
       let payload = encodedValue.split(this.delimiter);
 
-      if (payload.length != 4) {
+      if (payload.length !== 4) {
         super.throwInvalidValueErr();
       }
 

@@ -485,7 +485,7 @@ export async function reloadAmmo(actor, weapon, ammoItem, ignoreUsage) {
 
   if (weapon.system.ammo.value === weapon.system.ammo.max && !ignoreUsage) {
 
-    if (ammoItem && weapon.system.loadedAmmo != ammoItem.id) {
+    if (ammoItem && weapon.system.loadedAmmo !== ammoItem.id) {
       await weapon.update({ 'system.loadedAmmo': ammoItem.id });
       return ChatMessage.implementation.create({
         content: `${_loc('torgeternity.chatText.changeAmmoType', { weapon: weapon.name, ammo: ammoItem.name })}`,
@@ -551,7 +551,7 @@ export async function reloadAmmo(actor, weapon, ammoItem, ignoreUsage) {
     ui.notifications.error(_loc('torgeternity.notifications.clipEmpty'));
     return;
   }
-  if (weapon.system.loadedAmmo != ammoItem.id) {
+  if (weapon.system.loadedAmmo !== ammoItem.id) {
     await ChatMessage.implementation.create({
       content: `${_loc('torgeternity.chatText.changeAmmoType', { weapon: weapon.name, ammo: ammoItem.name })}`,
       speaker,

@@ -714,7 +714,7 @@ export async function renderSkillChat(test, origChatMessage) {
     // get disposition from prototype Token if there's no real token.
     const token = testActor.getActiveTokens(false, true)?.[0] || testActor.prototypeToken;  // (linked, document [rather than PlaceableObject])
     if (game.combat?.active && token &&
-      ((token.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY && game.combat.heroConflict === 'up') ||
+      ((token.disposition === CONST.TOKEN_DISPOSITIONS.FRIENDLY && game.combat.heroConflict === 'up') ||
         (token.disposition === CONST.TOKEN_DISPOSITIONS.HOSTILE && game.combat.villainConflict === 'up')))
       test.upClass = 'drama-up';
 

@@ -54,7 +54,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
    */
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
     // clamping is performed when isBar is true
-    if (attribute === 'shock' || attribute == 'wounds')
+    if (attribute === 'shock' || attribute === 'wounds')
       return super.modifyTokenAttribute(`${attribute}.value`, value, isDelta, false);
     else
       return super.modifyTokenAttribute(attribute, value, isDelta, localIsBar);

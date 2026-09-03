@@ -12,11 +12,11 @@
   }
 ```
 
-## NEXT
+## NEXT - Custom Skills, Play Card Macros
 - **Effects button** in skill check chat card now lists the AE's which will be transferred in the button's tooltip.
 - **Periculum macro** should not use any modifiers in the pseudo-test chat message result.
 - **Active Effects: Source** will not display only "xxx" not "xxx (yyy)" if xxx and yyy are the same string (typically if the source was directly from an Actor rather than an Item).
-- **Trigger Macro on Playing Card**: Allow any card in any deck to have a Macro attached to it, which will be triggered when that card is played from a player's hand (`actor` in the macro is the Actor who played the card). (It uses the playing user's permissions for what the Macro is able to achieve.)
+- **Trigger Macro on Playing Card**: Allow any card in any deck to have a Macro attached to it, which will be triggered when that card is played from a player's hand (`actor` in the macro is the Actor who played the card, `card` is the card document which is being played). (The playing user's permissions is used for what the Macro is able to achieve.)
 - **No attribute option for skills**: Allow skills to have no attribute defined for their use. It allows non-standard custom skills to be used on Actors.
 - **Active Effects on Custom Skills**: A custom skill can be modified by an Active Effect by using the key `system.customSkills.<slug>.mod` where `<slug>` is the slugified version of the custom skill's name. (e.g. The skill "Pop Tart" will have a slug of `pop-tart`)
 

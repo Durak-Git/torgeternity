@@ -152,6 +152,7 @@ export default class torgeternityPlayerHand extends foundry.applications.sheets.
     const li = button.closest("li[data-card-id]");
     const stack = this.document;
     const card = stack.cards.get(li?.dataset.cardId);
+    const actorId = this.document?.flags?.torgeternity?.defaultHand;
 
     // Save any pending change to the form
     await this.submit({ operation: { render: false } });
@@ -188,9 +189,9 @@ export default class torgeternityPlayerHand extends foundry.applications.sheets.
         const image2 = new foundry.applications.apps.ImagePopout({ src: card.img, window: { title: card.name } });
         return image2.render({ force: true }, { width: 425, height: 650 });
       case 'discard':
-        return event.shiftKey ? card.recall() : card.discard();
+        return event.shiftKey ? card.recall() : card.discard(actorId);
       case 'play':
-        return card.play(!event.shiftKey, this.document?.flags?.torgeternity?.defaultHand);
+        return card.play(!event.shiftKey, actorId);
     }
   }
 

@@ -26,18 +26,35 @@ export class torgeternityCard extends Card {
     return super.migrateData(source);
   }
 
-  async discard() {
+  async discard(actorId) {
     await this.update({ "system.pooled": false });
     const settings = game.settings.get('torgeternity', 'deckSetting');
     const discardPile = game.cards.get((this.type === 'destiny') ? settings.destinyDiscard : settings.cosmDiscard);
     if (!discardPile) return;
     await this.pass(discardPile, game.torgeternity.cardChatOptions);
+    if (this.system?.macro)
+      await this.executeMacro('discard', actorId);
     return this.toMessage({
       content: `<div class="card-draw flexrow"><span class="card-chat-tooltip">
             <img class="card-face" src="${this.img}"/><span><img src="${this.img}"></span></span>
             <span class="card-name">${_loc('torgeternity.chatText.discardsCard')} ${this.name}</span>
             </div>`,
     });
+  }
+
+  async executeMacro(operation, actorId) {
+    if (this.system?.macro) {
+      const macro = await fromUuid(this.system?.macro);
+      if (macro) {
+        console.debug(`Card played '${this.name}': Invoking Macro '${macro.name}'`);
+        const actor = game.actors.get(actorId);
+        const context = { operation, card: this };
+        if (actor) context.actor = actor; // Use the actor whose card is being played
+        macro.execute(context);
+      } else {
+        console.error(`Unknown Macro on card ${this.name}`);
+      }
+    }
   }
 
   /**
@@ -59,15 +76,8 @@ export class torgeternityCard extends Card {
                 </div>`,
     });
 
-    if (this.system?.macro) {
-      const macro = await fromUuid(this.system?.macro);
-      if (macro) {
-        console.debug(`Card played '${this.name}': Invoking Macro '${macro.name}'`);
-        macro.execute({ actor: game.actors.get(actorId), card: this }); // Use the actor whose card is being played
-      } else {
-        console.error(`Unknown Macro on card ${this.name}`);
-      }
-    }
+    if (this.system?.macro)
+      await this.executeMacro('play', actorId);
 
     // Update the owner's most recent chat card if a Drama, Hero or +3 card
     const special = this.system?.special;

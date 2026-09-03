@@ -128,7 +128,8 @@
       "dexterity": "Dextérité",
       "mind": "Raison",
       "spirit": "Esprit",
-      "strength": "Force"
+      "strength": "Force",
+      "zero": "---"
     },
     "axioms": {
       "magic": "Magie",

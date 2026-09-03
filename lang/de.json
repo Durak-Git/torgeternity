@@ -125,7 +125,8 @@
       "dexterity": "Geschicklichkeit",
       "mind": "Verstand",
       "spirit": "Geist",
-      "strength": "Stärke"
+      "strength": "Stärke",
+      "zero": "---"
     },
     "axioms": {
       "magic": "Magie",

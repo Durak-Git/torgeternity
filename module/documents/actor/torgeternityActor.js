@@ -14,6 +14,14 @@ export default class TorgeternityActor extends foundry.documents.Actor {
   /* -------------------------------------------- */
   /*  Getters                                     */
   /* -------------------------------------------- */
+  prepareBaseData() {
+    super.prepareBaseData();
+    // Allow custom skills to be modified by Active Effects
+    this.system.customSkills = {};
+    for (const custom of this.itemTypes.customSkill) {
+      this.system.customSkills[custom.name.slugify()] = custom.system;
+    }
+  }
 
   /**
    * simple getter for the equipped armor item
@@ -754,6 +762,10 @@ export default class TorgeternityActor extends foundry.documents.Actor {
   prepareDerivedData() {
     super.prepareDerivedData();
     this.checkItemUniqueness('prepareDerivedData');
+    // Recalculate value for each custom skill (in case AEs were applied to 'system.customSkill.slug')
+    for (const custom of this.itemTypes.customSkill) {
+      custom.system.recalcValue();
+    }
   }
 
   //

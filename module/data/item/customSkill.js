@@ -19,6 +19,10 @@ export class CustomSkillItemData extends BaseItemData {
 
   prepareDerivedData() {
     super.prepareDerivedData();
+    this.recalcValue();
+  }
+
+  recalcValue() {
     const actor = this.parent?.parent;
     this.value = this.adds + (this.mod ?? 0);
     if (actor instanceof Actor)

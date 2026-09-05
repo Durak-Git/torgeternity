@@ -268,7 +268,8 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
       .filter(skill => skill.groupName === 'other')
       .concat(context.customSkill.map(skill => {
         return {
-          id: skill.system.slug,
+          id: skill.id,
+          slug: skill.system.slug,
           ...skill.system,
           localName: skill.name,  // already in the local language
           isCustom: true,
@@ -629,6 +630,7 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
     if (!this.isEditable) return;
     const submitted = foundry.utils.expandObject(formData.object);
     if (submitted.items) {
+      // Convert custom skills to have the correct id
       const updates = Object.entries(submitted.items).map(([itemid, fields]) => { return { _id: itemid, ...fields } });
       await this.actor.updateEmbeddedDocuments('Item', updates);
     }

@@ -2,21 +2,11 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-# Translations
-```
-  "CARD.FIELDS": {
-    "macro": {
-      "label": "On Play Macro",
-      "hint": "This macro will be invoked when the card is played"
-    }
-  }
-```
-
-## NEXT - Skills, Perks & Cards
-- **Effects button** in skill check chat card now lists the AE's which will be transferred in the button's tooltip.
+## 14.6.0 - Skills, Perks & Cards
+- **Effects button** in skill check chat cards, the "+Effects" button's tooltip now lists the Active Effcts which will be transferred.
 - **Periculum macro** should not use any modifiers in the pseudo-test chat message result.
-- **Active Effects: Source** will not display only "xxx" not "xxx (xxx)" if "xxx" and "(xxx)" are the same string (typically if the source was directly from an Actor rather than an Item).
-- **Trigger Macro from Card usage**: Allow any card in any deck to have a Macro attached to it, which will be triggered when that card is played from a player's hand. Variables passed to the macro are:
+- **Active Effects: Source** will now display only "xxx" not "xxx (xxx)" if "xxx" and "(xxx)" are the same string (typically if the source was directly from an Actor rather than an Item).
+- **Trigger Macro from Card usage**: Allow any card in any deck to have a Macro attached to it, which will be triggered when that card is played or discarded from a player's hand. Variables passed to the macro are:
   - `operation` - `play` or `discard` (might be expanded in the future to include 'draw', 'pass', etc.)
   - `actor` - the Actor who played the card
   - `card` - the Card that is being played
@@ -24,8 +14,8 @@
 - **No attribute option for skills**: Allow skills to have no attribute defined for their use. It allows non-standard custom skills to be used on Actors.
 - **Perks**
   - Each Enhancement and Limitation can be deleted separately, it no longer deletes only the last entry in the list.
-  - Dragging an item into the Enhancements tab of a Perk will create an additional Enhancement entry from that item (and include a link to the original dropped item).
-  - (**Note**: Items to be inherited via the Inheritance tab, must now be dragged onto the Perk while the Inheritance tab is selected.)
+  - Dropping an item into the Enhancements tab of a Perk will create an additional Enhancement entry from that item (and include a link to the original dropped item).
+  - (**Note**: Items to be inherited via the Inheritance tab, must now be dropped onto the Perk while the Inheritance tab is selected.)
 - **Custom Skill Improvements**
   - **Active Effects**: A custom skill can be modified by an Active Effect by using the key `system.customSkills.<slug>.mod` where `<slug>` is the slugified version of the custom skill's name. (e.g. The skill "Pop Tart" will have a slug of `pop-tart`)
   - **@Check[customskillslug]**: Allow the slug of a custom skill name to appear in an `@Check` inline enricher.

@@ -118,10 +118,10 @@ export default async function setupTokenActionHud(coreModule) {
           }
         }).concat(actor.itemTypes.customSkill.map(skill => {
           return {
-            id: skill.id,
+            id: skill.system.slug,
             name: skill.name + (skill.system.isFav ? FAVOURED : '') + ` (${skill.system.value || '-'})`,  // already in the local language
             groupName: 'other', // for local filtering
-            encodedValue: [ACTION_SKILL, actor.id, tokenId, skill.id].join(this.delimiter),
+            encodedValue: [ACTION_SKILL, actor.id, tokenId, skill.system.slug].join(this.delimiter),
             system: skill
           }
         }));

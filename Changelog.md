@@ -18,7 +18,7 @@
   - (**Note**: Items to be inherited via the Inheritance tab, must now be dropped onto the Perk while the Inheritance tab is selected.)
 - **Custom Skill Improvements**
   - **Active Effects**: A custom skill can be modified by an Active Effect by using the key `system.customSkills.<slug>.mod` where `<slug>` is the slugified version of the custom skill's name. (e.g. The skill "Pop Tart" will have a slug of `pop-tart`)
-  - **@Check[customskillslug]**: Allow the slug of a custom skill name to appear in an `@Check` inline enricher.
+  - **`@Check[customskillslug]`**: Allow the slug of a custom skill name to appear in an `@Check` inline enricher.
   - The `slug` for a custom skill is displayed in the tooltip of the name in the custom skill item card.
 
 ## 14.5.0 - QOL improvements

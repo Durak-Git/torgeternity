@@ -82,7 +82,7 @@ export default async function setupTokenActionHud(coreModule) {
     }
 
     async #getAttributes(actor, tokenId, parent) {
-      const actions = Object.entries(actor.system.attributes).map(([key, attribute]) => {
+      const actions = Object.entries(actor.system.attributes).filter(([key]) => key !== 'zero').map(([key, attribute]) => {
         return {
           id: key,
           name: _loc(`torgeternity.attributes.${key}`) + ` (${attribute.value})`,

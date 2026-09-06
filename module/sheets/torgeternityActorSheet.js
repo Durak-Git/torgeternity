@@ -364,14 +364,14 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
   _onDragStartSkill(event) {
     const data = event.target.dataset;
     const skillAttrData = {
-      type: data.testtype,
+      type: data.testType,
       data: {
         name: data.name,
         customskill: (data.customskill === 'true'),
         attribute: data.baseAttribute,
         adds: Number(data.adds),
         value: Number(data.value),
-        unskilledUse: data.unskilleduse,
+        unskilledUse: data.unskilledUse,
         DNDescriptor: 'standard',
       },
     };
@@ -733,7 +733,7 @@ export default class TorgeternityActorSheet extends foundry.applications.api.Han
    * @this {TorgeternityActorSheet}
    */
   static async #onSkillRoll(event, button) {
-    if (button.dataset.testtype === 'attribute')
+    if (button.dataset.testType === 'attribute')
       return this.actor.rollAttribute(button.dataset.name, /*, undefined, {window: { windowId: this.window.windowId }}*/)
     else
       return this.actor.rollSkill(button.dataset.name, /*, undefined, {window: { windowId: this.window.windowId }}*/)

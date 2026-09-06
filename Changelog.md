@@ -2,6 +2,12 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+# Translations
+```
+"CARD.FIELDS.name.label": "Card Name"
+"CARDS.ACTIONS.Add": "Add"
+```
+
 ## 14.6.0 - Skills, Perks & Cards
 - **Effects button** in skill check chat cards, the "+Effects" button's tooltip now lists the Active Effcts which will be transferred.
 - **Periculum macro** should not use any modifiers in the pseudo-test chat message result.

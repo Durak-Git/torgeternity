@@ -3,11 +3,12 @@
     "discard": "Descarte",
     "display": "Mostrar carta jugadores",
     "FIELDS": {
-      "number.label": "Número",
       "macro": {
         "label": "Macro al jugar carta",
         "hint": "Esta macro se activará cuando se juegue la carta"
       },
+      "name.label": "Card Name",
+      "number.label": "Número",
       "system.special": "Acción especial"
     }
   },

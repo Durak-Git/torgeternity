@@ -3,11 +3,12 @@
     "discard": "Abwerfen",
     "display": "Herzeigen",
     "FIELDS": {
-      "number.label": "Nummer",
       "macro": {
         "label": "Macro beim Ausspielen",
         "hint": "Dieses Macro wird ausgeführt sobald die Karte ausgespielt wird"
       },
+      "name.label": "Card Name",
+      "number.label": "Nummer",
       "system.special": "Spezialaktion"
     }
   },

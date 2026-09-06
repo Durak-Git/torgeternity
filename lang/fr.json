@@ -3,16 +3,17 @@
     "discard": "Défausser",
     "display": "Montrer cette carte aux joueurs",
     "FIELDS": {
-      "number.label": "Nombre",
       "macro": {
         "label": "Macro à lancer",
         "hint": "Cette Macro sera automatiquement activée quand la carte sera jouée"
       },
+      "name.label": "Nom de la carte",
+      "number.label": "Numéro",
       "system.special": "Action spéciale"
     }
   },
   "CARDS.ACTIONS": {
-    "Add": "Add"
+    "Add": "Créer"
   },
   "COMBAT": {
     "End": "Fin"

@@ -1,7 +1,18 @@
 {
   "CARD": {
     "discard": "Abwerfen",
-    "display": "Herzeigen"
+    "display": "Herzeigen",
+    "FIELDS": {
+      "number.label": "Nummer",
+      "macro": {
+        "label": "Macro beim Ausspielen",
+        "hint": "Dieses Macro wird ausgeführt sobald die Karte ausgespielt wird"
+      },
+      "system.special": "Spezialaktion"
+    }
+  },
+  "CARDS.ACTIONS": {
+    "Add": "Add"
   },
   "EFFECT": {
     "TABS": {
@@ -1610,14 +1621,6 @@
         "hint": "Ein Dunkelheitsschwellenwert zwischen 0,15 und 1. Sobald der Dunkelheitswert dieser Szene diesen Schwellenwert überschreitet, wird die allgemeine Beleuchtung mindestens als Pechschwarze Dunkelheit für Dunkelheitsmalusse angenommen."
       }
     }
-  },
-  "CARD.FIELDS": {
-    "number.label": "Nummer",
-    "macro": {
-      "label": "Macro beim Ausspielen",
-      "hint": "Dieses Macro wird ausgeführt sobald die Karte ausgespielt wird"
-    },
-    "system.special": "Spezialaktion"
   },
   "CONTROLS": {
     "LightDay": "Übergang zu taghellen Lichtverhältnissen",

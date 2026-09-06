@@ -1,7 +1,18 @@
 {
   "CARD": {
     "discard": "Discard",
-    "display": "Show this card to players"
+    "display": "Show this card to players",
+    "FIELDS": {
+      "number.label": "Number",
+      "macro": {
+        "label": "On Play Macro",
+        "hint": "This macro will be invoked when the card is played"
+      },
+      "system.special": "Special Ability"
+    }
+  },
+  "CARDS.ACTIONS": {
+    "Add": "Add"
   },
   "EFFECT": {
     "TABS": {
@@ -1604,14 +1615,6 @@
         "hint": "A darkness threshold between 0.15 and 1. When the Scene darkness level exceeds this threshold Global Illumination is disabled and considered to be Pitch Black when determining Darkness penalties."
       }
     }
-  },
-  "CARD.FIELDS": {
-    "number.label": "Number",
-    "macro": {
-      "label": "On Play Macro",
-      "hint": "This macro will be invoked when the card is played"
-    },
-    "system.special": "Special Ability"
   },
   "CONTROLS": {
     "LightDim": "Transition to Dim Light",

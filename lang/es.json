@@ -1,7 +1,18 @@
 {
   "CARD": {
     "discard": "Descarte",
-    "display": "Mostrar carta jugadores"
+    "display": "Mostrar carta jugadores",
+    "FIELDS": {
+      "number.label": "Número",
+      "macro": {
+        "label": "Macro al jugar carta",
+        "hint": "Esta macro se activará cuando se juegue la carta"
+      },
+      "system.special": "Acción especial"
+    }
+  },
+  "CARDS.ACTIONS": {
+    "Add": "Add"
   },
   "EFFECT": {
     "TABS": {
@@ -1610,14 +1621,6 @@
         "hint": "Un umbral de oscuridad entre 0,15 y 1. Cuando el nivel de oscuridad de la escena supera este umbral, se considera que la iluminación global es de negrura total a la hora de determinar las penalizaciones por oscuridad."
       }
     }
-  },
-  "CARD.FIELDS": {
-    "number.label": "Número",
-    "macro": {
-      "label": "Macro al jugar carta",
-      "hint": "Esta macro se activará cuando se juegue la carta"
-    },
-    "system.special": "Acción especial"
   },
   "CONTROLS": {
     "LightDim": "Transición a luz tenue",

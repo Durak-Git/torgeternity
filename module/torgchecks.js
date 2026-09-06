@@ -71,13 +71,11 @@ export async function renderSkillChat(test, origChatMessage) {
     test.testType !== 'attribute' &&
     test.testType !== 'activeDefense' &&
     test.testType !== 'activeDefenseUpdate' &&
-    !test.customSkill &&
-    !testActor.system.skills[test.skillName].adds);
+    !testActor.getSkillData(test.skillName).adds);
 
   // Maybe an AE wants to override rerolling on 20 (vehicles don't have skills or attributes)
-  const noReroll20 =
-    foundry.utils.getProperty(testActor.system, `skills.${test.skillName}.noReroll20`) ||
-    foundry.utils.getProperty(testActor.system, `attributes.${test.skillName}.noReroll20`);
+  const noReroll20 = testActor.getSkillData(test.skillName)?.noReroll20 ||
+    testActor.system.attributes?.[test.skillName]?.noReroll20;
 
   if (!test.plus3Type) {
     let attribute;
@@ -95,7 +93,7 @@ export async function renderSkillChat(test, origChatMessage) {
       case 'interactionAttack':
       case 'attack':
         {
-          const skillData = (testActor.type === 'vehicle') ? testItem.system.gunnerSkill : testActor.system.skills[test.skillName] || testActor.items.get(test.skillName)?.system;
+          const skillData = (testActor.type === 'vehicle') ? testItem.system.gunnerSkill : testActor.getSkillData(test.skillName);
           if (skillData) attribute = skillData.baseAttribute;
           break;
         }

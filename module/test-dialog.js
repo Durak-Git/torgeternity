@@ -165,12 +165,11 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     // Set skill's attribute, if not specified explicitly
     if (this.test.actorType !== 'vehicle' && !foundry.utils.hasProperty(this.test, 'attribute')) {
       const actor = fromUuidSync(this.test.actor);
-      if (actor.system.attributes[this.test.skillName]) {
+      if (actor?.system.attributes[this.test.skillName]) {
         this.test.attribute = this.test.skillName;
       } else {
         // maybe a custom skill
-        let skill = actor.system.skills[this.test.skillName] ?? actor.system.customSkills?.[this.test.skillName] ?? actor.itemTypes.customSkill.find(item => item.name === this.test.skillName);
-        this.test.attribute = skill?.baseAttribute ?? '';
+        this.test.attribute = actor?.getSkillData(this.test.skillName)?.baseAttribute ?? '';
       }
     }
 
@@ -599,9 +598,9 @@ export function TestDialogLabel(test, multiline) {
         result = `${_loc('torgeternity.attributes.' + test.skillName)} ${_loc('torgeternity.chatText.test')} `;
       break;
     case 'skill':
-      result = (test.customSkill ? (fromUuidSync(test.actor)?.system.customSkills?.[test.skillName]?.parent.name ?? _loc('torgeternity.itemSheetDescriptions.customSkill')) :
-        _loc('torgeternity.skills.' + test.skillName)) +
-        ' ' + _loc('torgeternity.chatText.test');
+      result = (test.customSkill ?
+        (fromUuidSync(test.actor)?.system.customSkills?.[test.skillName]?.parent.name ?? _loc('torgeternity.itemSheetDescriptions.customSkill')) :
+        _loc('torgeternity.skills.' + test.skillName)) + ' ' + _loc('torgeternity.chatText.test');
       break;
     case 'interactionAttack':
     case 'attack':

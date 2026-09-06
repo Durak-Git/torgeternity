@@ -7,6 +7,11 @@
 "CARD.FIELDS.name.label": "Card Name"
 "CARDS.ACTIONS.Add": "Add"
 ```
+## NEXT
+- Triggering a Skill Test from the Macro Hotbar should use the correct skill value if the skill has a "mod" applied to it.
+- Custom Skills with 0 adds will be treated as Unskilled.
+- Attributes dragged to the Macro Hotbar have the correct parameters set in the call to `rollSkillMacro`.
+- Add `Actor.getSkillData(skillNameOrSlug)` to put checking for normal/custom skills all in one place.
 
 ## 14.6.0 - Skills, Perks & Cards
 - **Effects button** in skill check chat cards, the "+Effects" button's tooltip now lists the Active Effcts which will be transferred.

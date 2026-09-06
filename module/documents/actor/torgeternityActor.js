@@ -946,7 +946,7 @@ export default class TorgeternityActor extends foundry.documents.Actor {
    */
   async rollSkill(skillName, item, options = {}) {
 
-    const skillData = this.system.skills[skillName] ?? this.system.customSkills[skillName] ?? this.items.get(skillName)?.system;
+    const skillData = this.getSkillData(skillName) ?? this.items.get(skillName)?.system;
     if (!skillData) return;
 
     // Before calculating roll, check to see if it can be attempted unskilled; exit test if actor doesn't have required skill
@@ -1312,6 +1312,23 @@ export default class TorgeternityActor extends foundry.documents.Actor {
     return true;
   }
 
+  /**
+   * Returns either the skill record from actor.system.skills, or the CustomSkill system record, or undefined.
+   * @param {*} key the slug of a predefined skill, a custom skill; or the real name of a custom skill
+   * @return {Object|undefined} The skill data object for the skill referred to by `key`
+   */
+  getSkillData(key) {
+    // Predefined skill?
+    const p1 = this.system.skills?.[key];
+    if (p1) return p1;
+    // Custom Skill slug (or real name)?
+    const p2 = this.system.customSkills?.[key];
+    if (p2) return p2;
+    const p3 = this.itemTypes.customSkill?.find(sk => sk.name === key || sk.name.slugify() === key);
+    if (p3) return p3.system;
+    // Are there any more places we can find a skill?
+    return undefined;
+  }
 }
 
 /**

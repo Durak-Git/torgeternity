@@ -45,6 +45,19 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
     }
   }
 
+
+  static CHAT_COMMANDS = (() => {
+    const result = foundry.applications.sidebar.tabs.ChatLog.CHAT_COMMANDS;
+    const orig_ic_fn = result.ic.fn;
+    const chatCommand = function (command, match, chatData, createOptions) {
+      if (command === 'ic' && !(chatData.speaker.actor || chatData.speaker.token))
+        command = 'ooc'
+      orig_ic_fn.call(this, command, match, chatData, createOptions);
+    };
+    result.ic.fn = chatCommand;
+    return result;
+  })();
+
   _getEntryContextOptions() {
     const options = super._getEntryContextOptions();
     options.push({

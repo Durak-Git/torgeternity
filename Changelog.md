@@ -3,9 +3,12 @@
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
 ## 14.7.1 - Trait automation
-- `Ignores Armor` will cause any armour on the target to be ignored.
-- `Quick` will make the attack Favored if the target is Stymied or Very stymied (if multi-targeting, ALL targets must be (Very) Stymied.)
-- `Wounding` will add Vulnerable (stacking) to a target if any damage was inflicted (unless the target is KO'd or killed).
+- When the `Public as Character` is chosen for Chat Messages, if no token is selected AND the user has no default character, then the message will be posted as a `Public as User` chat message.
+  - This will avoid having to keep switching between IC and OOC for GMs.
+- Trait Automation:
+  - `Ignores Armor` will cause any armour on the target to be ignored.
+  - `Quick` will make the attack Favored if the target is Stymied or Very stymied (if multi-targeting, ALL targets must be (Very) Stymied.)
+  - `Wounding` will add Vulnerable (stacking) to a target if any damage was inflicted (unless the target is KO'd or killed).
 
 ## 14.7.0 - Skills, Cards, Fatigue, Default Items & Encounters
 ### New Features

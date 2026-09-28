@@ -549,7 +549,10 @@ export default class TorgeternityChatLog extends foundry.applications.sidebar.ta
   }
 
   async #inflictDamage(chatMessage, test, testTarget, targetActor, damage) {
-    targetActor.applyDamages(damage.shocks, damage.wounds, { nonLethal: test.attackTraits.includes('nonLethal') });
+    targetActor.applyDamages(damage.shocks, damage.wounds, {
+      nonLethal: test.attackTraits.includes('nonLethal'),
+      wounding: test.attackTraits.includes('wounding'),
+    });
     if (targetActor.isConcentrating) {
       this.promptConcentration(targetActor);
     }

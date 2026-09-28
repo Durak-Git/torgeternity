@@ -2,10 +2,10 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## 14.8.0 - Trait automation
-- **Ignores Armor** will cause any armour on the target to be ignored.
-- **Quick** will make the attack Favored if the target is Stymied or Very stymied (if multi-targeting, ALL targets must be (Very) Stymied.)
-- **Wounding** will add Vulnerable (stacking) to a target if any damage was inflicted (unless the target is KO'd or killed).
+## 14.7.1 - Trait automation
+- `Ignores Armor` will cause any armour on the target to be ignored.
+- `Quick` will make the attack Favored if the target is Stymied or Very stymied (if multi-targeting, ALL targets must be (Very) Stymied.)
+- `Wounding` will add Vulnerable (stacking) to a target if any damage was inflicted (unless the target is KO'd or killed).
 
 ## 14.7.0 - Skills, Cards, Fatigue, Default Items & Encounters
 ### New Features

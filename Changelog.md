@@ -2,6 +2,10 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
+## NEXT
+### Improvements
+- Update expanded spell descriptions on Actor Sheets to show all the spell's attributes, with field headings and in the same order as the rulebooks.
+
 ## 14.7.2 - Minor UI tweaks
 ### Improvements
 - Reinstate core Foundry label and hint for the Effects field of `Apply Active Effects (Torg)` region behaviour, and add hint for Token Disposition.

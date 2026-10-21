@@ -46,7 +46,7 @@
           <div class="item-dropdown-description">
             {{{item.description}}}
             <div class="item-dropdown-extras">
-              {{localize (lookup @root.config.skills item.system.skill)}}
+              {{localize (lookup @root.config.skills item.system.skill)}} {{item.system.skilllevel}}+
             </div>
             <div class="item-dropdown-extras">
               {{localize (lookup @root.config.dnTypes item.system.dn)}}
@@ -111,7 +111,7 @@
           <div class="item-dropdown-description">
             {{{item.description}}}
             <div class="item-dropdown-extras">
-              {{localize (lookup @root.config.skills item.system.skill)}}
+              {{localize (lookup @root.config.skills item.system.skill)}} {{item.system.skilllevel}}+
             </div>
             <div class="item-dropdown-extras">
               {{localize (lookup @root.config.dnTypes item.system.dn)}}
@@ -176,7 +176,7 @@
           <div class="item-dropdown-description">
             {{{item.description}}}
             <div class="item-dropdown-extras">
-              {{localize (lookup @root.config.skills item.system.skill)}}
+              {{~localize (lookup @root.config.skills item.system.skill)}} {{item.system.skilllevel~}}+
             </div>
             <div class="item-dropdown-extras">
               {{localize (lookup @root.config.dnTypes item.system.dn)}}

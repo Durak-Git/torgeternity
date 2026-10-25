@@ -192,7 +192,7 @@ export function registerTorgSettings() {
     scope: 'world',
     config: false,
     type: String,
-    default: '1.0.0',
+    default: game.system.version,  // in a new world, use the latest system version
   });
 
   // Hidden setting to determine whether module image updates are needed after migrating system images on intial update

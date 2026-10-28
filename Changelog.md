@@ -1,11 +1,18 @@
 # TORG Eternity Changelog
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
+```
+      "saveMultiAction": {
+        "hint": "If checked, when a Multi-Action is performed the generated dice bonus and multi-action penalty are remembered for Actors which are in an Encounter. It is cleared when the Actor's turn in the combat is marked as taken.",
+        "name": "Save Multi-Action Bonus"
+      },
+```
 
 ## 14.7.3 - Multi-Action handling & Power descriptions
 ### Improvements
 - When an **explicit bonus** is used in the test dialog (e.g. due to a multi-action), the bonus modifier buttons are hidden in the generated chat card (since they can't modify the fixed bonus) - this affects the Possibilty, Up, Hero, Drama and +3 Card buttons.
 - When performing a **Multi-Action** the multi-action penalty will also be stored on the combatant (the generated bonus is already stored).
+- Added a game-system option to disable saving the **multi-action** bonus and modifier during combat (it is never saved outside of combat).
 - Update expanded spell descriptions on Actor Sheets to show all the spell's attributes, with field headings and in the same order as the rulebooks.
 - Grey-out the delete button on Effects which cannot be deleted from the Effects tab of Actor sheets.
 - Better detection of a new world to avoid triggering unnecessary data migration.

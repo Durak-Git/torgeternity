@@ -133,6 +133,15 @@ export function registerTorgSettings() {
     default: false,
   });
 
+  game.settings.register('torgeternity', 'saveMultiAction', {
+    name: 'torgeternity.settingMenu.saveMultiAction.name', // Register a module setting with checkbox
+    hint: 'torgeternity.settingMenu.saveMultiAction.hint', // Description of the settings
+    scope: 'world',
+    config: true,
+    type: Boolean,
+    default: true,
+  });
+
   // the deck setting menu
   game.settings.registerMenu('torgeternity', 'cardDecks', {
     name: 'torgeternity.settingMenu.deckSetting.name',

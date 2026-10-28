@@ -918,6 +918,10 @@
         "hint": "Si coché, les points de Chocs et les Blessures seront automatiquement appliqués si le joueur a un Token cible valide.",
         "name": "Application des dommages automatiques"
       },
+      "saveMultiAction": {
+        "hint": "If checked, when a Multi-Action is performed the generated dice bonus and multi-action penalty are remembered for Actors which are in an Encounter. It is cleared when the Actor's turn in the combat is marked as taken.",
+        "name": "Save Multi-Action Bonus"
+      },
       "deckSetting": {
         "hint": "Configuration des paquets où piocher les différents type de cartes, ainsi que leurs défausses.",
         "label": "Configuration des paquets de cartes par défaut",

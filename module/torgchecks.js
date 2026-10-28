@@ -222,7 +222,7 @@ export async function renderSkillChat(test, origChatMessage) {
     if (!test.explicitBonus) {
       test.combinedRollTotal = test.rollTotal + test.upTotal + test.possibilityTotal + test.heroTotal + test.dramaTotal;
       test.bonus = torgBonus(test.combinedRollTotal);
-      if (test.multiModifier) game.combat?.getCombatantsByActor(testActor)?.shift()?.setMultiAction(test.bonus, test.multiModifier);
+      if (test.multiModifier && game.settings.get('torgeternity', 'saveMultiAction')) game.combat?.getCombatantsByActor(testActor)?.shift()?.setMultiAction(test.bonus, test.multiModifier);
       if (test.combinedRollTotal >= 60) test.possibleGlory = true;
     } else {
       test.rollTotal = undefined;

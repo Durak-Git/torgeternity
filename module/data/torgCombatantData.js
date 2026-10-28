@@ -6,7 +6,7 @@ export class TorgCombatantData extends foundry.abstract.TypeDataModel {
     return {
       turnTaken: new fields.BooleanField({ initial: false }),
       multiAction: new fields.SchemaField({
-        actionBonus: new fields.NumberField({ initial: null, nullable: true, integer: true }),
+        diceBonus: new fields.NumberField({ initial: null, nullable: true, integer: true }),
         multiModifier: new fields.NumberField({ initial: null, nullable: true, integer: true }),
       })
     }
@@ -14,7 +14,7 @@ export class TorgCombatantData extends foundry.abstract.TypeDataModel {
 
   migrateData(source) {
     if (Number.isInteger(source.multiAction)) {
-      source.multiAction = { actionBonus: source.multiAction };
+      source.multiAction = { diceBonus: source.multiAction };
     }
     return super.migrateData(source);
   }

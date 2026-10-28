@@ -24,7 +24,7 @@ export default class TorgCombatant extends Combatant {
       // Turn has been taken
       await this.update({
         'system.turnTaken': value,
-        'system.multiAction.actionBonus': null,
+        'system.multiAction.diceBonus': null,
       }, { combatTurn: this.combat.turn + 1 });
 
       // If the actor of a linked token is deleted, this.actor will be undefiend.
@@ -39,7 +39,7 @@ export default class TorgCombatant extends Combatant {
 
   async setMultiAction(bonus, multiModifier) {
     return this.update({
-      'system.multiAction.actionBonus': bonus,
+      'system.multiAction.diceBonus': bonus,
       'system.multiAction.multiModifier': multiModifier,
     });
   }

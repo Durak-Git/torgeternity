@@ -153,10 +153,10 @@ export class TestDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
       const combatant = game.combat?.getCombatantsByActor(actor)?.shift();
       if (combatant) {
-        const bonus = combatant.system.multiAction.actionBonus;
+        const bonus = combatant.system?.multiAction?.diceBonus;
         if (Number.isInteger(bonus)) {
           this.test.bonus = bonus;
-          this.test.multiModifier = combatant.system.multiAction.multiModifier;
+          this.test.multiModifier = combatant.system.multiAction?.multiModifier ?? 0;
         }
       }
 

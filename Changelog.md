@@ -2,7 +2,7 @@
 
 ## 14.7.3 - Multi-Action handling & Power descriptions
 ### Improvements
-- When an **explicit bonus** is used in the test dialog (e.g. due to a multi-action), the bonus modifier buttons are hidden in the generated chat card (since they can't modify the fixed bonus) - this affects the Possibilty, Up, Hero and Drama buttons (but not the +3 Card button since those cards modify the action total, not the the die-roll bonus).
+- When an **explicit bonus** is used in the test dialog (e.g. due to a multi-action), the bonus modifier buttons are hidden in the generated chat card (since they can't modify the fixed bonus) - this affects the Favored, Possibilty, Up, Hero and Drama buttons (but not the +3 Card button since those cards modify the action total, not the the die-roll bonus).
 - When performing a **Multi-Action** the multi-action penalty will also be stored on the combatant (the generated bonus is already stored).
 - Added a game-system option to disable saving the **multi-action** bonus and modifier during combat (it is never saved outside of combat).
 - Update expanded spell descriptions on Actor Sheets to show all the spell's attributes, with field headings and in the same order as the rulebooks.

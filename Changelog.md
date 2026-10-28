@@ -16,6 +16,7 @@
 - Update expanded spell descriptions on Actor Sheets to show all the spell's attributes, with field headings and in the same order as the rulebooks.
 - Grey-out the delete button on Effects which cannot be deleted from the Effects tab of Actor sheets.
 - Better detection of a new world to avoid triggering unnecessary data migration.
+- Update layout of the action card's "Modifiers" window to be more similar to base action dialog.
 
 ## 14.7.2 - Minor UI tweaks
 ### Improvements

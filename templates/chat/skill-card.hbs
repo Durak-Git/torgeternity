@@ -173,6 +173,13 @@
             {{/unless}}
           </div>
         {{/unless}}
+      {{else}}
+        {{#unless hidePlus3}}
+          <div class="skill-roll-menu {{skillRollMenuStyle}}">
+            <a class="button roll-button" data-action="addPlus3">
+              {{localize 'torgeternity.chatText.bonusCard'}}</a>
+          </div>
+        {{/unless}}
       {{/if}}
 
       {{#if (and ownsActor (or showApplySoak showReconnect showActorApplyVeryVulnerable showBacklashButtons showApplyEffects showCancelConcentration))}}

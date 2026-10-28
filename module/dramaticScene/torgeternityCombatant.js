@@ -37,7 +37,7 @@ export default class TorgCombatant extends Combatant {
     this.token?.object?.renderFlags.set({ refreshTurnMarker: true })
   }
 
-  async setCurrentBonus(bonus, multiModifier) {
+  async setMultiAction(bonus, multiModifier) {
     return this.update({
       'system.multiAction.actionBonus': bonus,
       'system.multiAction.multiModifier': multiModifier,

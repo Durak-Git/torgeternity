@@ -2,9 +2,10 @@
 
 - Translations by Durak (French), Helmut (German), and Teotimus (Spanish).
 
-## 14.7.3 - More UI tweaks
+## 14.7.3 - Multi-Action handling & Power descriptions
 ### Improvements
 - When an **explicit bonus** is used in the test dialog (e.g. due to a multi-action), the bonus modifier buttons are hidden in the generated chat card (since they can't modify the fixed bonus) - this affects the Possibilty, Up, Hero, Drama and +3 Card buttons.
+- When performing a **Multi-Action** the multi-action penalty will also be stored on the combatant (the generated bonus is already stored).
 - Update expanded spell descriptions on Actor Sheets to show all the spell's attributes, with field headings and in the same order as the rulebooks.
 - Grey-out the delete button on Effects which cannot be deleted from the Effects tab of Actor sheets.
 - Better detection of a new world to avoid triggering unnecessary data migration.

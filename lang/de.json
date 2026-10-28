@@ -915,8 +915,8 @@
         "name": "Schaden automatisch anwenden (BETA!)"
       },
       "saveMultiAction": {
-        "hint": "If checked, when a Multi-Action is performed the generated dice bonus and multi-action penalty are remembered for Actors which are in an Encounter. It is cleared when the Actor's turn in the combat is marked as taken.",
-        "name": "Save Multi-Action Bonus"
+        "hint": "Wenn eine Mehrfachaktion ausgeführt wird, bleiben der erzeugte Würfelbonus und Mehrfachaktions-Malus für Akteure einer Begegnung erhalten. Er wird erst zurückgesetzt, wenn der Zug des Akteurs als beendet markiert wurde.",
+        "name": "Mehrfachaktions-Bonus merken"
       },
       "deckSetting": {
         "hint": "Konfiguriere hier die Standard-Decks, aus denen die Karten gezogen und abgelegt werden.",

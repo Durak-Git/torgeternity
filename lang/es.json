@@ -915,8 +915,8 @@
         "name": "Aplicar daño automáticamente"
       },
       "saveMultiAction": {
-        "hint": "If checked, when a Multi-Action is performed the generated dice bonus and multi-action penalty are remembered for Actors which are in an Encounter. It is cleared when the Actor's turn in the combat is marked as taken.",
-        "name": "Save Multi-Action Bonus"
+        "hint": "Si está marcado, cuando se realiza una acción múltiple, la bonificación al dado generada y la penalización por acción múlitple se recordarán para los actores que están en el encuentro. Se reiniciará cuando se marque el turno del actor como completado en la ventana de combate.",
+        "name": "Guardar bonificación por acción múltiple"
       },
       "deckSetting": {
         "hint": "Configurar los nombres que se usan para tus mazos de cartas y pilas de descartes.",
